@@ -15,18 +15,20 @@
 <!--课程选项卡-->
 <script type="text/javascript">
 function nTabs(thisObj,Num){
-	if(thisObj.className == "current")return;
-	var tabObj = thisObj.parentNode.id;
-	var tabList = document.getElementById(tabObj).getElementsByTagName("li");
-	for(i=0; i <tabList.length; i++)
+	//if(thisObj.className == "current")return;
+    $(".choose").removeClass("current");
+    $(thisObj).addClass("current");
+	//var tabObj = thisObj.parentNode.id;
+	//var tabList = document.getElementById(tabObj).getElementsByTagName("li");
+	for(i=0; i <3; i++)
 		{
 		if (i == Num)
 		{
-		   thisObj.className = "current"; 
-		   document.getElementById(tabObj+"_Content"+i).style.display = "block";
+		   //thisObj.className = "current"; 
+		   document.getElementById("myTab3_Content"+i).style.display = "block";
 		}else{
-		   tabList[i].className = "normal"; 
-		   document.getElementById(tabObj+"_Content"+i).style.display = "none";
+		   //tabList[i].className = "normal"; 
+		   document.getElementById("myTab3_Content"+i).style.display = "none";
 		}
 		} 
 }
@@ -399,22 +401,32 @@ function nTabs(thisObj,Num){
 <div class="crdiv">
 
 <div class="course">
-    <h2 style="text-align:center; font-weight:normal; font-size:34px">弗尘教育</h2>
+    <!--h2 style="text-align:center; font-weight:normal; font-size:34px">弗尘教育</h2-->
     <div class="clearh" style="height:20px;"></div>
-    
-    <div>
-        <ul id="myTab3">
+    <div class="pr">
+        <aside class="i-cc-more">
+           <a href="#"class="c-999" title="更多" target="_blank">更多</a>
+        </aside>
+        <section class="c-infor-tabTitle c-tab-title">
+           <a class="choose current" href="javascript: nTabs(this,0)" target="_self" lang="boutique">精品课程</a>
+           <a class="choose" href="javascript: nTabs(this,1)" target="_self" lang="hot">热门课程</a>
+        </section>
+    </div>
+   
+        <!--ul id="myTab3">
             <li class="current" onClick="nTabs(this,0);">身心疗愈</li>
             <li class="norma3" onClick="nTabs(this,1);">震触疗法</li>
             <li class="norma3" onClick="nTabs(this,2);">王氏拔罐</li>
             <li class="norma3" onClick="nTabs(this,3);">弗尘脉诊</li>
-        </ul>
+        </ul-->
+
+         <div>
         <div class="clearh"></div>
         <div>
            <ul class="courseul" id="myTab3_Content0" style="display: block;">
             <li>
             	<div class="courselist">
-                <img width="263" style="border-radius:3px 3px 0 0;" src="images/c1.jpg" >
+                <img width="263" style="border-radius:3px 3px 0 0; height:188px;" src="images/c1.jpg" >
                 <p class="courTit">HTTP下载课程</p>
                 <div class="gray">
                 <span>1小时前更新</span>
@@ -425,7 +437,7 @@ function nTabs(thisObj,Num){
            </li>
            <li>
                 <div class="courselist">
-                <img width="263" style="border-radius:3px 3px 0 0;" src="images/c1.jpg" >
+                <img width="263" style="border-radius:3px 3px 0 0; height:188px;" src="images/c1.jpg" >
                 <p class="courTit">HTTP下载课程</p>
                 <div class="gray">
                 <span>1小时前更新</span>
@@ -436,7 +448,7 @@ function nTabs(thisObj,Num){
             </li>
             <li>
                 <div class="courselist">
-                <img width="263" style="border-radius:3px 3px 0 0;" src="images/c1.jpg" >
+                <img width="263" style="border-radius:3px 3px 0 0; height:188px;" src="images/c1.jpg" >
                 <p class="courTit">HTTP下载课程</p>
                 <div class="gray">
                 <span>1小时前更新</span>
@@ -447,7 +459,7 @@ function nTabs(thisObj,Num){
             </li>
             <li>
                 <div class="courselist">
-                <img width="263" style="border-radius:3px 3px 0 0;" src="images/c1.jpg" >
+                <img width="263" style="border-radius:3px 3px 0 0; height:188px;" src="images/c1.jpg" >
                 <p class="courTit">HTTP下载课程</p>
                 <div class="gray">
                 <span>1小时前更新</span>
@@ -458,7 +470,7 @@ function nTabs(thisObj,Num){
             </li>
             <li>
                 <div class="courselist">
-                <img width="263" style="border-radius:3px 3px 0 0;" src="images/c1.jpg" >
+                <img width="263" style="border-radius:3px 3px 0 0; height:188px;" src="images/c1.jpg" >
                 <p class="courTit">HTTP下载课程</p>
                 <div class="gray">
                 <span>1小时前更新</span>
@@ -469,7 +481,7 @@ function nTabs(thisObj,Num){
             </li>
             <li>
                 <div class="courselist">
-                <img width="263" style="border-radius:3px 3px 0 0;" src="images/c1.jpg" >
+                <img width="263" style="border-radius:3px 3px 0 0; height:188px;" src="images/c1.jpg" >
                 <p class="courTit">HTTP下载课程</p>
                 <div class="gray">
                 <span>1小时前更新</span>
@@ -480,7 +492,7 @@ function nTabs(thisObj,Num){
             </li>
             <li>
                 <div class="courselist">
-                <img width="263" style="border-radius:3px 3px 0 0;" src="images/c1.jpg" >
+                <img width="263" style="border-radius:3px 3px 0 0; height:188px;" src="images/c1.jpg" >
                 <p class="courTit">HTTP下载课程</p>
                 <div class="gray">
                 <span>1小时前更新</span>
@@ -491,7 +503,7 @@ function nTabs(thisObj,Num){
             </li>
             <li>
                 <div class="courselist">
-                <img width="263" style="border-radius:3px 3px 0 0;" src="images/c1.jpg" >
+                <img width="263" style="border-radius:3px 3px 0 0; height:188px;" src="images/c1.jpg" >
                 <p class="courTit">HTTP下载课程</p>
                 <div class="gray">
                 <span>1小时前更新</span>
@@ -507,7 +519,7 @@ function nTabs(thisObj,Num){
            <ul class="courseul" id="myTab3_Content1" style="display: none;">
             <li>
                 <div class="courselist">
-                <img width="263" style="border-radius:3px 3px 0 0;" src="images/c1.jpg" >
+                <img width="263" style="border-radius:3px 3px 0 0; height:188px;" src="images/c1.jpg" >
                 <p class="courTit">HTTP下载课程</p>
                 <div class="gray">
                 <span>1小时前更新</span>
@@ -518,7 +530,7 @@ function nTabs(thisObj,Num){
             </li>	
             <li>
                 <div class="courselist">
-                <img width="263" style="border-radius:3px 3px 0 0;" src="images/c1.jpg" >
+                <img width="263" style="border-radius:3px 3px 0 0; height:188px;" src="images/c1.jpg" >
                 <p class="courTit">HTTP下载课程</p>
                 <div class="gray">
                 <span>1小时前更新</span>
@@ -529,7 +541,7 @@ function nTabs(thisObj,Num){
             </li>
             <li>
                 <div class="courselist">
-                <img width="263" style="border-radius:3px 3px 0 0;" src="images/c1.jpg" >
+                <img width="263" style="border-radius:3px 3px 0 0; height:188px;" src="images/c1.jpg" >
                 <p class="courTit">HTTP下载课程</p>
                 <div class="gray">
                 <span>1小时前更新</span>
@@ -545,7 +557,7 @@ function nTabs(thisObj,Num){
            <ul class="courseul" id="myTab3_Content2" style="display: none;">
             <li>
                 <div class="courselist">
-                <img width="263" style="border-radius:3px 3px 0 0;" src="images/c1.jpg" >
+                <img width="263" style="border-radius:3px 3px 0 0; height:188px;" src="images/c1.jpg" >
                 <p class="courTit">HTTP下载课程</p>
                 <div class="gray">
                 <span>1小时前更新</span>
@@ -556,7 +568,7 @@ function nTabs(thisObj,Num){
             </li>	
             <li>
                 <div class="courselist">
-                <img width="263" style="border-radius:3px 3px 0 0;" src="images/c1.jpg" >
+                <img width="263" style="border-radius:3px 3px 0 0; height:188px;" src="images/c1.jpg" >
                 <p class="courTit">HTTP下载课程</p>
                 <div class="gray">
                 <span>1小时前更新</span>
@@ -567,7 +579,7 @@ function nTabs(thisObj,Num){
             </li>
             <li>
                 <div class="courselist">
-                <img width="263" style="border-radius:3px 3px 0 0;" src="images/c1.jpg" >
+                <img width="263" style="border-radius:3px 3px 0 0; height:188px;" src="images/c1.jpg" >
                 <p class="courTit">HTTP下载课程</p>
                 <div class="gray">
                 <span>1小时前更新</span>
@@ -583,7 +595,7 @@ function nTabs(thisObj,Num){
            <ul class="courseul" id="myTab3_Content3" style="display: none;">
             <li>
                 <div class="courselist">
-                <img width="263" style="border-radius:3px 3px 0 0;" src="images/c1.jpg" >
+                <img width="263" style="border-radius:3px 3px 0 0; height:188px;" src="images/c1.jpg" >
                 <p class="courTit">HTTP下载课程</p>
                 <div class="gray">
                 <span>1小时前更新</span>
@@ -594,7 +606,7 @@ function nTabs(thisObj,Num){
             </li>	
             <li>
                 <div class="courselist">
-                <img width="263" style="border-radius:3px 3px 0 0;" src="images/c1.jpg" >
+                <img width="263" style="border-radius:3px 3px 0 0; height:188px;" src="images/c1.jpg" >
                 <p class="courTit">HTTP下载课程</p>
                 <div class="gray">
                 <span>1小时前更新</span>
@@ -609,18 +621,18 @@ function nTabs(thisObj,Num){
 	</div>
     
     
-    <div class="line no"></div>
+    <!--div class="line no"></div-->
     
     
 </div>
-<span class="morecourse"><a href="courselist.html" class="btnlink">更多课程</a></span>
+<!--span class="morecourse"><a href="courselist.html" class="btnlink">更多课程</a></span-->
 
 </div>
 
 
 
 
-<div class="crdiv">
+<!--div class="crdiv">
 
 <div class="course">
     <h2 style="text-align:center; font-weight:normal; font-size:34px">培训服务</h2>
@@ -839,8 +851,138 @@ function nTabs(thisObj,Num){
 </div>
 <span class="morecourse"><a href="courselist.html" class="btnlink">更多课程</a></span>
 
-</div>
+</div-->
+	<div class="teacher" name="tfv-1">
+				<div class="b-f8 pb30 pt20">
+					<div class="iContainer">
+						<div class="pr">
+					<aside class="i-cc-more"><a href="http://t.268xue.com/front/teacherlist.json" class="c-999" title="更多" target="_blank">更多</a></aside>
+					<section class="c-infor-tabTitle c-tab-title">
+						<span>师资团队</span>
+					</section>
+				</div>
+						<div class="i-teaher-in-wrap">
+					<div class="t-list">
+						<ol class="of">
+							<li>
+								<div class="t-infor-wrap">
+									<a href="http://t.268xue.com/front/teacher/68.json" href="http://t.268xue.com/front/teacher/68.json" title="徐蕾" target="_blank">
+										<section class="pl10 pr10 tac mt50">
+											<h6 class="hLh30 unFw"><span class="it-in-name">徐蕾</span></h6>
+											<div class="s-c-desc pt10 pb10 mt10"> <p class="c-fff">徐蕾，北京师范大学法学院副教授、清华大学法学博士。基本功扎实，英语专业八级；熟悉初高中英语重点，深入研究中高考命题动向；讲课生动活波，擅长和学生做朋友.</p> </div>
+										</section>
+									</a>
+								</div>
+								<span>
+																			<img src="/images/teacher1.jpg" xSrc="/images/teacher1.jpg" height="105" width="140" alt="徐蕾">
+																	</span>
+							</li>
+							<li>
+								<div class="t-infor-wrap">
+									<a href="http://t.268xue.com/front/teacher/67.json" href="http://t.268xue.com/front/teacher/67.json" title="郭翔" target="_blank">
+										<section class="pl10 pr10 tac mt50">
+											<h6 class="hLh30 unFw"><span class="it-in-name">郭翔</span></h6>
+											<div class="s-c-desc pt10 pb10 mt10"> <p class="c-fff">郭翔，北京师范大学法学院副教授、清华大学法学博士。自2004年至今已有9年的司法考试培训经验。长期从事司法考试辅导，深知命题规律，了解解题技巧。内容把握准确，授课重点明确，层次分明，调理清晰，将法条法理与案例有机融合，强调综合，深入浅出。</p> </div>
+										</section>
+									</a>
+								</div>
+								<span>
+																			<img src="images/teacher1.jpg" xSrc="images/teacher1.jpg" height="105" width="140" alt="郭翔">
+																	</span>
+							</li>
+																												<li>
+								<div class="t-infor-wrap">
+									<a href="http://t.268xue.com/front/teacher/65.json" href="http://t.268xue.com/front/teacher/65.json" title="李仁玉" target="_blank">
+										<section class="pl10 pr10 tac mt50">
+											<h6 class="hLh30 unFw"><span class="it-in-name">李仁玉</span></h6>
+											<div class="s-c-desc pt10 pb10 mt10"> <p class="c-fff">曾任中央民族大学法律系主任，北京商学院法律系主任，现任北京工商大学法学院（马克思主义学院）院长、北京工商大学学术委员会、学位委员会、职称评审委员会委员。兼任中国政法大学兼职教授、国家检察官学院客座教授，上海政法学院客座教授。原国内贸易部部级优秀专家，中国司法部律师与公正指导工作委员会委员，中国民法研究会理事、中国法学教育研究会理事、中国行为法学研究会理事、中国民族法研究会理事、北京市民商法学研究会副会长、常务理事、中国司法部基层工作司特约专家、北京市法学会理事，《法学杂志》编委、北京市西城区人民检察院特约专家、山东省威海市仲裁委员会仲裁员、福建省厦门市仲裁委员会仲裁员、北京市新元律师事务所律师。司法考试民法名师，政法英杰、三校名师、独角兽司法考试网等著名司法考试学校签约民法主讲教师。</p> </div>
+										</section>
+									</a>
+								</div>
+								<span>
+																			<img src="images/teacher1.jpg" xSrc="images/teacher1.jpg" height="105" width="140" alt="李仁玉">
+																	</span>
+							</li>
+																												<li>
+								<div class="t-infor-wrap">
+									<a href="http://t.268xue.com/front/teacher/64.json" href="http://t.268xue.com/front/teacher/64.json" title="韩丹丹" target="_blank">
+										<section class="pl10 pr10 tac mt50">
+											<h6 class="hLh30 unFw"><span class="it-in-name">韩丹丹</span></h6>
+											<div class="s-c-desc pt10 pb10 mt10"> <p class="c-fff">韩丹丹老师，英文名Helen，毕业于上海华东理工大学，主要教授新概念课程。她始终坚信：兴趣才是最好的老师！如果你喜欢某一学科的老师，这一门课你的成绩一定会很好！Helen老师英语发音标准，声音清脆洪亮，情绪感染力极高，喜欢寓教于乐，十分注重对学生英语学习的引导与操练。秉承师者的良心，Helen对自己班上的每一位同学都非常上心，认真负责，宁愿学生说她严格，也不愿哄得“你乐我乐大家乐”，而最终学生却没有收获！</p> </div>
+										</section>
+									</a>
+								</div>
+								<span>
+																			<img src="images/teacher1.jpg" xSrc="images/teacher1.jpg" height="105" width="140" alt="韩丹丹">
+																	</span>
+							</li>
+																												<li>
+								<div class="t-infor-wrap">
+									<a href="http://t.268xue.com/front/teacher/63.json" href="http://t.268xue.com/front/teacher/63.json" title="唐仕伦" target="_blank">
+										<section class="pl10 pr10 tac mt50">
+											<h6 class="hLh30 unFw"><span class="it-in-name">唐仕伦</span></h6>
+											<div class="s-c-desc pt10 pb10 mt10"> <p class="c-fff">中学语文高级教师，全国中小学作文研究会常务副理事长，全国语文试题研究中心研究员，全国修辞学会、阅读鉴赏研究会会员。《语文报》《语文世界》《语文学习报》等多家报刊特编、特约栏目主持人、特约撰稿人、署名特编。曾参加国家级科研项目“中学课程改革”之子课题《中学语文教材体系研究》的编写。有数十篇论文分获县、市、省及全国一、二等奖。自2000年9月以来，已在全国各报刊公开发表文学作品和教学论文、教学资料300多万字。主编、参编作文及阅读教学专著40余部。　朱为民
 
+　　教育硕士。银川市教科所教研员，银川中语会秘书长，宁夏中语会常务理事，全国中语会理事，全国中语会“读写训练中心”理事。全国中语会“民族文化与中学语文衔接”专题组组长。获全国中语会教师课堂大赛指导奖8次，全国中语会颁发先进工作者5次，银川市先进工作者3次，银川市教科所先进工作者4次。省级刊物发表论文20多篇，著有《作文大全》等著作。</p> </div>
+										</section>
+									</a>
+								</div>
+								<span>
+																			<img src="images/teacher1.jpg" xSrc="images/teacher1.jpg" height="105" width="140" alt="唐仕伦">
+																	</span>
+							</li>
+																												<li>
+								<div class="t-infor-wrap">
+									<a href="http://t.268xue.com/front/teacher/62.json" href="http://t.268xue.com/front/teacher/62.json" title="杨波" target="_blank">
+										<section class="pl10 pr10 tac mt50">
+											<h6 class="hLh30 unFw"><span class="it-in-name">杨波</span></h6>
+											<div class="s-c-desc pt10 pb10 mt10"> <p class="c-fff">实名杨波，学以思网络课堂联合创始人、CEO。20年职场经验，曾任职于两家国际上市公司，专注于帮助年青朋友更好成长。</p> </div>
+										</section>
+									</a>
+								</div>
+								<span>
+																			<img src="images/teacher1.jpg" xSrc="images/teacher1.jpg" height="105" width="140" alt="杨波">
+																	</span>
+							</li>
+																												<li>
+								<div class="t-infor-wrap">
+									<a href="http://t.268xue.com/front/teacher/61.json" href="http://t.268xue.com/front/teacher/61.json" title="杨永强" target="_blank">
+										<section class="pl10 pr10 tac mt50">
+											<h6 class="hLh30 unFw"><span class="it-in-name">杨永强</span></h6>
+											<div class="s-c-desc pt10 pb10 mt10"> <p class="c-fff">国家高级烹调师 
+中国烹饪协会会员
+北京神龙食艺委员会会员
+营养配餐师
+中式烹调主讲教师
+98年参加工作，先后在北京、天津、重庆等地学习工作。
+擅长川鲁冀菜制作，多次在国家级、省级烹饪及雕刻比赛中获奖。</p> </div>
+										</section>
+									</a>
+								</div>
+								<span>
+																			<img src="images/teacher1.jpg" xSrc="images/teacher1.jpg" height="105" width="140" alt="杨永强">
+																	</span>
+							</li>
+																												<li>
+								<div class="t-infor-wrap">
+									<a href="http://t.268xue.com/front/teacher/60.json" href="http://t.268xue.com/front/teacher/60.json" title="孙小平" target="_blank">
+										<section class="pl10 pr10 tac mt50">
+											<h6 class="hLh30 unFw"><span class="it-in-name">孙小平</span></h6>
+											<div class="s-c-desc pt10 pb10 mt10"> <p class="c-fff">黑光创始人、艺术总监、“中国人像摄影十杰”、“人像摄影大师”称号获得者；国家级摄影高级考评员，多项全国大赛主任评委、评委，多家大学客座教授、中国形象设计专业国家级评委，靓丽派摄影创始人，著名样片拍摄家、影楼系统教育家、《健康与美容》杂志编委、《人像摄影》、《今日人像》、《中国摄影报》、《中国美容时尚报》、《化妆师》、《黑光中国影楼网》、《蜂鸟网》杂志媒体特约撰稿人。《黑光管理》、《黑光策划》、《黑光门市》、《影楼经理人必读》、《影楼从业人员必读》等专业权威著作主创人。</p> </div>
+										</section>
+									</a>
+								</div>
+								<span>
+																			<img src="images/teacher1.jpg" xSrc="images/teacher1.jpg" height="105" width="140" alt="孙小平">
+																	</span>
+							</li>
+																				</ol>
+						<div class="clear"></div>
+					</div>
+				</div>
+					</div>
+				</div>
+			</div>
 
 
 <div class="foot">

@@ -454,7 +454,54 @@
 
 
 
+
 /*************课程*************/
+.pr {
+    position: relative;
+}
+.i-cc-more {
+    position: absolute;
+    right: 5px;
+    top: 15px;
+}
+.c-999 {
+	text-decoration:none;
+    color: #999;
+}
+.c-infor-tabTitle.c-tab-title {
+    margin-bottom: 20px;
+    text-align: left;
+}
+.c-tab-title {
+    border-bottom: 1px solid #e2e2e2;
+    height: 44px;
+    margin-bottom: 50px;
+    text-align: center;
+}
+.c-infor-tabTitle.c-tab-title a, .c-infor-tabTitle.c-tab-title span {
+	text-decoration:none;
+    font-size: 20px;
+    margin-left: 0;
+    padding: 0 8px;
+}
+ .c-tab-title a:hover, .c-tab-title .current{
+    color: #004E9C;
+    border-color: #004E9C;
+}
+.c-tab-title a, .c-tab-title span {
+    border-bottom: 1px solid transparent;
+    display: inline-block;
+    line-height: 44px;
+    margin: 0 20px;
+    padding: 0 15px;
+    font-size: 18px;
+    color: #666;
+    transition: .3s;
+    -webkit-transition: .3s;
+}
+
+
+
 .crdiv {
 	background: #F5F5F5
 }
@@ -479,18 +526,24 @@
 }
 
 .courseul {
-	width: 1100px;
+	width: 1200px;
 	min-height: 100px;
+	margin: 0 0 0 -40px;
 }
 
 .courseul li {
-	width: 275px;
+	width: 250px;
 	float: left;
 	margin-bottom: 20px;
+	background: #fff;
+    box-shadow: none;
+    border: none;
+    margin: 0 0 40px 40px;
 }
 
 .courselist {
-	width: 263px;
+	width: 250px;
+	height: 289px;
 	background: #fff;
 	padding-bottom: 10px;
 	box-shadow: 0 1px 2px #c5c5c5;
@@ -859,10 +912,102 @@
 	margin-bottom:10px;
 }
 
-#myTab3 li.current {
-	color: #fff;
-	background: #fb5e55;
-}
+
 /*****************END课程选项卡END*****************/
 
-
+/*****************师资团队*****************/
+.i-teaher-in-wrap .t-list {padding: 0;}
+.i-teaher-in-wrap .t-list ol {margin-left: -36px;}
+.i-teaher-in-wrap .t-list li {height: 190px;margin: 0 0 30px 36px;}
+.i-teaher-in-wrap .t-list li span img {border: none;width: 252px;height: 190px;}
+.i-teaher-in-wrap .t-list li .t-infor-wrap,.i-t-flexslider .i-t-slides li .t-infor-wrap {background-color:#666666;top: 0;right: 0;bottom: 0;left: 0;width: auto;height: auto;opacity: 0;filter: alpha(opacity=0);-webkit-transform: scale(0.6);transform: scale(0.6);}
+.i-teaher-in-wrap .t-list li:hover .t-infor-wrap {opacity: 0.7;filter: alpha(opacity=100);-webkit-transform: scale(1);transform: scale(1);}
+.i-teaher-in-wrap .t-list li .t-infor-wrap .it-in-name,.i-t-infor-bx span {border: 1px solid #fff;color: #fff;font-size: 16px;display: inline-block;padding: 0 30px;}
+.i-teaher-in-wrap .t-list li .t-infor-wrap a:hover,.i-teaher-in-wrap .t-list li .t-infor-wrap a:hover * {text-decoration: none;}
+.i-teaher-in-wrap .t-list li .t-infor-wrap{
+	transition: .3s;
+}
+.t-list li {
+    float: left;
+    margin: 0 10px 10px 0;
+    position: relative;
+    overflow: hidden;
+    height: 122px;
+}
+.t-infor-wrap {
+    cursor: pointer;
+    position: absolute;
+    top: -122px;
+    left: 0;
+    height: 122px;
+    width: 162px;
+    -webkit-transition: .1s;
+    transition: .1s;
+}
+ .t-infor-wrap {
+    background: url(../images/page/yellow-bg.png) repeat 0 0;
+}
+.of {
+    overflow: hidden;
+}
+.t-list li {
+    float: left;
+    margin: 0 10px 10px 0;
+    position: relative;
+    overflow: hidden;
+    height: 122px;
+}
+a {
+    text-decoration: none;
+}
+.pl10 {
+    padding-left: 10px;
+}
+.pr10 {
+    padding-right: 10px;
+}
+.mt50 {
+    margin-top: 50px;
+}
+.tac {
+    text-align: center;
+}
+.hLh30 {
+    height: 30px;
+    line-height: 30px;
+}
+.unFw {
+    font-weight: normal;
+}
+h6 {
+    font-size: 12px;
+    line-height: 16px;
+}
+.s-c-desc {
+    height: 36px;
+    line-height: 21px;
+    overflow: hidden;
+}
+.pt10 {
+    padding-top: 10px;
+}
+.mt10 {
+    margin-top: 10px;
+}
+.c-fff {
+    color: #fff;
+}
+.pb30 {
+    padding-bottom: 30px;
+}
+.pt20 {
+    padding-top: 20px;
+}
+.b-f8 {
+    background-color: #F5F8FA;
+}
+.iContainer, .w1000 {
+    margin: 0 auto;
+    width: 1120px;
+}
+	/*****************END师资团队END*****************/
