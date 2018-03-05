@@ -1,0 +1,56 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312" />
+<title>erpdh服务管理系统</title>
+<link href="css/H.css" rel="stylesheet" type="text/css" />
+<script src="/js/common.js"></script>
+<style type="text/css">
+<!--
+body {
+margin:0;padding:0;
+height:60px;
+}
+-->
+</style>
+</head>
+
+<body>
+<script type="text/javascript" src="js/common.js"></script>
+<script>
+function logout(){
+	if(window.confirm("您确定退出吗?")){
+		setCookie("sessionid","");
+		setCookie("sessionid","");
+		
+		setcookie("usrname","");
+	setcookie("nickname","");
+	setcookie("sessionid","");
+	setcookie("usrid","");
+	setcookie("cid","");
+		
+		//parent.window.opener='anyone';
+		//parent.window.close();
+	}
+}
+window.onload = function(){
+	loadLeftMenu();
+}
+function getCatchTime(){
+	var o = new Date();
+	return o.getTime();
+}
+</script>
+<table width="100%" height="79px" border="0" cellpadding="0" cellspacing="0" background="images/topbj.jpg">
+	<tr>
+		<td width="19%"><div align="center"><img src="images/logo.jpg" /></div></td>
+		<td width="21%">
+			<div id="divLoginStatus" align="center" style="font-size:12px"></div>
+			<div id="ops" align="center" style="font-size:12px">[<a href="javascript:top.location.href='/'">回到首页</a><label class="fenge">|</label><a href="javascript:logout();">退出</a>]</div>
+		</td>
+		<td width="1%" valign="bottom"><img src="images/topg.jpg" /></td>
+		<td width="59%"  align="left"><div align="center" id="divMenu"></div></td>
+	</tr>
+</table>
+</body>
+</html>

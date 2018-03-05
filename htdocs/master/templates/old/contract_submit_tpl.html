@@ -1,0 +1,236 @@
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312" />
+<title>无标题文档</title>
+<style type="text/css">
+<!--
+body {
+	margin-left: 0px;
+	margin-top: 5px;
+	margin-right: 0px;
+	margin-bottom: 0px;
+	padding:0px;
+	width:100%;
+}
+.tb{
+	background-color:#B9CDD9;
+}
+.tbhead {
+	height:28px;
+	background-color:#E1EFFD;
+	color:#3F7CAB;
+	font-weight:bold;
+}
+.tbbody {
+	height:28px;
+	background-color:#FFFFFF;
+}
+label {
+	color:#3F7CAB;
+	text-decoration:underline;
+	cursor:pointer;
+}
+.bb {
+	color:#3F7CAB;
+	font-weight:bold;
+}
+.style1 {color: #FF0000}
+-->
+</style>
+<link href="/css/H.css" rel="stylesheet" type="text/css" />
+<script src="/js/common.js"></script>
+</head>
+<body >
+<form name="form1" enctype="multipart/form-data">
+			<table width="98%" align="center" border="0" cellpadding="0" cellspacing="0" >
+				<tr>
+					<td height="10"></td>
+				</tr>
+			</table>		
+			
+			<table width="92%" border="0" align="center" cellpadding="0" cellspacing="1" class="tb">
+			<tr >
+					<td class="tbhead"></td>
+					<td colspan="8" align="left"  class="tbhead">合同基本信息</td>
+		  </tr>				 
+		  <tr>
+            <td width="9%" align="right"  class="tbbody">合同责任人：&nbsp;</td>
+            <td colspan="8"  class="tbbody" style="position:relative">   <input title="合同责任人" name="submiter" type="text" value="" class="smallInput" size="30" maxlength="255">         
+            </td>            
+		   </tr>
+		   <tr>
+            <td width="9%" align="right"  class="tbbody">请求部门：&nbsp;</td>
+            <td colspan="8"  class="tbbody" style="position:relative">
+            	<select name="submit_dept" id="submit_dept_slt" size="1">
+            		{{section name=i loop=$arr_dept}}
+            		<option value="{{$arr_dept[i][0]}}" >{{$arr_dept[i][1]}}</option>
+            		{{/section}}
+            	</select>
+            </td>            
+		   </tr>
+		   <tr>
+            <td width="9%" align="right"  class="tbbody">合同名称：&nbsp;</td>
+            <td colspan="8"  class="tbbody" style="position:relative">   <input title="合同名称" name="title" type="text" value="" class="smallInput" size="30" maxlength="255">         
+            </td>            
+		   </tr>
+		   <tr>
+            <td width="9%" align="right"  class="tbbody">合同相对方：&nbsp;</td>
+            <td colspan="8"  class="tbbody" style="position:relative">   <input title="合同相对方" name="partner" type="text" value="" class="smallInput" size="30" maxlength="255">         
+            </td>            
+		   </tr>
+		   <tr>
+            <td width="9%" align="right"  class="tbbody">合同金额：&nbsp;</td>
+            <td colspan="8"  class="tbbody" style="position:relative">   <input title="合同金额" name="money" type="text" value="" class="smallInput" size="30" maxlength="255">         
+            </td>            
+		   </tr>
+		   <tr>
+            <td width="9%" align="right"  class="tbbody">合作期限：&nbsp;</td>
+            <td colspan="8"  class="tbbody" style="position:relative">   <input title="合作期限" name="length" type="text" value="" class="smallInput" size="30" maxlength="255">         
+            </td>            
+		   </tr>
+		   <tr>
+            <td width="9%" align="right"  class="tbbody">涉及产品：&nbsp;</td>
+            <td colspan="8"  class="tbbody" style="position:relative">   <input title="涉及产品" name="product" type="text" value="" class="smallInput" size="30" maxlength="255">         
+            </td>            
+		   </tr>
+		   <tr>
+            <td width="9%" align="right"  class="tbbody">合作模式：&nbsp;</td>
+            <td colspan="8"  class="tbbody" style="position:relative">   <input title="合作模式" name="mode" type="text" value="" class="smallInput" size="30" maxlength="255">         
+            </td>            
+		   </tr>
+		    <tr>
+            <td width="9%" align="right"  class="tbbody">标准合同：&nbsp;</td>
+            <td colspan="8"  class="tbbody" style="position:relative">
+            	<select name="standard" id="standard_slt" size="1">
+            		{{section name=i loop=$arr_standard}}
+            		<option value="{{$arr_standard[i][0]}}" >{{$arr_standard[i][1]}}</option>
+            		{{/section}}
+            	</select>
+            </td>              
+		   </tr>
+		   <tr>
+            <td width="9%" align="right"  class="tbbody">审核类别：&nbsp;</td>
+            <td colspan="8"  class="tbbody" style="position:relative">
+            	<select name="sort" id="sort_slt" size="1">
+            		{{section name=i loop=$arr_sort}}
+            		<option value="{{$arr_sort[i][0]}}" >{{$arr_sort[i][1]}}</option>
+            		{{/section}}
+            	</select>
+            </td>             
+		   </tr>
+		   <tr>
+            <td width="9%" align="right"  class="tbbody">续签合同：&nbsp;</td>
+            <td colspan="8"  class="tbbody" style="position:relative">
+            	<select name="continue" id="continue_slt" size="1">
+            		{{section name=i loop=$arr_continue}}
+            		<option value="{{$arr_continue[i][0]}}" >{{$arr_continue[i][1]}}</option>
+            		{{/section}}
+            	</select>
+            </td>            
+		   </tr>
+		   </table>
+		   <br>	
+		   <table width="92%" border="0" align="center" cellpadding="0" cellspacing="1" class="tb" id="file_tab" >
+		   	<tr >
+					<td width="9%" align="right" class="tbhead"><input type="hidden" name="extraFileNum" value="0" id="extraFileNum_ipt" /></td>
+					<td colspan="8" align="left"  class="tbhead"><a href="javascript:createUploadFileTr();"><img  src="../images/+.gif" width="11" height="11"  border="0"/> 添加附件</a></td>
+				</tr>				 
+			</table>			
+			<table width="92%" border="0" align="center" cellpadding="3" cellspacing="0" style="font-size:12px;" >
+				 <tr>
+					<td colspan="2" valign="middle" align="center"><p>
+						<input class="btn1"  type="button" onClick="return myfunc();" value="确定">
+						
+						　
+						<input class="btn1"  type="reset" value="重置">
+					</p>
+						<p>&nbsp; </p></td>
+				</tr>
+		  </table>
+
+
+
+</form>
+</body>
+<script language="javascript">
+
+function myfunc()
+{
+	form1.method = "post";
+	form1.action = "/php/doSubmitInfo.php";
+	function checkData(){
+		var len=document.getElementById("Fhall_type_size");
+		for (var i=0,l=len.value; i<l; i++){
+			if(document.getElementById("Fhall_type"+i).checked){
+				return true;
+			}
+		}
+		alert('请选择电影类型');
+		return false;
+	}
+	
+	function checkCpValid(){
+		var len=document.getElementById("Fyx_id_size");
+		var checkLen=0;
+		var checkWf=0;
+		for (var i=0,l=len.value; i<l; i++){
+			if(document.getElementById("Fyx_id"+i).checked){
+				checkLen++;
+				if(document.getElementById("Fyx_id"+i).value == "14"){
+					checkWf++;
+				}
+			}
+		}
+		if(checkLen == 0){			
+			alert('请选择院线');
+			return false;	
+		}
+		else if(checkLen >= 2 && checkWf >=1 ){
+			alert('院线不能同时存在网锋和其它影院');
+			return false;
+		}
+		else{
+			return true;
+		}
+	}
+	
+	function checkCp(){
+		var len=document.getElementById("Fyx_id_size");
+		for (var i=0,l=len.value; i<l; i++){
+			if(document.getElementById("Fyx_id"+i).checked){
+				return true;
+			}
+		}
+		alert('请选择院线');
+		return false;
+	}
+	function checkFtoptag(){
+		var len=document.getElementById("Ftoptag_size");
+		for (var i=0,l=len.value; i<l; i++){
+			if(document.getElementById("Ftoptag"+i).checked){
+				return true;
+			}
+		}
+		alert('请选择榜单标签');
+		return false;
+	}	
+	function checkInput(){
+		var arr=document.getElementsByTagName('input');
+		for(var i=0,l=arr.length;i<l;i++){
+			if(arr[i].name=="Fuploadid")
+				continue;
+			if(arr[i].type=='text'&&arr[i].title!=''&&arr[i].value==''){
+				alert('忘记填“'+arr[i].title+'”了哦！');
+				arr[i].focus();
+				return false;
+			}
+		}
+		return true;
+	}
+	//if(checkInput()&&checkCp()&&checkData()&&checkCpValid()){
+		form1.submit();
+	//}
+}
+	
+</script>
+</html>

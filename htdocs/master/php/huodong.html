@@ -1,0 +1,41 @@
+<htnl>
+
+<body>
+
+
+<script language="javascript">
+
+
+
+function sendMessage()
+{
+	
+	 form1.method = "post";
+     ///form1.target = "";
+     form1.action = "action/huodong.php?ac=postMail&tm="+new Date();
+     form1.submit(); 
+	
+}
+
+
+
+</script>
+
+<button style="width:100px; height:50px;" onClick="sendMessage()">发送消息</button>
+
+<div style="width:100%; height:20px;">
+</div>
+
+<form name="form1" id="form1" enctype="multipart/form-data">
+
+<div style="width:800px; height:400px;">
+<textarea name="content" id="content" style="width:800px;height:400px;"></textarea>
+</div>
+</form>
+
+
+
+</body>
+
+
+</htm>

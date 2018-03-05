@@ -1,0 +1,240 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312" />
+<title>电影列表</title>
+<style type="text/css">
+body {
+	margin-left: 0px;
+	margin-top: 0px;
+	margin-right: 0px;
+	margin-bottom: 0px;
+}
+label {
+	color:#3F7CAB;
+	text-decoration:underline;
+	cursor:pointer;
+}
+.bb {
+	color:#3F7CAB;
+	font-weight:bold;
+}
+</style>
+<link href="/css/H.css" rel="stylesheet" type="text/css">
+<link href="/css/pager.css" rel="stylesheet" type="text/css">
+<script src="/js/common.js"></script>
+<script src="/js/global.js"></script>
+<script src="/js/ImageClip.js"></script>
+</head>
+
+
+<script language="javascript">
+	
+function myfunc(formTmp,i)
+{
+	var movieid =formTmp.iFmovie_id.value;
+    var MyURL;
+    with (formTmp)
+   { 
+	    if(i==0)
+	    {
+		    if(tag1.value==""){
+			    alert("第一个标签都没有，加一个吧");
+			    tag1.focus();
+			    return false;
+		    }
+		    if (type_of_res.value < 100){
+			    alert("请选择一个二级类别");
+			    type_of_res.focus();
+			    return false;
+		    }
+	        if( ! confirm('确定资源无问题吗?') )
+			    return false;
+	    }else
+	    {
+	        if( ! confirm('确定吗？') )
+			    return false;
+	    }
+	    MyURL=webRoot+"/cgi-bin/cgi_movie_edit?Fid="+movieid+"&opt=del&"+getCacheTime();
+	    //alert(MyURL);
+	}
+	new Ajax.Request(MyURL,
+	{
+	    response: "Text",
+	    onSuccess: function(evt)
+	    {
+	        var result = evt.response;
+	        //alert(result);   
+	        delRow(formTmp,result ); 
+	    },
+	    on500: function(){alert("wrong wrong");},
+	    onException: function(){alert("error!");}
+	});
+}
+
+
+function audit_fail(formTmp)
+{
+	var movieid =formTmp.iFmovie_id.value;
+  location.href="/cgi-bin/cgi_movie_edit?Fid="+movieid+"&opt=audit_fail&"+getCacheTime();
+
+}
+
+function audit_pass(formTmp)
+{
+	var movieid =formTmp.iFmovie_id.value;
+  location.href="/cgi-bin/cgi_movie_edit?Fid="+movieid+"&opt=audit_pass&"+getCacheTime();
+
+}
+
+
+function delRow( formTmp, result )
+{
+		var idx = 0;
+		//alert(result);
+	   if ( ( idx = result.indexOf("msg_alert")) != -1)
+	   {
+	   		alert(result.substring(idx + ("msg_alert").length));
+			return;
+	   }
+	   else if( result != "abcd" ) 
+	   {alert("wrong");
+	        return;
+	   }       
+	   var index;
+	   for( var ele=formTmp.parentElement; ; ele=ele.parentElement)
+       {
+            with(ele){
+            //alert(tagName);
+            if(tagName=="TR")
+	             index = rowIndex;
+	             if(tagName=="TABLE")
+	             {
+	                   deleteRow(index);
+	                   break; 
+	             }
+	        }   
+       }
+}
+
+function getMovie(formTmp)
+{
+	var page = document.sortForm.pages.value;
+	var iFormat = formTmp.Format.value;
+	var movieid = formTmp.iFmovie_id.value;
+	var iFhall_type=formTmp.Fhall_type.value;
+	var iFhall_id=formTmp.Fhall_id.value;
+	var types=formTmp.type.value;
+	var url= "/cgi-bin/cgi_movie_edit?page=" + page +"&type="+types+"&Fid="+movieid+"&Format="+iFormat+"&Fhall_type="+iFhall_type+"&Fhall_id="+iFhall_id+"&"+getCacheTime();
+
+	location.href  = url;
+}
+function viewMovie(formTmp)
+{
+	var movieid = formTmp.iFmovie_id.value;
+	var url= "http://play.kankan.xunlei.com/?hallid="+movieid;
+
+	var oWindow = window.open(url,'fxWindow');
+	oWindow.focus();
+	//window.open(url);
+	//location.href  = url;
+}
+
+function viewPic(formTmp)
+{
+	var movieid = formTmp.iFmovie_id.value;
+	//var page = document.sortForm.page.value;
+	var url= "/cgi-bin/cgi_sub_list?type=1&Fhall_id="+movieid+"&"+getCacheTime();
+
+	var oWindow = window.open(url,'picWindow');
+	oWindow.focus();
+}
+
+function listSub(paras)
+{
+	var page = document.sortForm.page.value;
+	location.href= "/cgi-bin/cgi_sub_list"+paras+"&page="+page+"&"+getCacheTime();
+}
+
+function GoToContent(id){
+	document.location.href="showContentFW.php?id="+id+"&ct="+new Date();
+}
+function GoToAsk(id){
+	document.location.href="showAsk.php?id="+id+"&ct="+new Date();
+}
+</script>
+<body >
+
+<table width="100%" height="400" border="0" cellpadding="0" cellspacing="0" style="margin:0 0 0 0" >
+	<tr>
+		<td valign="top" bgcolor="#FFFFFF">
+			<br><br><br>
+			<!--table width="100%" height="13" border="0" cellpadding="0" cellspacing="0">
+				<tr>
+					<td width="45%" height="45" align="center" style="font-size:12px; font-weight:bolder; color:#666666;">&nbsp;&nbsp;<span class="bb">视频技术部业务联系通讯录</span></td>
+					<td width="55%" align="right" style="font-size:12px; font-weight:bolder; color:#666666;" nowrap=true>&nbsp;&nbsp;</td>
+				</tr>
+			</table-->
+<!--start content-->
+<table width="80%" border="0" align="center" cellpadding="0" cellspacing="1" bgcolor="#B9CDD9" class="tb">
+  <form name="sortForm">
+  <input type="hidden" name="page" value="1">
+  <input type="hidden" name="pages" value="page:1|hallid:|hallname:|halltype:|actor:|director:|yx_id:|other:|status:|pay:|area:|year:|type:|order:0|from:|to:|dapian:|yx_fc:">
+  </form>
+  <tr>
+  <td width="6%" height="38" align="center" bgcolor="#E1EFFD" class="new12" style="padding:0px;">&nbsp;<span class="bb">姓名</span></td>
+	<td width="18%" align="center" bgcolor="#E1EFFD" class="new12" style="padding:0px;"><span class="bb">联系电话</span></td>
+	<td width="8%" align="center" bgcolor="#E1EFFD" class="new12" style="padding:0px;"><span class="bb">电子邮件</span></td>
+	<td width="8%" align="center" bgcolor="#E1EFFD" class="new12" style="padding:0px;">&nbsp;<span class="bb">qq</span></td> 
+    <td width="8%" align="center" bgcolor="#E1EFFD" class="new12" style="padding:0px;">&nbsp;<span class="bb">单位</span></td> 
+    
+  </tr>
+  
+  <tr>
+		<td height="28px" align="center" bgcolor="#FFFFFF" style="padding:0px">刘明</td>
+		<td height="28px" align="center" bgcolor="#FFFFFF">13601267580</td>
+		<td height="28px" align="center" bgcolor="#FFFFFF" style="padding:0px;">liuming@staff.cntv.cn</td>
+		<td height="28px" align="center" bgcolor="#FFFFFF">2942544</td>
+        <td height="28px" align="center" bgcolor="#FFFFFF">cntv</td>
+  </tr>
+  <tr>
+		<td height="28px" align="center" bgcolor="#FFFFFF" style="padding:0px">李伟华</td>
+		<td height="28px" align="center" bgcolor="#FFFFFF">13601267580</td>
+		<td height="28px" align="center" bgcolor="#FFFFFF" style="padding:0px;">liuming@staff.cntv.cn</td>
+		<td height="28px" align="center" bgcolor="#FFFFFF">2942544</td>
+        <td height="28px" align="center" bgcolor="#FFFFFF">鼎点</td>
+  </tr>
+   <tr>
+		<td height="28px" align="center" bgcolor="#FFFFFF" style="padding:0px">刘伟</td>
+		<td height="28px" align="center" bgcolor="#FFFFFF">13601267580</td>
+		<td height="28px" align="center" bgcolor="#FFFFFF" style="padding:0px;">liuming@staff.cntv.cn</td>
+		<td height="28px" align="center" bgcolor="#FFFFFF">2942544</td>
+        <td height="28px" align="center" bgcolor="#FFFFFF">akamai</td>
+  </tr>
+   <tr>
+		<td height="28px" align="center" bgcolor="#FFFFFF" style="padding:0px">章寅</td>
+		<td height="28px" align="center" bgcolor="#FFFFFF">13601267580</td>
+		<td height="28px" align="center" bgcolor="#FFFFFF" style="padding:0px;">liuming@staff.cntv.cn</td>
+		<td height="28px" align="center" bgcolor="#FFFFFF">2942544</td>
+        <td height="28px" align="center" bgcolor="#FFFFFF">晟视万维</td>
+  </tr>
+   <tr>
+		<td height="28px" align="center" bgcolor="#FFFFFF" style="padding:0px">程永刚</td>
+		<td height="28px" align="center" bgcolor="#FFFFFF">13601267580</td>
+		<td height="28px" align="center" bgcolor="#FFFFFF" style="padding:0px;">liuming@staff.cntv.cn</td>
+		<td height="28px" align="center" bgcolor="#FFFFFF">2942544</td>
+        <td height="28px" align="center" bgcolor="#FFFFFF">世纪鼎点</td>
+  </tr>
+   <tr>
+		<td height="28px" align="center" bgcolor="#FFFFFF" style="padding:0px">宴仁强</td>
+		<td height="28px" align="center" bgcolor="#FFFFFF">13601267580</td>
+		<td height="28px" align="center" bgcolor="#FFFFFF" style="padding:0px;">liuming@staff.cntv.cn</td>
+		<td height="28px" align="center" bgcolor="#FFFFFF">2942544</td>
+        <td height="28px" align="center" bgcolor="#FFFFFF">蓝汛</td>
+  </tr>
+</table>
+		</td>
+	</tr>
+</table>
+</body>
+</html>

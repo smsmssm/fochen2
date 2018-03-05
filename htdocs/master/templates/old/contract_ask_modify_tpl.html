@@ -1,0 +1,249 @@
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312" />
+<title>无标题文档</title>
+<style type="text/css">
+<!--
+body {
+	margin-left: 0px;
+	margin-top: 5px;
+	margin-right: 0px;
+	margin-bottom: 0px;
+	padding:0px;
+	width:100%;
+}
+.tb{
+	background-color:#B9CDD9;
+}
+.tbhead {
+	height:28px;
+	background-color:#E1EFFD;
+	color:#3F7CAB;
+	font-weight:bold;
+}
+.tbbody {
+	height:28px;
+	background-color:#FFFFFF;
+}
+label {
+	color:#3F7CAB;
+	text-decoration:underline;
+	cursor:pointer;
+}
+.bb {
+	color:#3F7CAB;
+	font-weight:bold;
+}
+.style1 {color: #FF0000}
+-->
+</style>
+<link href="/css/H.css" rel="stylesheet" type="text/css" />
+<script src="/js/common.js"></script>
+</head>
+<body >
+<form name="form1" enctype="multipart/form-data">
+			<table width="98%" align="center" border="0" cellpadding="0" cellspacing="0" >
+				<tr>
+					<td height="10"></td>
+				</tr>
+			</table>		
+			
+			<table width="92%" border="0" align="center" cellpadding="0" cellspacing="1" class="tb">
+			<tr >
+					<td class="tbhead">
+					<input name="Fid" type="hidden" value="{{$arr_contract_content[0]}}" >	
+					</td>
+					<td colspan="8" align="left"  class="tbhead">合同基本信息</td>
+		      </tr>				 
+		   <tr>
+            <td width="9%" align="right"  class="tbbody">合同责任人：&nbsp;</td>
+            <td colspan="8"  class="tbbody" style="position:relative"> {{$arr_contract_content[1]}}
+            </td>            
+		   </tr>
+		   <tr>
+            <td width="9%" align="right"  class="tbbody">请求部门：&nbsp;</td>
+            <td colspan="8"  class="tbbody" style="position:relative"> {{$arr_contract_content[2]}}
+            </td>            
+		   </tr>
+		   <tr>
+            <td width="9%" align="right"  class="tbbody">合同名称：&nbsp;</td>
+            <td colspan="8"  class="tbbody" style="position:relative"> {{$arr_contract_content[3]}}
+            </td>            
+		   </tr>
+		   <tr>
+            <td width="9%" align="right"  class="tbbody">合同相对方：&nbsp;</td>
+            <td colspan="8"  class="tbbody" style="position:relative"> {{$arr_contract_content[4]}}
+            </td>            
+		   </tr>
+		   <tr>
+            <td width="9%" align="right"  class="tbbody">合同金额：&nbsp;</td>
+            <td colspan="8"  class="tbbody" style="position:relative"> {{$arr_contract_content[5]}}
+            </td>            
+		   </tr>
+		   <tr>
+            <td width="9%" align="right"  class="tbbody">合作期限：&nbsp;</td>
+            <td colspan="8"  class="tbbody" style="position:relative"> {{$arr_contract_content[6]}}
+            </td>            
+		   </tr>
+		   <tr>
+            <td width="9%" align="right"  class="tbbody">涉及产品：&nbsp;</td>
+            <td colspan="8"  class="tbbody" style="position:relative"> {{$arr_contract_content[7]}}
+            </td>            
+		   </tr>
+		   <tr>
+            <td width="9%" align="right"  class="tbbody">合作模式：&nbsp;</td>
+            <td colspan="8"  class="tbbody" style="position:relative"> {{$arr_contract_content[8]}}
+            </td>            
+		   </tr>
+		    <tr>
+            <td width="9%" align="right"  class="tbbody">标准合同：&nbsp;</td>
+            <td colspan="8"  class="tbbody" style="position:relative"> {{$arr_contract_content[9]}}
+            </td>            
+		   </tr>
+		   <tr>
+            <td width="9%" align="right"  class="tbbody">审核类别：&nbsp;</td>
+            <td colspan="8"  class="tbbody" style="position:relative"> {{$arr_contract_content[10]}}
+            </td>            
+		   </tr>
+		   <tr>
+            <td width="9%" align="right"  class="tbbody">续签合同：&nbsp;</td>
+            <td colspan="8"  class="tbbody" style="position:relative"> {{$arr_contract_content[11]}}
+            </td>            
+		   </tr>
+		   
+			</table>
+			<br>			
+			<table width="92%" border="0" align="center" cellpadding="0" cellspacing="1" class="tb">
+			<tr >
+					<td class="tbhead"></td>
+					<td colspan="8" align="left"  class="tbhead">合同请示填写</td>
+		      </tr>				 
+		   <tr>
+            <td width="9%" align="right"  class="tbbody">合同条款号：&nbsp;</td>
+            <td colspan="8"  class="tbbody" style="position:relative">   <input title="合同条款号" name="submiter" type="text" value="" class="smallInput" size="30" maxlength="255">         
+            </td>            
+		   </tr>
+		   <tr>
+            <td width="9%" align="right"  class="tbbody">上报条款：&nbsp;</td>
+            <td colspan="8"  class="tbbody" style="position:relative">   <input title="上报条款：" name="Fmodify" type="text" value="" class="smallInput" size="30" maxlength="255">         
+            </td>            
+		   </tr>
+		   <tr>
+            <td width="9%" align="right"  class="tbbody">对方修改条款：&nbsp;</td>
+            <td colspan="8"  class="tbbody" style="position:relative">   <input title="对方修改条款：" name="Fmodify" type="text" value="" class="smallInput" size="30" maxlength="255">         
+            </td>            
+		   </tr>
+		   <tr>
+            <td width="9%" align="right"  class="tbbody">业务部门意见：&nbsp;</td>
+            <td colspan="8"  class="tbbody" style="position:relative">   <input title="业务部门意见：" name="Fmodify" type="text" value="" class="smallInput" size="30" maxlength="255">         
+            </td>            
+		   </tr>
+		    <tr>
+            <td width="9%" align="right"  class="tbbody">法务部风险评估：&nbsp;</td>
+            <td colspan="8"  class="tbbody" style="position:relative">   <input title="法务部风险评估：" name="Fmodify" type="text" value="" class="smallInput" size="30" maxlength="255">         
+            </td>            
+		   </tr>
+		   <tr>
+            <td width="9%" align="right"  class="tbbody">合同附件：&nbsp;</td>
+            <td colspan="8"  class="tbbody" style="position:relative">   <input title="合同附件：" name="submiter" type="text" value="" class="smallInput" size="30" maxlength="255">         
+            </td>            
+		   </tr>
+			</table>
+			<table width="92%" border="0" align="center" cellpadding="3" cellspacing="0" style="font-size:12px;" >
+				 <tr>
+					<td colspan="2" valign="middle" align="center"><p>
+						<input class="btn1"  type="button" onClick="return myfunc();" value="确定">
+						
+						　
+						<input class="btn1"  type="reset" value="重置">
+					</p>
+						<p>&nbsp; </p></td>
+				</tr>
+		  </table>
+
+
+
+</form>
+</body>
+<script language="javascript">
+
+function myfunc()
+{
+	form1.method = "post";
+	form1.action = "/php/doAskModify.php";
+	function checkData(){
+		var len=document.getElementById("Fhall_type_size");
+		for (var i=0,l=len.value; i<l; i++){
+			if(document.getElementById("Fhall_type"+i).checked){
+				return true;
+			}
+		}
+		alert('请选择电影类型');
+		return false;
+	}
+	
+	function checkCpValid(){
+		var len=document.getElementById("Fyx_id_size");
+		var checkLen=0;
+		var checkWf=0;
+		for (var i=0,l=len.value; i<l; i++){
+			if(document.getElementById("Fyx_id"+i).checked){
+				checkLen++;
+				if(document.getElementById("Fyx_id"+i).value == "14"){
+					checkWf++;
+				}
+			}
+		}
+		if(checkLen == 0){			
+			alert('请选择院线');
+			return false;	
+		}
+		else if(checkLen >= 2 && checkWf >=1 ){
+			alert('院线不能同时存在网锋和其它影院');
+			return false;
+		}
+		else{
+			return true;
+		}
+	}
+	
+	function checkCp(){
+		var len=document.getElementById("Fyx_id_size");
+		for (var i=0,l=len.value; i<l; i++){
+			if(document.getElementById("Fyx_id"+i).checked){
+				return true;
+			}
+		}
+		alert('请选择院线');
+		return false;
+	}
+	function checkFtoptag(){
+		var len=document.getElementById("Ftoptag_size");
+		for (var i=0,l=len.value; i<l; i++){
+			if(document.getElementById("Ftoptag"+i).checked){
+				return true;
+			}
+		}
+		alert('请选择榜单标签');
+		return false;
+	}	
+	function checkInput(){
+		var arr=document.getElementsByTagName('input');
+		for(var i=0,l=arr.length;i<l;i++){
+			if(arr[i].name=="Fuploadid")
+				continue;
+			if(arr[i].type=='text'&&arr[i].title!=''&&arr[i].value==''){
+				alert('忘记填“'+arr[i].title+'”了哦！');
+				arr[i].focus();
+				return false;
+			}
+		}
+		return true;
+	}
+	//if(checkInput()&&checkCp()&&checkData()&&checkCpValid()){
+		form1.submit();
+	//}
+}
+	
+</script>
+</html>

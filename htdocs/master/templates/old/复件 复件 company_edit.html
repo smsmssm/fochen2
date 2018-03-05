@@ -1,0 +1,230 @@
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312" />
+<title>无标题文档</title>
+<style type="text/css">
+<!--
+body {
+	margin-left: 0px;
+	margin-top: 5px;
+	margin-right: 0px;
+	margin-bottom: 0px;
+	padding:0px;
+	width:100%;
+}
+.tb{
+	background-color:#B9CDD9;
+}
+.tbhead {
+	height:28px;
+	background-color:#E1EFFD;
+	color:#3F7CAB;
+	font-weight:bold;
+}
+.tbbody {
+	height:28px;
+	background-color:#FFFFFF;
+}
+label {
+	color:#3F7CAB;
+	text-decoration:underline;
+	cursor:pointer;
+}
+.bb {
+	color:#3F7CAB;
+	font-weight:bold;
+}
+.style1 {color: #FF0000}
+-->
+</style>
+<link href="/css/H.css" rel="stylesheet" type="text/css" />
+<script src="/js/common.js"></script>
+</head>
+<body >
+<form name="form1" enctype="multipart/form-data">
+			<table width="98%" align="center" border="0" cellpadding="0" cellspacing="0" >
+				<tr>
+					<td height="10"></td>
+				</tr>
+			</table>		
+			
+			<table width="92%" border="0" align="center" cellpadding="0" cellspacing="1" class="tb">
+			<tr >
+					<td class="tbhead"></td>
+					<td width="85%" colspan="8" align="left"  class="tbhead">公司信息编辑</td>
+		  </tr>				 
+		  
+          
+          <tr>
+            <td width="15%" align="right"  class="tbbody">Email地址：&nbsp;</td>
+<td colspan="8"  class="tbbody" style="position:relative">
+            	<input name="consortiaName" id="consortiaName" disabled type="text" value="{{$arr_conIfo_list[0]}}" class="smallInput" size="30" maxlength="255" onBlur="chechName('{{$arr_conIfo_list[0]}}')"> 改公司名称请联系管理员（qq:45169132）     </td>            
+		   </tr>
+          
+          <tr>
+            <td width="15%" align="right"  class="tbbody">电子邮件：&nbsp;</td>
+<td colspan="8"  class="tbbody" style="position:relative">
+            	<input name="consortiaName" id="consortiaName" disabled type="text" value="{{$arr_conIfo_list[0]}}" class="smallInput" size="30" maxlength="255" onBlur="chechName('{{$arr_conIfo_list[0]}}')"> 请联系管理员（qq:45169132）     </td>            
+		   </tr>
+          
+          
+		   <tr>
+            <td width="15%" align="right"  class="tbbody">公司简称：&nbsp;</td>
+<td colspan="8"  class="tbbody" style="position:relative">
+            	<input name="consortiaName" id="consortiaName" type="text" value="{{$arr_conIfo_list[0]}}" class="smallInput" size="30" maxlength="255" onBlur="chechName('{{$arr_conIfo_list[0]}}')">       
+                
+                 </td>            
+		   </tr>
+		   <tr>
+            <td width="15%" align="right"  class="tbbody">公司网站：&nbsp;</td>
+            <td colspan="8"  class="tbbody" style="position:relative"> <input name="website" id="website" type="text" value="{{$arr_conIfo_list[2]}}" class="smallInput" size="30" maxlength="255"> </td>            
+		   </tr>
+		   <tr>
+            <td width="15%" align="right"  class="tbbody">会长名称：&nbsp;</td>
+            <td colspan="8"  class="tbbody" style="position:relative">   <input name="masterName" id="masterName" type="text" value="{{$arr_conIfo_list[3]}}" class="smallInput" size="30" maxlength="255"></td>            
+		   </tr>
+		   <tr>
+            <td width="15%" align="right"  class="tbbody">会长联系方式：&nbsp;</td>
+            <td colspan="8"  class="tbbody" style="position:relative">   <input  name="masterQQ" id="masterQQ" type="text" value="{{$arr_conIfo_list[6]}}" class="smallInput" width="100px" size="30" maxlength="255">
+              (qq)&nbsp;&nbsp;&nbsp; <input  name="masterMail" type="text" id="masterMail" value="{{$arr_conIfo_list[5]}}" class="smallInput" width="100px" size="30" maxlength="255">
+              (email)&nbsp;&nbsp;&nbsp;<input  name="masterTel" type="text" id="masterTel" value="{{$arr_conIfo_list[4]}}" class="smallInput" width="100px" size="30" maxlength="255">
+              (电话号码)</td>            
+		   </tr>
+<tr>
+            <td width="15%" align="right"  class="tbbody">公会信息：&nbsp;</td>
+      <td colspan="8"  class="tbbody" style="position:relative"><span class="tbbody" style="position:relative">
+        <textarea style="width:700px; height:350px;" name="textarea">{{$arr_conIfo_list[1]}}
+        </textarea>
+      </span></td>            
+		   </tr>
+		   </table>
+<br>	
+			
+			<table width="92%" border="0" align="center" cellpadding="3" cellspacing="0" style="font-size:12px;" >
+				 <tr>
+					<td colspan="2" valign="middle" align="center"><p>
+						<input class="btn1"  type="button" onClick="return myfunc();" value="确定">
+						
+						　
+						<input class="btn1"  type="reset" value="重置">
+					</p>
+						<p>&nbsp; </p></td>
+				</tr>
+		  </table>
+
+
+
+</form>
+</body>
+<script language="javascript">
+
+ var isNameExit = false;
+ ///var oragainName = {{$arr_conIfo_list[0]}};
+ function $(s){   
+	     return document.getElementById(s);
+  }
+function trim(str){   //删除左右两端的空格
+   return str.replace(/(^\s*)|(\s*$)/g, "");
+  }
+  
+  function chechName(str)
+  {
+     if(trim($("consortiaName").value)==str)
+	 {return;}
+	 
+	 if(trim($("consortiaName").value).length<=0||trim($("consortiaName").value).length>=40)
+	 {
+	     alert("名字不能为空或超过40字符");
+		 return;
+	 }
+　　var xmlhttp_request = "";
+　　try{ 
+　   　if( window.ActiveXObject ){ 
+　          　for( var i = 5; i; i-- ){ 
+　            　try{ 
+　               　if( i == 2 ){ 
+　                    　xmlhttp_request = new ActiveXObject( "Microsoft.XMLHTTP" );
+                    }
+　                  　else{ 
+　                         　xmlhttp_request = new ActiveXObject( "Msxml2.XMLHTTP." + i + ".0" ); 
+　                         　xmlhttp_request.setRequestHeader("Content-Type","text/xml"); 
+　　                         xmlhttp_request.setRequestHeader("Charset","gb2312"); 
+                           }
+　                         　break;
+                         } 
+　                     　catch(e){ 
+　                        　xmlhttp_request = false; 
+                          }
+			 } 
+		 }
+　   else if( window.XMLHttpRequest )
+　  　{ 
+          xmlhttp_request = new XMLHttpRequest(); 
+　　      if (xmlhttp_request.overrideMimeType) 
+　       　{ xmlhttp_request.overrideMimeType('text/xml'); } } }
+　     　catch(e){ xmlhttp_request = false; } 
+　　xmlhttp_request.open('GET', 'check_consortia_name.php?u='+trim($("consortiaName").value)+"&ct="+new Date(), true); 
+　　xmlhttp_request.send(null); 
+　　xmlhttp_request.onreadystatechange = function(){
+　   　if (xmlhttp_request.readyState == 4) {
+　    　// 收到完整的服务器响应 
+          var aa = String(xmlhttp_request.responseText);
+		  if(aa=="1")
+		  {
+		    alert("此名称已经存在，请重新输入");
+		    isNameExit = true;
+		  }else
+		  {
+			 isNameExit = false;
+		  }
+	      
+　      　} else{
+　  
+　　     }
+　　  }
+	 
+	 
+  }
+  
+function myfunc()
+{/////Fcon_name,Fcon_info,Fcon_website,Fmaster_name,Fmaster_tel,Fmaster_mail,Fmaster_qq
+	
+	if(isNameExit)
+	{
+	   alert("公会名称名称已经存在，请重新输入");
+	   return;
+	}
+	
+	if(trim($("masterName").value) =="")
+	{
+	   alert("会长名称不能为空");
+	   return;
+	}
+	if(trim($("consortiaName").value) ==""||trim($("consortiaName").value).length>=40)
+	{
+	   alert("公会名称不能为空或超过40字符");
+	   return;
+	}
+	
+	if(trim($("masterMail").value) ==""&&trim($("masterQQ").value) ==""&&trim($("masterTel").value) =="")
+	{
+	   alert("至少填写一种联系方式");
+	   return;
+	}else
+	{
+	   if(trim($("masterMail").value)!=""&&(trim($("masterMail").value).indexOf("@")<=0))
+	   {
+	     alert("请正确填写联系方式");
+		 return;
+	   }
+	}
+	form1.method = "post";
+	form1.action = "/php/updataInfo.php?"+"&ct="+new Date();
+	
+	
+    form1.submit();
+	//}
+}
+	
+</script>
+</html>

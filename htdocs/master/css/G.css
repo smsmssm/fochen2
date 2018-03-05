@@ -1,0 +1,103 @@
+.G {
+}
+.v_01 {
+	font-size: 14px;
+	line-height: 120%;
+	font-weight: bold;
+}
+
+.g_01 {
+	font-size: 12px;
+	color: #999999;
+}
+.g_02 {
+	font-size: 12px;
+	font-weight: bold;
+	color: #333333;
+}
+.g_03 {
+	font-size: 12px;
+	line-height: 190%;
+	color: #666666;
+}
+.g_04 {
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	font-size: 9px;
+	color: #999999;
+}
+.g_05 {
+	font-size: 12px;
+	font-weight: bold;
+	color: #666666;
+}
+.g_06 {
+	font-size: 12px;
+	font-weight: bold;
+	color: #27BDF1;
+}
+.g_07 {
+	font-size: 12px;
+	font-weight: bold;
+	color: #FF9900;
+}
+.g_08 {
+	font-size: 12px;
+	font-weight: bold;
+	color: #265786;
+}
+a:link {
+	font-size: 12px;
+	color: #768499;
+	text-decoration: none;
+}
+a:visited {
+	font-size: 12px;
+	color: #768499;
+	text-decoration: none;
+}
+a:hover {
+	font-size: 12px;
+	color: #265786;
+	text-decoration: underline;
+}
+.a1:link {
+	font-size: 12px;
+	font-weight: bold;
+	color: #FF3300;
+	text-decoration: none;
+}
+.a1:visited {
+	font-size: 12px;
+	font-weight: bold;
+	color: #FF3300;
+	text-decoration: none;
+}
+.a1:hover {
+	font-size: 12px;
+	font-weight: bold;
+	color: #FF0000;
+	text-decoration: none;
+}
+.g_09 {
+	font-size: 12px;
+	font-weight: bold;
+	color: #000000;
+}
+.inputnew {
+	font-size: 12px;
+	color: #666666;
+	text-indent: 3px;
+	border: 1px solid #C4D6E8;
+	height: 20px;
+	background-color: #FBFCFE;
+}
+input {
+	font-family: "Arial";
+	font-size: 12px;
+	border: 1px solid #C4D6E8;
+	}
+.v_02 {
+	font-size: 12px;
+	font-weight: bold;
+	color: #FF0000;
+}

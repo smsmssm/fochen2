@@ -1,0 +1,1252 @@
+﻿<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>CNTV直播播放器创建代码</title>
+<style>
+textarea { font-size:12px; font-family:Courier; line-height:110%; }
+ul{ list-style-type:none}
+.chanelUl li{float:left;width:220px;height:25px;}
+</style>
+<script>
+
+var width = 640;
+var height = 480;
+var name = "default";
+var chanel = "";
+var p2pStream = "pa://cctv_p2p_hdcctv1";
+
+function setSize()
+{
+    var o = document.getElementsByName("size");
+    var type = "";
+    var df;
+    var sl;
+    for (var i = 0; i < o.length; i++)
+    {
+        if (o[i].checked)
+        {
+            type = o[i].value;
+            sl = o[i];
+        }
+        if (o[i].value == "default")
+        {
+            df = o[i];
+        }
+    }
+
+    if (chanel == "")
+    {
+        alert("请选择频道再选择大小");
+        sl.checked = false;
+        df.checked = false;
+        return;
+    }
+    
+    switch (type) 
+    {
+        case "nn":
+            width = 560;
+            height = 342;
+            break;
+        case "large":
+            width = 580;
+            height = 342;
+            break;
+        case "middle":
+            width = 480;
+            height = 360;
+            break;
+        case "small":
+            width = 480;
+            height = 270;
+            break;
+        case "bugu":
+            width = 560;
+            height = 345;
+            break;
+        case "default":
+            width = 640;
+            height = 480;
+            break;
+        case "tibet":
+            width = 313;
+            height = 228;
+            break;
+        case "qq":
+            width = 525;
+            height = 393;
+            break;
+        case "worldcup":
+            width = 480;
+            height = 270;
+            break;
+        case "ppl":
+            width = 560;
+            height = 350;
+            break;
+        case "yayun1":
+            width = 523;
+            height = 294;
+            break;
+        case "yayun2":
+            width = 617;
+            height = 463;
+            break;
+        case "yayun3":
+            width = 928;
+            height = 573;
+            break;
+        case "yanbian":
+            width = 635;
+            height = 375;
+            break;
+        case "dajuyuan":
+            width = 960;
+            height = 540;
+            break;
+    }
+    name = type; // = 
+    getCode();
+}
+
+function isFirefox()
+{
+	if (window.navigator.userAgent.toLowerCase().indexOf("firefox")>=1) 
+	{
+	    return true; 
+	}
+	else
+	{
+	    return false; 
+	}
+} 
+
+
+function setChanel(opt_value, obj)
+{
+	var _sel = document.getElementsByTagName('select');
+	for(var _i=0; _i<_sel.length; _i++){
+		if(obj != _sel[_i]){
+			_sel[_i].selectedIndex = 0;
+		}
+	}
+
+	if(opt_value=="0"){
+		return false;
+	}
+	chanel = opt_value;
+	
+    switch (chanel) 
+    {
+        case "hdbtvgongong":
+            p2pStream = "pb://cctv_p2p_hdbtvgongong";
+            break;
+        case "hdbtvkejiao":
+            p2pStream = "pb://cctv_p2p_hdbtvkejiao";
+            break;
+        case "hdbtvqingshao":
+            p2pStream = "pb://cctv_p2p_hdbtvqingshao";
+            break;
+        case "hdbtvshenghuo":
+            p2pStream = "pb://cctv_p2p_hdbtvshenghuo";
+            break;
+        case "hdbtvtiyu":
+            p2pStream = "pa://cctv_p2p_hdbtvtiyu";
+            break;
+        case "hdbtvwenyi":
+            p2pStream = "pb://cctv_p2p_hdbtvwenyi";
+            break;
+        case "hdbtvyingshi":
+            p2pStream = "pb://cctv_p2p_hdbtvyingshi";
+            break;
+        case "cctv1_biaoqing":
+            p2pStream = "pa://cctv_p2p_cctv1";
+            break;
+        case "cctv1":
+            p2pStream = "pa://cctv_p2p_hdcctv1";
+            break;
+        case "cctv10_biaoqing":
+            p2pStream = "pl://cctv_p2p_cctv10";
+            break;
+        case "cctv10":
+            p2pStream = "pl://cctv_p2p_hdcctv10";
+            break;
+        case "cctv11_biaoqing":
+            p2pStream = "pl://cctv_p2p_cctv11";
+            break;
+        case "cctv11":
+            p2pStream = "pl://cctv_p2p_hdcctv11";
+            break;
+        case "cctv12_biaoqing":
+            p2pStream = "pl://cctv_p2p_cctv12";
+            break;
+        case "cctv12":
+            p2pStream = "pl://cctv_p2p_hdcctv12";
+            break;
+        case "cctv2_biaoqing":
+            p2pStream = "pa://cctv_p2p_cctv2";
+            break;
+        case "cctv2":
+            p2pStream = "pa://cctv_p2p_hdcctv2";
+            break;
+        case "cctv3_biaoqing":
+            p2pStream = "pl://cctv_p2p_c3";
+            break;
+        case "cctv3":
+            p2pStream = "pl://cctv_p2p_hdcctv3";
+            break;
+        case "cctv4_biaoqing":
+            p2pStream = "pl://cctv_p2p_cctv4";
+            break;
+        case "cctv4":
+            p2pStream = "pl://cctv_p2p_hdcctv4";
+            break;
+        case "cctv4-america_biaoqing":
+            p2pStream = "pl://cctv_p2p_cctv4america";
+            break;
+        case "cctv4-america":
+            p2pStream = "pl://cctv_p2p_hdcctv4america";
+            break;
+        case "cctv4-euro_biaoqing":
+            p2pStream = "pl://cctv_p2p_cctv4euro";
+            break;
+        case "cctv4-euro":
+            p2pStream = "pl://cctv_p2p_hdcctv4euro";
+            break;
+        case "cctv5_biaoqing":
+            p2pStream = "pa://cctv_p2p_ec_c5";
+            break;
+        case "cctv5":
+            p2pStream = "pa://cctv_p2p_hdcctv5";
+            break;
+        case "cctv6_biaoqing":
+            p2pStream = "pl://cctv_p2p_cctv6";
+            break;
+        case "cctv6":
+            p2pStream = "pl://cctv_p2p_hdcctv6";
+            break;
+        case "cctv7_biaoqing":
+            p2pStream = "pa://cctv_p2p_cctv7";
+            break;
+        case "cctv7":
+            p2pStream = "pa://cctv_p2p_hdcctv7";
+            break;
+        case "cctv8_biaoqing":
+            p2pStream = "pl://cctv_p2p_cctv8";
+            break;
+        case "cctv8":
+            p2pStream = "pl://cctv_p2p_hdcctv8";
+            break;
+        case "cctv-news_biaoqing":
+            p2pStream = "pl://cctv_p2p_cctv9";
+            break;
+        case "cctv-news":
+            p2pStream = "pl://cctv_p2p_hdcctv9";
+            break;
+        case "cctv-ayu_biaoqing":
+            p2pStream = "pl://cctv_p2p_cctvarabic";
+            break;
+        case "cctv-ayu":
+            p2pStream = "pl://cctv_p2p_hdcctvarabic";
+            break;
+        case "cctv-eyu_biaoqing":
+            p2pStream = "pl://cctv_p2p_cctvrussian";
+            break;
+        case "cctv-eyu":
+            p2pStream = "pl://cctv_p2p_hdcctvrussian";
+            break;
+        case "cctvfayu_biaoqing":
+            p2pStream = "pl://cctv_p2p_cctvfayu";
+            break;
+        case "cctvfayu":
+            p2pStream = "pl://cctv_p2p_hdcctvfayu";
+            break;
+        case "cctv-fengyunzuqiu_biaoqing":
+            p2pStream = "pa://cctv_p2p_cctvfyzq";
+            break;
+        case "cctv-fengyunzuqiu":
+            p2pStream = "pa://cctv_p2p_hdcctvfyzq";
+            break;
+        case "cctv-gaoqing_biaoqing":
+            p2pStream = "pa://cctv_p2p_hdcctvgaoqing";
+            break;
+        case "cctv-gaoqing":
+            p2pStream = "pa://cctv_p2p_hdcctvgaoqing";
+            break;
+        case "cctvgaowang_biaoqing":
+            p2pStream = "pa://cctv_p2p_cctvgaowang";
+            break;
+        case "cctvgaowang":
+            p2pStream = "pa://cctv_p2p_hdcctvgaowang";
+            break;
+        case "gouwu":
+            p2pStream = "pl://cctv_p2p_gouwu";
+            break;
+        case "hdgouwu　":
+            p2pStream = "pl://cctv_p2p_hdgouwu";
+            break;
+        case "cctv-shaoer_biaoqing":
+            p2pStream = "pl://cctv_p2p_cctvkids";
+            break;
+        case "cctv-shaoer":
+            p2pStream = "pl://cctv_p2p_hdcctvkids";
+            break;
+        case "sports_biaoqing":
+            p2pStream = "pa://cctv_p2p264_sdsports";
+            break;
+        case "sports":
+            p2pStream = "pa://cctv_p2p264_sports";
+            break;
+        case "cctvxiyu_biaoqing":
+            p2pStream = "pl://cctv_p2p_cctvxiyu";
+            break;
+        case "cctvxiyu":
+            p2pStream = "pl://cctv_p2p_hdcctvxiyu";
+            break;
+        case "cctv13_biaoqing":
+            p2pStream = "pa://cctv_p2p_cctvnews";
+            break;
+        case "cctv13":
+            p2pStream = "pa://cctv_p2p_hdcctvnews";
+            break;
+        case "cctv-music_biaoqing":
+            p2pStream = "pl://cctv_p2p_cctvmusic";
+            break;
+        case "cctv-music":
+            p2pStream = "pl://cctv_p2p_hdcctvmusic";
+            break;
+        case "stu1_biaoqing":
+            p2pStream = "pl://cctv_p2p_yb1";
+            break;
+        case "stu1":
+            p2pStream = "pl://cctv_p2p_yb1";
+            break;
+        case "stu2_biaoqing":
+            p2pStream = "pl://cctv_p2p_yb2";
+            break;
+        case "stu2":
+            p2pStream = "pl://cctv_p2p_yb2";
+            break;
+        case "anhui":
+            p2pStream = "pl://cctv_p2p_anhui";
+            break;
+        case "hdanhui":
+            p2pStream = "pl://cctv_p2p_hdanhui";
+            break;
+        case "hdbtv5":
+            p2pStream = "pl://cctv_p2p_hdbtv5";
+            break;
+        case "beijing":
+            p2pStream = "pl://cctv_p2p_beijing";
+            break;
+        case "hdbeijing":
+            p2pStream = "pl://cctv_p2p_hdbeijing";
+            break;
+        case "zangyu":
+            p2pStream = "pa://cctv_p2p_zangyu";
+            break;
+        case "hdchaoxianyu":
+            p2pStream = "pb://cctv_p2p_hdchaoxianyu";
+            break;
+        case "cdtv5":
+            p2pStream = "pa://cctv_p2p_cdtv5";
+            break;
+        case "cdtv1":
+            p2pStream = "pa://cctv_p2p_cdtv1";
+            break;
+        case "dalian1":
+            p2pStream = "pa://cctv_p2p_dalian1";
+            break;
+        case "hddiyijuchang":
+            p2pStream = "pb://cctv_p2p_hddiyijuchang";
+            break;
+        case "hddianshizhinan":
+            p2pStream = "pb://cctv_p2p_hddianshizhinan";
+            break;
+        case "dongfang":
+            p2pStream = "pl://cctv_p2p_dongfang";
+            break;
+        case "hdshanghaikatong":
+            p2pStream = "pl://cctv_p2p_hdshanghaikatong";
+            break;
+        case "hdfengyunjuchang":
+            p2pStream = "pb://cctv_p2p_hdfengyunjuchang";
+            break;
+        case "hdfengyunyinyue":
+            p2pStream = "pb://cctv_p2p_hdfengyunyinyue";
+            break;
+        case "foshan1":
+            p2pStream = "pb://cctv_p2p_foshan1";
+            break;
+        case "dongnan":
+            p2pStream = "pl://cctv_p2p_dongnan";
+            break;
+        case "hddongnan":
+            p2pStream = "pl://cctv_p2p_hddongnan";
+            break;
+        case "fuzhou1":
+            p2pStream = "pb://cctv_p2p_fuzhou1";
+            break;
+        case "gansu":
+            p2pStream = "pl://cctv_p2p_gansu";
+            break;
+        case "hdgansu":
+            p2pStream = "pl://cctv_p2p_hdgansu";
+            break;
+        case "guangdong":
+            p2pStream = "pl://cctv_p2p_guangdong";
+            break;
+        case "hdguangdong":
+            p2pStream = "pl://cctv_p2p_hdguangdong";
+            break;
+        case "guangxi":
+            p2pStream = "pl://cctv_p2p_guangxi";
+            break;
+        case "hdguangxi":
+            p2pStream = "pl://cctv_p2p_hdguangxi";
+            break;
+        case "hdgzecon":
+            p2pStream = "pa://cctv_p2p_hdgzecon";
+            break;
+        case "hdgzkids":
+            p2pStream = "pa://cctv_p2p_hdgzkids";
+            break;
+        case "hdgznews":
+            p2pStream = "pa://cctv_p2p_hdgznews";
+            break;
+        case "hdgzenglish":
+            p2pStream = "pa://cctv_p2p_hdgzenglish";
+            break;
+        case "hdgzzonghe":
+            p2pStream = "pa://cctv_p2p_hdgzzonghe";
+            break;
+        case "guizhou":
+            p2pStream = "pl://cctv_p2p_guizhou";
+            break;
+        case "hdguizhou":
+            p2pStream = "pl://cctv_p2p_hdguizhou";
+            break;
+        case "hdguofangjunshi":
+            p2pStream = "pb://cctv_p2p_hdguofangjunshi";
+            break;
+        case "dajuyuan":
+            p2pStream = "pb://cctv_p2p_dajuyuan";
+            break;
+        case "haerbin1":
+            p2pStream = "pa://cctv_p2p_haerbin1";
+            break;
+        case "hayu":
+            p2pStream = "pa://cctv_p2p_hayu";
+            break;
+        case "hayuzongyi":
+            p2pStream = "pa://cctv_p2p_hayuzongyi";
+            break;
+        case "hztv1":
+            p2pStream = "pb://cctv_p2p_hztv1";
+            break;
+        case "heifei1":
+            p2pStream = "pb://cctv_p2p_heifei1";
+            break;
+        case "hebeijingji":
+            p2pStream = "pa://cctv_p2p_hebeijingji";
+            break;
+        case "hebeinongmin":
+            p2pStream = "pb://cctv_p2p_hebeinongmin";
+            break;
+        case "hebei":
+            p2pStream = "pl://cctv_p2p_hebei";
+            break;
+        case "hdhebei":
+            p2pStream = "pl://cctv_p2p_hdhebei";
+            break;
+        case "henan":
+            p2pStream = "pl://cctv_p2p_henan";
+            break;
+        case "hdhenan":
+            p2pStream = "pl://cctv_p2p_hdhenan";
+            break;
+        case "heilongjiang":
+            p2pStream = "pl://cctv_p2p_heilongjiang";
+            break;
+        case "hdheilongjiang":
+            p2pStream = "pl://cctv_p2p_hdheilongjiang";
+            break;
+        case "hubeidianshitai":
+            p2pStream = "pb://cctv_p2p_hubeidianshitai";
+            break;
+        case "hubeigonggong":
+            p2pStream = "pb://cctv_p2p_hubeigonggong";
+            break;
+        case "hubeigouwu":
+            p2pStream = "pb://cctv_p2p_hubeigouwu";
+            break;
+        case "hubeijiaoyu":
+            p2pStream = "pb://cctv_p2p_hubeijiaoyu";
+            break;
+        case "hubeijingji":
+            p2pStream = "pb://cctv_p2p_hubeijingji";
+            break;
+        case "hubeijingshi":
+            p2pStream = "pb://cctv_p2p_hubeijingshi";
+            break;
+        case "hubei":
+            p2pStream = "pa://cctv_p2p_hubei";
+            break;
+        case "hdhubei":
+            p2pStream = "pa://cctv_p2p_hdhubei";
+            break;
+        case "hubeiyingshi":
+            p2pStream = "pb://cctv_p2p_hubeiyingshi";
+            break;
+        case "hunan":
+            p2pStream = "pa://cctv_p2p_hunan";
+            break;
+        case "hdhunan":
+            p2pStream = "pa://cctv_p2p_hdhunan";
+            break;
+        case "hdhuaijiujuchang":
+            p2pStream = "pb://cctv_p2p_hdhuaijiujuchang";
+            break;
+        case "jilin":
+            p2pStream = "pl://cctv_p2p_jilin";
+            break;
+        case "hdjilin":
+            p2pStream = "pl://cctv_p2p_hdjilin";
+            break;
+        case "jinan1":
+            p2pStream = "pa://cctv_p2p_jinan1";
+            break;
+        case "jiangsu":
+            p2pStream = "pl://cctv_p2p_jiangsu";
+            break;
+        case "hdjiangsu":
+            p2pStream = "pl://cctv_p2p_hdjiangsu";
+            break;
+        case "jiangxi":
+            p2pStream = "pl://cctv_p2p_jiangxi";
+            break;
+        case "hdjiangxi":
+            p2pStream = "pl://cctv_p2p_hdjiangxi";
+            break;
+        case "kangbaweishi_biaoqing":
+            p2pStream = "pb://cctv_p2p_kangbaweishi";
+            break;
+        case "kangbaweishi":
+            p2pStream = "pb://cctv_p2p_kangbaweishi";
+            break;
+        case "liaoningdushi":
+            p2pStream = "pa://cctv_p2p_liaoningdushi";
+            break;
+        case "liaoning":
+            p2pStream = "pl://cctv_p2p_liaoning";
+            break;
+        case "hdliaoning":
+            p2pStream = "pl://cctv_p2p_hdliaoning";
+            break;
+        case "lvyou":
+            p2pStream = "pl://cctv_p2p_lvyou";
+            break;
+        case "hdlvyou":
+            p2pStream = "pl://cctv_p2p_hdlvyou";
+            break;
+        case "mengyu":
+            p2pStream = "pa://cctv_p2p_mengyu";
+            break;
+        case "nanchang1":
+            p2pStream = "pa://cctv_p2p_nanchang1";
+            break;
+        case "nanjing1":
+            p2pStream = "pa://cctv_p2p_nanjing1";
+            break;
+        case "neimeng":
+            p2pStream = "pb://cctv_p2p_neimeng";
+            break;
+        case "hdneimeng":
+            p2pStream = "pb://cctv_p2p_hdneimeng";
+            break;
+        case "ningbo2":
+            p2pStream = "pb://cctv_p2p_ningbo2";
+            break;
+        case "ningbo3":
+            p2pStream = "pb://cctv_p2p_ningbo3";
+            break;
+        case "ningbo1":
+            p2pStream = "pb://cctv_p2p_ningbo1";
+            break;
+        case "ningxia":
+            p2pStream = "pb://cctv_p2p_ningxia";
+            break;
+        case "hdningxia":
+            p2pStream = "pb://cctv_p2p_hdningxia";
+            break;
+        case "hdnvxingshishang":
+            p2pStream = "pb://cctv_p2p_hdnvxingshishang";
+            break;
+        case "wefa1":
+            p2pStream = "pa://cctv_p2p_wefa1";
+            break;
+        case "wefa2":
+            p2pStream = "pa://cctv_p2p_wefa2";
+            break;
+        case "wefa3":
+            p2pStream = "pa://cctv_p2p_wefa3";
+            break;
+        case "wefa4":
+            p2pStream = "pa://cctv_p2p_wefa4";
+            break;
+        case "wefa5":
+            p2pStream = "pa://cctv_p2p_wefa5";
+            break;
+        case "wefa6":
+            p2pStream = "pa://cctv_p2p_wefa6";
+            break;
+        case "qingdao1":
+            p2pStream = "pa://cctv_p2p_qingdao1";
+            break;
+        case "qtv1":
+            p2pStream = "pb://cctv_p2p_qtv1";
+            break;
+        case "qinghai":
+            p2pStream = "pb://cctv_p2p_qinghai";
+            break;
+        case "hdqinghai":
+            p2pStream = "pb://cctv_p2p_hdqinghai";
+            break;
+        case "xiamenweishi":
+            p2pStream = "pl://cctv_p2p_xiamenweishi";
+            break;
+        case "xiashi1":
+            p2pStream = "pl://cctv_p2p_xiamen1";
+            break;
+        case "xiashi2":
+            p2pStream = "pl://cctv_p2p_xiamen2";
+            break;
+        case "xiashi3":
+            p2pStream = "pl://cctv_p2p_xiamen3";
+            break;
+        case "xiashi4":
+            p2pStream = "pl://cctv_p2p_xiamen4";
+            break;
+        case "shandongjiaoyu":
+            p2pStream = "pb://cctv_p2p_shandongjiaoyu";
+            break;
+        case "shandong":
+            p2pStream = "pl://cctv_p2p_shandong";
+            break;
+        case "hdshandong":
+            p2pStream = "pl://cctv_p2p_hdshandong";
+            break;
+        case "shan-xi":
+            p2pStream = "pl://cctv_p2p_shan-xi";
+            break;
+        case "hdshan-xi":
+            p2pStream = "pl://cctv_p2p_hdshan-xi";
+            break;
+        case "shanvxi":
+            p2pStream = "pb://cctv_p2p_shanvxi";
+            break;
+        case "hdshanvxi":
+            p2pStream = "pb://cctv_p2p_hdshanvxi";
+            break;
+        case "shanghai1":
+            p2pStream = "pa://cctv_p2p_shanghai1";
+            break;
+        case "shenzhen1":
+            p2pStream = "pa://cctv_p2p_shenzhen1";
+            break;
+        case "shenyang1":
+            p2pStream = "pa://cctv_p2p_shenyang1";
+            break;
+        case "shijiazhuang1":
+            p2pStream = "pb://cctv_p2p_shijiazhuang1";
+            break;
+        case "shijiazhuang2":
+            p2pStream = "pb://cctv_p2p_shijiazhuang2";
+            break;
+        case "shijiazhuang3":
+            p2pStream = "pb://cctv_p2p_shijiazhuang3";
+            break;
+        case "shijiazhuang4":
+            p2pStream = "pb://cctv_p2p_shijiazhuang4";
+            break;
+        case "hdshijiedili":
+            p2pStream = "pb://cctv_p2p_hdshijiedili";
+            break;
+        case "sichuan":
+            p2pStream = "pl://cctv_p2p_sichuan";
+            break;
+        case "hdsichuan":
+            p2pStream = "pl://cctv_p2p_hdsichuan";
+            break;
+        case "xmhd":
+            p2pStream = "pb://cctv_p2p_xmhd";
+            break;
+        case "tianjin":
+            p2pStream = "pl://cctv_p2p_tianjin";
+            break;
+        case "hdtianjin":
+            p2pStream = "pl://cctv_p2p_hdtianjin";
+            break;
+        case "weiyu":
+            p2pStream = "pa://cctv_p2p_weiyu";
+            break;
+        case "weiyu":
+            p2pStream = "pa://cctv_p2p_weiyu";
+            break;
+        case "weiyujingji":
+            p2pStream = "pa://cctv_p2p_weiyujingji";
+            break;
+        case "weiyuzongyi":
+            p2pStream = "pa://cctv_p2p_weiyuzongyi";
+            break;
+        case "wxtv4":
+            p2pStream = "pa://cctv_p2p_wxtv4";
+            break;
+        case "wxtv5":
+            p2pStream = "pa://cctv_p2p_wxtv5";
+            break;
+        case "wxtv6":
+            p2pStream = "pa://cctv_p2p_wxtv6";
+            break;
+        case "wxtv3":
+            p2pStream = "pa://cctv_p2p_wxtv3";
+            break;
+        case "wxtv2":
+            p2pStream = "pa://cctv_p2p_wxtv2";
+            break;
+        case "wxtv1":
+            p2pStream = "pa://cctv_p2p_wxtv1";
+            break;
+        case "wuhanjiaoyu":
+            p2pStream = "pa://cctv_p2p_wuhanjiaoyu";
+            break;
+        case "xian1":
+            p2pStream = "pa://cctv_p2p_xian1";
+            break;
+        case "xizang2":
+            p2pStream = "pl://cctv_p2p_xizang2";
+            break;
+        case "hdxizang2":
+            p2pStream = "pl://cctv_p2p_hdxizang2";
+            break;
+        case "hdbingtuan":
+            p2pStream = "pa://cctv_p2p_hdbingtuan";
+            break;
+        case "xinjiang":
+            p2pStream = "pl://cctv_p2p_xinjiang";
+            break;
+        case "hdxinjiang":
+            p2pStream = "pl://cctv_p2p_hdxinjiang";
+            break;
+        case "sdtv1":
+            p2pStream = "pb://cctv_p2p_sdtv1";
+            break;
+        case "sdtv2":
+            p2pStream = "pb://cctv_p2p_sdtv2";
+            break;
+        case "sdtv4":
+            p2pStream = "pb://cctv_p2p_sdtv4";
+            break;
+        case "yanbiangb":
+            p2pStream = "pa://cctv_p2p_yanbiangb";
+            break;
+        case "hdyanbian":
+            p2pStream = "pa://cctv_p2p_hdyanbian";
+            break;
+        case "cctv9-doc_biaoqing":
+            p2pStream = "pb://cctv_p2p_hdcctvdoc";
+            break;
+        case "cctv9-doc":
+            p2pStream = "pb://cctv_p2p_hdcctvdoc";
+            break;
+        case "cctv9-jilu_biaoqing":
+            p2pStream = "pb://cctv_p2p_hdcctvjilu";
+            break;
+        case "cctv9-jilu":
+            p2pStream = "pb://cctv_p2p_hdcctvjilu";
+            break;
+        case "hdyangshijingpin":
+            p2pStream = "pb://cctv_p2p_hdyangshijingpin";
+            break;
+        case "yunnan":
+            p2pStream = "pl://cctv_p2p_yunnan";
+            break;
+        case "hdyunnan":
+            p2pStream = "pl://cctv_p2p_hdyunnan";
+            break;
+        case "changsha1":
+            p2pStream = "pb://cctv_p2p_changsha1";
+            break;
+        case "zhejiang":
+            p2pStream = "pl://cctv_p2p_zhejiang";
+            break;
+        case "hdzhejiang":
+            p2pStream = "pl://cctv_p2p_hdzhejiang";
+            break;
+        case "zhengzhou1":
+            p2pStream = "pb://cctv_p2p_zhengzhou1";
+            break;
+        case "chongqing":
+            p2pStream = "pl://cctv_p2p_chongqing";
+            break;
+        case "hdchongqing":
+            p2pStream = "pl://cctv_p2p_hdchongqing";
+            break;
+        case "chongqingxinwen":
+            p2pStream = "pa://cctv_p2p_chongqingxinwen";
+            break;
+        case "zhuhai":
+            p2pStream = "pa://cctv_p2p_zhuhai";
+            break;
+        case "zhuhai2":
+            p2pStream = "pa://cctv_p2p_zhuhai2";
+            break;
+    }
+
+    getCode();
+}
+
+function updateVideoAddress()
+{
+	var updateInputTag = document.getElementById("update_video_address");
+	var updateValue = updateInputTag.value.replace(/(^\s*)|(\s*$)/g, "");
+	if(updateValue =="")
+	{
+		alert("当手动填写直播地址时，地址不能为空");
+	}
+	p2pStream = chanel = updateValue;
+	getCode();
+
+}
+
+function isPartyWeb()
+{
+	getCode();
+}
+
+function getCode() 
+{
+    var channelCctv = document.getElementById("channel_cctv").value.replace(/(^\s*)|(\s*$)/g, "");
+    var channelBtv = document.getElementById("channel_btv").value.replace(/(^\s*)|(\s*$)/g, "");
+    var channelProvince = document.getElementById("channel_province").value.replace(/(^\s*)|(\s*$)/g, "");
+    var inputChannelAddress = document.getElementById("update_video_address").value.replace(/(^\s*)|(\s*$)/g, "");
+    
+    if(channelCctv == "0" && channelBtv=="0" && channelProvince=="0" && inputChannelAddress=="")
+    {
+    	return false;
+    }
+	
+	var s = '<link href="http://t.live.cntv.cn/cntvwebplay/cntvplayer/style/main.css" rel="stylesheet" type="text/css" />\n';
+    var isPartyWeb = document.getElementById("ispartyweb_party").checked;
+    if(isPartyWeb)
+    {
+    	s += '<script type="text/javascript" src="http://js.player.cntv.cn/livejs/cntv_main_dangyuan.js" charset="utf-8"></' + 'script>\n';
+    }
+    else
+    {
+    	s += '<script type="text/javascript" src="http://t.live.cntv.cn/cntvwebplay/cntvplayer/js/cntv_main.js" charset="utf-8"></' + 'script>\n';
+    }
+    s += '<script type="text/javascript" src="http://js.player.cntv.cn/creator/swfobject.js"></' + 'script>\n' 
+    + '<script type="text/javascript" src="http://js.player.cntv.cn/creator/live_common.js"></' + 'script>\n' 
+	+ '<script type="text/javascript" src="http://ip.apps.cntv.cn/js/player.do"></' + 'script>\n' 
+	+ '<script type="text/javascript" src="http://player.cntv.cn/flashplayer/config/multiLiveConfig.js"></' + 'script>\n'
+	+ '<script type="text/javascript" src="http://js.player.cntv.cn/creator/p2p2cdn.js"></' + 'script>\n' 
+    + '<div id ="_video_player_box"></' + 'div>\n' 
+    + '<!--注意：width宽度等于以下JS代码中boxSize参数中尺寸的宽度-->\n' 
+    + '<script language="JavaScript">\n' 
+    + '/* 定义播放器属性,用于第一次实例化播放器	*/\n' 
+    + 'var attributes = {\n' 
+    + 'boxSize : "' + name + '",	/* 选择合适大小的直播播放器*/\n' 
+    + 'topad : "",	/* 顶部跑马灯广告， */\n' 
+    + 'btmad : "",	/* 播放器底部广告， */\n' 
+    + 'adloading : "",	/* 前贴片广告， */\n' 
+    + 'adcorner : "",	/* 播放器内角标广告， */\n' 
+    + 'adafter : "",	/* 后贴片广告， */\n' 
+    + 'adpause : "",	/* 暂停广告， */\n' 
+    + 'skin : "",	/* 播放器本身角标广告， */\n' 
+    + 'videoAddress : "' + p2pStream + '",	/* 直播*/\n' 
+    + 'videoType : "p2p",	/* 直播类型，默认为"p2p" */\n' 
+    + 'videoLoop : 0,	/* 是否轮播，默认为 0  */\n' 
+    + 'wrating : "",	/* 直播埋码 */\n' 
+    + 'lazyload : false,	/* 打开页面是否播放，false为播放，true为点击播放 ,无特殊要求选择true */\n' 
+    + 'enabletracker : true,\n'
+    + 'enablelog : true,\n'
+    + 'video_width: ' + width + ',	/* Flash播放器宽度 */\n' 
+    + 'video_height: ' + height + ',	/* Flash播放器高度 */\n' 
+    + 'video_channel_name: "' + chanel + '"	/* Flash播放器及ipad 使用的直播流名称 */};\n' 
+	+'var isAbroad = false;var isInMultiArr = false;\n'
+	+'if(typeof(area_info)=="string"){var s = area_info.toUpperCase();\n'
+	+'if(s.indexOf("CN|")!=0 && s.indexOf("SC|")!=0){isAbroad = true;}};\n'
+	+'if(typeof(multi_channel_arr)=="object"){\n'
+	+'for(var i=0;i<multi_channel_arr.length;i++){\n'
+	+'if(attributes["video_channel_name"]==multi_channel_arr[i]){isInMultiArr = true;\n'
+	+'break;}}};\n'	
+	+'/* 判断当前频道使用哪种CDN源 */\n'
+	+'p2p2cdn(attributes["video_channel_name"].replace("_biaoqing",""));\n'
+	+'try{\n'
+    +'   var cdn_url="", cdn_url_hd="";\n'
+    +'    switch(zrh_getCdnStreamType(channel)){\n'
+    +'        case "flv":\n'
+    +'            /*cdn_url = channelflv;*/\n'
+    +'            /*cdn_url_hd = channelflv_hd;*/\n'
+    +'            break;\n'
+    +'        case "m3u8":\n'
+    +'            cdn_url = channelm3u8;\n'
+    +'            cdn_url_hd = channelm3u8_hd;\n'
+    +'            break;\n'
+    +'        default:\n'
+    +'            cdn_url = channelCDN;\n'
+    +'            cdn_url_hd = ch_cdn_hd;\n'
+    +'    }\n'
+    +'    channelCDN = cdn_url;\n'
+    +'    ch_cdn_hd = cdn_url_hd;}catch(e){}\n'
+    +'/*如果有cdn信号,则添加两个属性 */\n'
+    +'if(channelCDN || ch_cdn_hd) {\n'
+    +'    attributes.ExecCommand_key = "CDN4P2P";\n'
+    +'    var rege_hd = /_hd/;\n'
+    +'	  var _ishd = rege_hd.test(attributes["videoAddress"]);\n'
+    +'    attributes.ExecCommand_value = \'{"enable":"true", "latency":"40000", "url":"\'+(_ishd ? ch_cdn_hd : channelCDN)+\'"}\';\n'
+    +'}\n'
+	    
+    + '/* 先判断浏览器，决定是否调用直播控件 */\n' 
+    + 'var _user_agent = {\n' 
+    + 'isIE : /msie/i.test(navigator.userAgent),\n' 
+    + 'isFF : /firefox/i.test(navigator.userAgent),\n' 
+    + 'isWinOS : navigator.platform == "Win32" || navigator.platform == "Windows"};\n' 
+	+'function isInPtp1Arr(s){\n'
+	+'if(typeof(ptp1_browser_arr)=="undefined"){return true;}\n'
+	+'else{for(var i=0;i<ptp1_browser_arr.length;i++)\n'
+	+'{if(s==ptp1_browser_arr[i])return true;}}\n'
+	+' return false;};\n'
+	+'var broswer  = "";var usePtp1 = false;\n'
+	+'if(_user_agent["isIE"])broswer="IE";if(_user_agent["isFF"])broswer="FF";\n'
+	+'if(isInPtp1Arr(broswer))usePtp1 = true;\n'
+	+'if(isAbroad&&isInMultiArr){\n'
+	+'creatMultiLivePlayer("_video_player_box",attributes["video_width"], attributes["video_height"],attributes["video_channel_name"]);\n'
+    + '}else if (_user_agent["isWinOS"] && (_user_agent["isIE"] || _user_agent["isFF"])&&usePtp1){\n' 
+    + '/* 使用直播控件 */\n' 
+    + 'var livePlay = new cntv.player.main("_video_player_box", attributes);\n' 
+    + 'livePlay.start();	/* 启动播放器 */}\n' 
+    + 'else{\n' 
+    + '/* 不使用直播控件 */\n' 
+    + 'creatLivePlayer("_video_player_box", attributes["video_width"], attributes["video_height"], attributes["video_channel_name"]);\n}' 
+    + '</' + 'script>\n';
+	if(isFirefox())
+	{
+		
+		document.getElementById("code").textContent = s;
+		
+	}
+	else
+	{
+    	document.getElementById("code").innerText = s;
+	}
+}
+</script>
+<style>
+.left_nav { width:230px; height:700px; background-color:#eaeaea; border:1px solid #aaa; float:left; }
+.right_cont { width:750px; height:540px; border:1px dashed #aaa; float:left; margin-left:6px; font-size:12px;font-family: Tahoma; padding:3px; }
+
+.channel_list { font-size:12px; padding:5px; line-height:180%; }
+.channel_list .channel_name { display: block; float: left; width:50px; }
+.channel_list select { width:160px; }
+.typeUl { padding:0; height: 150px;}
+.typeUl li{ float:left; font-size: 14px;font-family: Courier;width: 100px; }
+
+.title_txt { width:100%; padding:5px 0; background-color:#666; color:#eee; font-size:14px; font-weight:bold; text-align:center; }
+
+.txt_desc { color:#ff0000; font-size:14px; float:none; padding:10px; }
+</style>
+</head>
+<body>
+<div style="width:1000px; float:none; margin:0 auto; text-align:center;"><span style="color:#FF0000; font-size:28px">CNTV直播播放器创建代码</span> 修订时间：2013年3月4日</div>
+<div style="width:1000px; float:none; margin:0 auto;">
+  <div class="left_nav">
+	<div class="title_txt">请选择频道</div>
+	<div class="channel_list">
+<span class="channel_name">CCTV</span>
+<select id="channel_cctv" onChange="setChanel(this[this.selectedIndex].value, this)">
+<option value="0">请选择</option>
+<option value="cctv1_biaoqing">cctv1_标清</option>
+<option value="cctv1">cctv1_高清</option>
+<option value="cctv10_biaoqing">cctv10_标清</option>
+<option value="cctv10">cctv10_高清</option>
+<option value="cctv11_biaoqing">cctv11_标清</option>
+<option value="cctv11">cctv11_高清</option>
+<option value="cctv12_biaoqing">cctv12_标清</option>
+<option value="cctv12">cctv12_高清</option>
+<option value="cctv2_biaoqing">cctv2_标清</option>
+<option value="cctv2">cctv2_高清</option>
+<option value="cctv3_biaoqing">cctv3_标清</option>
+<option value="cctv3">cctv3_高清</option>
+<option value="cctv4_biaoqing">cctv4_标清</option>
+<option value="cctv4">cctv4_高清</option>
+<option value="cctv4-america_biaoqing">cctv4美_标清</option>
+<option value="cctv4-america">cctv4美_高清</option>
+<option value="cctv4-euro_biaoqing">cctv4欧_标清</option>
+<option value="cctv4-euro">cctv4欧_高清</option>
+<option value="cctv5_biaoqing">cctv5_标清</option>
+<option value="cctv5">cctv5_高清</option>
+<option value="cctv6_biaoqing">cctv6_标清</option>
+<option value="cctv6">cctv6_高清</option>
+<option value="cctv7_biaoqing">cctv7_标清</option>
+<option value="cctv7">cctv7_高清</option>
+<option value="cctv8_biaoqing">cctv8_标清</option>
+<option value="cctv8">cctv8_高清</option>
+<option value="cctv-news_biaoqing">cctv9_标清</option>
+<option value="cctv-news">cctv9_高清</option>
+<option value="cctv-ayu_biaoqing">cctv阿_标清</option>
+<option value="cctv-ayu">cctv阿_高清</option>
+<option value="cctv-eyu_biaoqing">cctv俄_标清</option>
+<option value="cctv-eyu">cctv俄_高清</option>
+<option value="cctvfayu_biaoqing">cctv法_标清</option>
+<option value="cctvfayu">cctv法_高清</option>
+<option value="cctv-fengyunzuqiu_biaoqing">cctv风云_标清</option>
+<option value="cctv-fengyunzuqiu">cctv风云_高清</option>
+<option value="cctv-gaoqing_biaoqing">cctv高清</option>
+<option value="cctv-gaoqing">cctv高清</option>
+<option value="cctvgaowang_biaoqing">cctv高网_标清</option>
+<option value="cctvgaowang">cctv高网_高清</option>
+<option value="gouwu">cctv购物_标清</option>
+<option value="hdgouwu">cctv购物_高清</option>
+<option value="cctv-shaoer_biaoqing">cctv少儿_标清</option>
+<option value="cctv-shaoer">cctv少儿_高清</option>
+<option value="sports_biaoqing">cctv体育_标清</option>
+<option value="sports">cctv体育_高清</option>
+<option value="cctvxiyu_biaoqing">cctv西_标清</option>
+<option value="cctvxiyu">cctv西_高清</option>
+<option value="cctv13_biaoqing">cctv新闻_标清</option>
+<option value="cctv13">cctv新闻_高清</option>
+<option value="cctv-music_biaoqing">cctv音乐_标清</option>
+<option value="cctv-music">cctv音乐_高清</option>
+<option value="cctv9-doc_biaoqing">央视documentary_高清</option>
+<option value="cctv9-doc">央视documentary_高清</option>
+<option value="cctv9-jilu_biaoqing">央视纪录片_高清</option>
+<option value="cctv9-jilu">央视纪录片_高清</option>
+<option value="hdyangshijingpin">央视精品_高清</option>
+</select>
+
+<p>
+<span class="channel_name">BTV</span>
+<select id="channel_btv" onChange="setChanel(this[this.selectedIndex].value, this)">
+<option value="0">请选择</option>
+<option value="hdbtvgongong">BTV公共_高清</option>
+<option value="hdbtvkejiao">BTV科教_高清</option>
+<option value="hdbtvqingshao">BTV青少_高清</option>
+<option value="hdbtvshenghuo">BTV生活_高清</option>
+<option value="hdbtvtiyu">BTV体育_高清</option>
+<option value="hdbtvwenyi">BTV文艺_高清</option>
+<option value="hdbtvyingshi">BTV影视_高清</option>
+<option value="hdbtv5">北京财经_高清</option>
+<option value="beijing">北京卫视_标清</option>
+<option value="hdbeijing">北京卫视_高清</option>
+</select>
+</p>
+
+<span class="channel_name">省台</span>
+<select id="channel_province" onChange="setChanel(this[this.selectedIndex].value, this)">
+<option value="0">请选择</option>
+<option value="stu1_biaoqing">yb1_高清</option>
+<option value="stu1">yb1_高清</option>
+<option value="stu2_biaoqing">yb2_高清</option>
+<option value="stu2">yb2_高清</option>
+<option value="anhui">安徽卫视_标清</option>
+<option value="hdanhui">安徽卫视_高清</option>
+<option value="zangyu">藏语_高清</option>
+<option value="hdchaoxianyu">朝鲜语_高清</option>
+<option value="cdtv5">成都公共频道_高清</option>
+<option value="cdtv1">成都新闻综合频道_高清</option>
+<option value="dalian1">大连一套_高清</option>
+<option value="hddiyijuchang">第一剧场_高清</option>
+<option value="hddianshizhinan">电视指南_高清</option>
+<option value="dongfang">东方卫视_标清</option>
+<option value="hdshanghaikatong">东方卫视_高清</option>
+<option value="hdfengyunjuchang">风云剧场_高清</option>
+<option value="hdfengyunyinyue">风云音乐_高清</option>
+<option value="foshan1">佛山新闻综合_高清</option>
+<option value="dongnan">福建卫视_标清</option>
+<option value="hddongnan">福建卫视_高清</option>
+<option value="fuzhou1">福州一套_高清</option>
+<option value="gansu">甘肃卫视_标清</option>
+<option value="hdgansu">甘肃卫视_高清</option>
+<option value="guangdong">广东卫视_标清</option>
+<option value="hdguangdong">广东卫视_高清</option>
+<option value="guangxi">广西卫视_标清</option>
+<option value="hdguangxi">广西卫视_高清</option>
+<option value="hdgzecon">广州经济频道_高清</option>
+<option value="hdgzkids">广州少儿频道_高清</option>
+<option value="hdgznews">广州新闻频道_高清</option>
+<option value="hdgzenglish">广州英语频道_高清</option>
+<option value="hdgzzonghe">广州综合频道_高清</option>
+<option value="guizhou">贵州卫视_标清</option>
+<option value="hdguizhou">贵州卫视_高清</option>
+<option value="hdguofangjunshi">国防军事_高清</option>
+<option value="dajuyuan">国家大剧院_标清</option>
+<option value="haerbin1">哈尔滨新闻综合_高清</option>
+<option value="hayu">哈语XJ3_高清</option>
+<option value="hayuzongyi">哈语综艺XJ8_高清</option>
+<option value="hztv1">杭州一套_高清</option>
+<option value="heifei1">合肥一套_高清</option>
+<option value="hebeijingji">河北经济_高清</option>
+<option value="hebeinongmin">河北农民频道_高清</option>
+<option value="hebei">河北卫视_标清</option>
+<option value="hdhebei">河北卫视_高清</option>
+<option value="henan">河南卫视_标清</option>
+<option value="hdhenan">河南卫视_高清</option>
+<option value="heilongjiang">黑龙江卫视_标清</option>
+<option value="hdheilongjiang">黑龙江卫视_高清</option>
+<option value="hubeidianshitai">湖北电视台_高清</option>
+<option value="hubeigonggong">湖北公共_高清</option>
+<option value="hubeigouwu">湖北购物_高清</option>
+<option value="hubeijiaoyu">湖北教育_高清</option>
+<option value="hubeijingji">湖北经济_高清</option>
+<option value="hubeijingshi">湖北经视_高清</option>
+<option value="hubei">湖北卫视_标清</option>
+<option value="hdhubei">湖北卫视_高清</option>
+<option value="hubeiyingshi">湖北影视_高清 </option>
+<option value="hunan">湖南卫视_标清</option>
+<option value="hdhunan">湖南卫视_高清</option>
+<option value="hdhuaijiujuchang">怀旧剧场_高清</option>
+<option value="jilin">吉林卫视_标清</option>
+<option value="hdjilin">吉林卫视_高清</option>
+<option value="jinan1">济南新闻_高清</option>
+<option value="jiangsu">江苏卫视_标清</option>
+<option value="hdjiangsu">江苏卫视_高清</option>
+<option value="jiangxi">江西卫视_标清</option>
+<option value="hdjiangxi">江西卫视_高清</option>
+<!--option value="kangbaweishi_biaoqing">康巴卫视_标清</option-->
+<option value="kangbaweishi">康巴卫视_高清</option>
+<option value="liaoningdushi">辽宁都市_高清</option>
+<option value="liaoning">辽宁卫视_标清</option>
+<option value="hdliaoning">辽宁卫视_高清</option>
+<option value="lvyou">旅游卫视_标清</option>
+<option value="hdlvyou">旅游卫视_高清</option>
+<option value="mengyu">蒙语_高清</option>
+<option value="nanchang1">南昌新闻_高清</option>
+<option value="nanjing1">南京新闻综合_高清</option>
+<option value="neimeng">内蒙古卫视</option>
+<option value="hdneimeng">内蒙古卫视_高清</option>
+<option value="ningbo2">宁波二套_高清</option>
+<option value="ningbo3">宁波三套_高清</option>
+<option value="ningbo1">宁波一套_高清</option>
+<option value="ningxia">宁夏卫视_标清</option>
+<option value="hdningxia">宁夏卫视_高清</option>
+<option value="hdnvxingshishang">女性时尚_高清</option>
+<option value="wefa1">欧冠1_高清</option>
+<option value="wefa2">欧冠2_高清</option>
+<option value="wefa3">欧冠3_高清</option>
+<option value="wefa4">欧冠4_高清</option>
+<option value="wefa5">欧冠5_高清</option>
+<option value="wefa6">欧冠6_高清</option>
+<option value="qingdao1">青岛1套新闻综合_高清</option>
+<option value="qtv1">青岛一套_高清</option>
+<option value="qinghai">青海卫视_标清</option>
+<option value="hdqinghai">青海卫视_高清</option>
+<option value="xiamenweishi">厦门卫视_标清</option>
+<option value="xiashi1">厦视一套</option>
+<option value="xiashi2">厦视二套</option>
+<option value="xiashi3">厦视三套</option>
+<option value="xiashi4">厦视四套</option>
+<option value="shandongjiaoyu">山东教育_高清</option>
+<option value="shandong">山东卫视_标清</option>
+<option value="hdshandong">山东卫视_高清</option>
+<option value="shan-xi">山西卫视_标清</option>
+<option value="hdshan-xi">山西卫视_高清</option>
+<option value="shanvxi">陕西卫视_标清</option>
+<option value="hdshanvxi">陕西卫视_高清</option>
+<option value="shanghai1">上海新闻综合_高清</option>
+<option value="shenzhen1">深圳财经_高清</option>
+<option value="shenyang1">沈阳新闻_高清</option>
+<option value="shijiazhuang1">石家庄1套_高清</option>
+<option value="shijiazhuang2">石家庄2套_高清</option>
+<option value="shijiazhuang3">石家庄3套_高清</option>
+<option value="shijiazhuang4">石家庄4套_高清</option>
+<option value="hdshijiedili">世界地理_高清</option>
+<option value="sichuan">四川卫视_标清</option>
+<option value="hdsichuan">四川卫视_高清</option>
+<option value="xmhd">台海宽频_标清</option>
+<option value="tianjin">天津卫视_标清</option>
+<option value="hdtianjin">天津卫视_高清</option>
+<option value="weiyu">维语XJ2_高清</option>
+<option value="weiyu">维语XJ2_高清</option>
+<option value="weiyujingji">维语经济综合XJ9_高清</option>
+<option value="weiyuzongyi">维语综艺XJ5_高清</option>
+<option value="wxtv4">无锡电视经济频道_高清</option>
+<option value="wxtv5">无锡电视生活频道_高清</option>
+<option value="wxtv6">无锡电视移动频道_高清</option>
+<option value="wxtv3">无锡电视娱乐频道_高清</option>
+<option value="wxtv2">无锡都市资讯频道_高清</option>
+<option value="wxtv1">无锡新闻综合频道_高清</option>
+<option value="wuhanjiaoyu">武汉教育_高清</option>
+<option value="xian1">西安一套_高清</option>
+<option value="xizang2">西藏卫视2_标清</option>
+<option value="hdxizang2">西藏卫视2_高清</option>
+<option value="hdbingtuan">新疆兵团卫视_高清</option>
+<option value="xinjiang">新疆卫视_标清</option>
+<option value="hdxinjiang">新疆卫视_高清</option>
+<option value="sdtv1">烟台1_高清</option>
+<option value="sdtv2">烟台2_高清</option>
+<option value="sdtv4">烟台4_高清</option>
+<option value="yanbiangb">延边广播_高清</option>
+<option value="hdyanbian">延边卫视频道_高清</option>
+<option value="yunnan">云南卫视_标清</option>
+<option value="hdyunnan">云南卫视_高清</option>
+<option value="changsha1">长沙新闻_高清</option>
+<option value="zhejiang">浙江卫视_标清</option>
+<option value="hdzhejiang">浙江卫视_高清</option>
+<option value="zhengzhou1">郑州新闻_高清</option>
+<option value="chongqing">重庆卫视_标清</option>
+<option value="hdchongqing">重庆卫视_高清</option>
+<option value="chongqingxinwen">重庆新闻_标清</option>
+<option value="zhuhai">珠海电视台_高清</option>
+<option value="zhuhai2">珠海电视台2_高清</option>
+</select>
+	</div>
+
+
+	<div class="channel_list">
+		<input type="radio" id="ispartyweb_default" name="is_parytweb" checked="checked" value="default" onclick="isPartyWeb();" />CNTV&nbsp;&nbsp;&nbsp;&nbsp;
+		<input type="radio" id="ispartyweb_party" name="is_parytweb" value = "party" onclick="isPartyWeb();" />党员网
+	</div>
+
+<div class="title_txt">手动填写直播地址</div>
+	<div class="channel_list">
+		<input type="text" value="" id="update_video_address" />&nbsp<input type="button" value="提交" onclick="updateVideoAddress();" />
+	</div>
+
+
+
+
+	<div class="title_txt">请选择尺寸</div>
+	<div class="channel_list">
+		<ul class="typeUl">
+		  <li><input type="radio" value="nn"  name="size" onClick="setSize()"/> nn</li>
+		  <li><input type="radio" value="large" name="size" onClick="setSize()"/> large</li>
+		  <li><input type="radio"  value="middle" name="size" onClick="setSize()"/> middle</li>
+		  <li><input type="radio"   value="small" name="size" onClick="setSize()"/> small</li>
+		  <li><input type="radio"   value="bugu" name="size" onClick="setSize()"/> bugu</li>
+		  <li><input type="radio"    value="default"  name="size" onClick="setSize()"/> default</li>
+		  <li><input type="radio"  value="tibet"  name="size" onClick="setSize()"/> tibet</li>
+		  <li><input type="radio"  value="qq"  name="size" onClick="setSize()"/> qq</li>
+		  <li><input type="radio"   value="worldcup"   name="size" onClick="setSize()"/> worldcup</li>
+		  <li><input type="radio"   value="ppl"  name="size" onClick="setSize()"/> ppl</li>
+		  <li><input type="radio"  value="yayun1" name="size" onClick="setSize()"/> yayun1</li>
+		  <li><input type="radio"   value="yayun2"  name="size" onClick="setSize()"/> yayun2</li>
+		  <li><input type="radio"   value="yayun3"  name="size" onClick="setSize()"/> yayun3</li>
+		  <li><input type="radio" value="dajuyuan"  name="size" onClick="setSize()"/> dajuyuan</li>
+          <li><input type="radio" value="yanbian"  name="size" onClick="setSize()"/> yanbian</li>
+		</ul>
+	</div>
+	<div class="txt_desc">
+	   <p><a href="size.html" target="_blank">查看现有直播播放器尺寸</a> </p>
+	  <p>此代码集成了 p2p、flash、ipad多种模式直播，已对环境做了判断并且选择相应的模式</p>
+	  </p>由于此代码可能会有更新，所以不能把此代码拷贝保存和传播</p>
+	  如有问题请联系：<br />技术中心 汪念鸿 章荣辉 何辉辉 88046624
+	  <p><a href="history/log_20130304_1.html" target="_blank">查看该版本信息</a></p>
+	</div>
+  </div>
+  <div name="code" id="code" class="right_cont"></div>
+<br />
+</div>
+</body>
+</html>

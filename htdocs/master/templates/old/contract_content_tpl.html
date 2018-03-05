@@ -1,0 +1,169 @@
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312" />
+<title>无标题文档</title>
+<style type="text/css">
+<!--
+body {
+	margin-left: 0px;
+	margin-top: 5px;
+	margin-right: 0px;
+	margin-bottom: 0px;
+	padding:0px;
+	width:100%;
+}
+.tb{
+	background-color:#B9CDD9;
+}
+.tbhead {
+	height:28px;
+	background-color:#E1EFFD;
+	color:#3F7CAB;
+	font-weight:bold;
+}
+.tbbody {
+	height:28px;
+	background-color:#FFFFFF;
+}
+label {
+	color:#3F7CAB;
+	text-decoration:underline;
+	cursor:pointer;
+}
+.bb {
+	color:#3F7CAB;
+	font-weight:bold;
+}
+.style1 {color: #FF0000}
+-->
+</style>
+<link href="/css/H.css" rel="stylesheet" type="text/css" />
+<script src="/js/common.js"></script>
+<script language="javascript">
+
+function goList()
+{
+	document.location.href="./showList.php?"+new Date();
+}
+	
+</script>
+</head>
+<body >
+
+			<table width="98%" align="center" border="0" cellpadding="0" cellspacing="0" >
+				<tr>
+					<td height="10"></td>
+				</tr>
+			</table>		
+			
+			<table width="92%" border="0" align="center" cellpadding="0" cellspacing="1" class="tb">
+			<tr >
+					<td class="tbhead">
+			   	<input  name="id" type="hidden" value="" ></td>
+					<td colspan="8" align="left"  class="tbhead">合同基本信息</td>
+		      </tr>				 
+		   <tr>
+            <td width="9%" align="right"  class="tbbody">项目号：&nbsp;</td>
+            <td colspan="8"  class="tbbody" style="position:relative">{{$arr_contract_list[0]}} 
+            </td>            
+		   </tr>
+		   <tr>
+            <td width="9%" align="right"  class="tbbody">合同责任人：&nbsp;</td>
+            <td colspan="8"  class="tbbody" style="position:relative">{{$arr_contract_list[1]}} 
+            </td>            
+		   </tr>
+		   <tr>
+            <td width="9%" align="right"  class="tbbody">请求部门：&nbsp;</td>
+            <td colspan="8"  class="tbbody" style="position:relative">{{$arr_contract_list[2]}} 
+            </td>            
+		   </tr>
+		   <tr>
+            <td width="9%" align="right"  class="tbbody">合同名称：&nbsp;</td>
+            <td colspan="8"  class="tbbody" style="position:relative">{{$arr_contract_list[3]}} 
+            </td>            
+		   </tr>
+		   <tr>
+            <td width="9%" align="right"  class="tbbody">合同相对方：&nbsp;</td>
+            <td colspan="8"  class="tbbody" style="position:relative">{{$arr_contract_list[4]}} 
+            </td>            
+		   </tr>
+		   <tr>
+            <td width="9%" align="right"  class="tbbody">合同金额：&nbsp;</td>
+            <td colspan="8"  class="tbbody" style="position:relative">{{$arr_contract_list[5]}} 
+            </td>            
+		   </tr>
+		   <tr>
+            <td width="9%" align="right"  class="tbbody">合作期限：&nbsp;</td>
+            <td colspan="8"  class="tbbody" style="position:relative">{{$arr_contract_list[6]}} 
+            </td>            
+		   </tr>
+		   <tr>
+            <td width="9%" align="right"  class="tbbody">涉及产品：&nbsp;</td>
+            <td colspan="8"  class="tbbody" style="position:relative">{{$arr_contract_list[7]}} 
+            </td>            
+		   </tr>
+		   <tr>
+            <td width="9%" align="right"  class="tbbody">合作模式：&nbsp;</td>
+            <td colspan="8"  class="tbbody" style="position:relative">{{$arr_contract_list[8]}} 
+            </td>            
+		   </tr>
+		    <tr>
+            <td width="9%" align="right"  class="tbbody">标准合同：&nbsp;</td>
+            <td colspan="8"  class="tbbody" style="position:relative">{{$arr_contract_list[9]}} 
+            </td>            
+		   </tr>
+		   <tr>
+            <td width="9%" align="right"  class="tbbody">审核类别：&nbsp;</td>
+            <td colspan="8"  class="tbbody" style="position:relative">{{$arr_contract_list[10]}} 
+            </td>            
+		   </tr>
+		   <tr>
+            <td width="9%" align="right"  class="tbbody">续签合同：&nbsp;</td>
+            <td colspan="8"  class="tbbody" style="position:relative">{{$arr_contract_list[11]}} 
+            </td>            
+		   </tr>
+		    <tr>
+            <td width="9%" align="right"  class="tbbody">审核状态：&nbsp;</td>
+            <td colspan="8"  class="tbbody" style="position:relative">{{$arr_contract_list[12]}} 
+            </td>            
+		   </tr>
+		   <tr>
+            <td width="9%" align="right"  class="tbbody">提交日期：&nbsp;</td>
+            <td colspan="8"  class="tbbody" style="position:relative">{{$arr_contract_list[13]}} 
+            </td>            
+		   </tr>
+		    <tr>
+            <td width="9%" align="right"  class="tbbody">预计回复日期：&nbsp;</td>
+            <td colspan="8"  class="tbbody" style="position:relative">{{$arr_contract_list[14]}} 
+            </td>            
+		   </tr>
+			</table>
+			<br>			
+			<table width="92%" border="0" align="center" cellpadding="0" cellspacing="1" class="tb">
+			<tr >
+					<td class="tbhead">
+					<input name="opt" type="hidden" value="pub" >
+		   		<input name="page" type="hidden" value="" >
+		   		<input name="type" type="hidden" value="1" >
+			   <input  name="Fid" type="hidden" value="" ></td>
+					<td colspan="8" align="left"  class="tbhead">附件信息</td>
+		      </tr>				 
+		  {{section name=i loop=$arr_extraFile}} 
+		   <tr>
+		   	<td width="9%" align="right"  class="tbbody"><a href="{{$file_url}}{{$arr_extraFile[i][2]}}" target="_blank" >下 载</a>&nbsp;</td>
+        <td colspan="8"  class="tbbody" style="position:relative"> {{$arr_extraFile[i][1]}} </td>            
+		   </tr>
+			{{/section}}
+			</table>
+			
+			<table width="92%" border="0" align="center" cellpadding="3" cellspacing="0" style="font-size:12px;" >
+				 <tr>
+					<td colspan="2" valign="middle" align="center"><p>
+						<input class="btn1"  type="button" onClick="goList()" value="返回">
+					</p>
+						<p>&nbsp; </p></td>
+				</tr>
+		  </table>
+
+</body>
+</html>

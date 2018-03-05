@@ -1,0 +1,59 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<!--BASE HREF="http://127.0.0.1/master" /-->
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312" />
+<title>无标题文档</title>
+<style type="text/css">
+body {
+    margin-left: 10px;
+    margin-top: 15px;
+    margin-right: 0px;
+    margin-bottom: 0px;
+    background:url(images/z_01.jpg) repeat-y;
+    overflow:hidden;
+}
+</style>
+<link href="../css/H.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<script src="../js/common.js"></script>
+<script>
+window.onload=function(){
+    /*var sPageTitle="Play";
+    var sUrl = "http://fx.xunlei.com/cgi-bin/cgi_play_count_stat?CacheTime=1185959644937";
+    sUrl = appendCacheTime(sUrl);
+    showSubIndexPage(sUrl);*/
+}
+</script>
+
+<div class="menu">
+    <div class="dh01"><a href="javascript:switchMenuStyle('ulSub','oImg')"><img id="oImg" src="../images/-.gif" width="11" height="11"  border="0"/>操作管理</a> </div>
+    <ul id="ulSub" style="display:block">
+        {{section name=i loop=$arr_action}}
+        <li><a href="{{$arr_action[i][0]}}" onclick='javascript:this.href=appendCacheTime( this.href )' class="a1" target="frContent"  onmouseover="hmover(this)" onmouseout="hmout(this)">{{$arr_action[i][1]}}</a></li>
+        {{/section}}
+    </ul>
+</div>
+
+{{if $point == -1100 }}
+<div class="menu">
+    <div class="dh01"><a href="javascript:switchMenuStyle('ulSub','oImg')"><img id="oImg" src="../images/-.gif" width="11" height="11"  border="0"/>操作</a> </div>
+    <ul id="ulSub" style="display:block">
+        {{section name=i loop=$arr_operate}}
+        <li><a href="{{$arr_operate[i][0]}}" onclick='javascript:this.href=appendCacheTime( this.href )' class="a1" target="frContent"  onmouseover="hmover(this)" onmouseout="hmout(this)">{{$arr_operate[i][1]}}</a></li>
+        {{/section}}
+    </ul>
+</div>
+{{/if}}
+<!--div class="menu">
+    <div class="dh01"><a href="javascript:switchMenuStyle('ulSub1','oImg1')"><img id="oImg1" src="../images/-.gif" width="11" height="11"  border="0"/>产品运营管理</a> </div>
+    <ul id="ulSub1" style="display:block">
+        {{section name=i loop=$arr_vod_quality}}
+        <li><a href="{{$arr_vod_quality[i][0]}}" onclick='javascript:this.href=appendCacheTime( this.href )' class="a1" target="frContent"  onmouseover="hmover(this)" onmouseout="hmout(this)">{{$arr_vod_quality[i][1]}}</a></li>
+        {{/section}}
+    </ul>
+</div-->
+
+</body>
+</html>

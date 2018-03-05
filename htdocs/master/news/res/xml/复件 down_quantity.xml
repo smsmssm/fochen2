@@ -1,0 +1,13 @@
+﻿<data speedUnit="k/s" >
+<p quantity="1000" date="" speed="200" />
+<p quantity="2000" date="8月5日" speed="100" bMark="true" markName="1"/>
+<p quantity="1500" date="8月10日" speed="200"/>
+<p quantity="1760" date="8月15日" speed="150" bMark="true" markName="2"/>
+<p quantity="1300" date="8月20日" speed="800"/>
+<p quantity="1200" date="8月25日" speed="100"/>
+<p quantity="1056" date="8月30日" speed="250"/>
+<p quantity="1867" date="9月1日" speed="260"/>
+<p quantity="1570" date="9月5日" speed="280"/>
+<p quantity="1900" date="9月10日" speed="190"/>
+<p quantity="1760" date="" speed="200"/>
+</data>

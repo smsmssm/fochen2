@@ -1,0 +1,32 @@
+<html>
+<head>
+<!--script src="/js/common.js"></script-->
+<script language="javascript">
+<!--
+var iniCols, noCols, o_mf, o_ms, s;
+function ini() {
+	/*o_mf = parent.document.getElementById("mainframe");
+	o_ms = document.getElementById("menuSwitch");
+	noCols = iniCols = o_mf.cols;
+	if ((pos = noCols.indexOf(",")) != -1) {
+		noCols = "0" + noCols.substring(pos);
+	} 
+	s = false;*/
+}
+function changeLeft(){
+	/*s = !s;
+	o_mf.cols = s ? noCols : iniCols;
+	o_ms.innerHTML = s ? "<img src='images/z1.gif' border='0'>" : "<img src='images/z.gif' border='0'>";
+    */
+}
+//-->
+</script>
+<style>
+	body{margin:0px;}
+	img{margin:0px;}
+</style>
+</head>
+<body onLoad="ini()">
+<a href="javascript:changeLeft();" class="o1" id="menuSwitch" onFocus="this.blur()"><img src="images/z.gif" border="0"></a>
+</body>
+</html>

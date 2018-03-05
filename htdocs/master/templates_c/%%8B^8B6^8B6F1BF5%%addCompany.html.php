@@ -1,0 +1,544 @@
+<?php /* Smarty version 2.6.18, created on 2017-05-21 11:29:51
+         compiled from addCompany.html */ ?>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312" />
+<title>无标题文档</title>
+<style type="text/css">
+<!--
+body {
+	margin-left: 0px;
+	margin-top: 5px;
+	margin-right: 0px;
+	margin-bottom: 0px;
+	padding:0px;
+	width:100%;
+}
+.tb{
+	background-color:#B9CDD9;
+}
+.tbhead {
+	height:28px;
+	background-color:#E1EFFD;
+	color:#3F7CAB;
+	font-weight:bold;
+}
+.tbbody {
+	height:28px;
+	background-color:#FFFFFF;
+}
+label {
+	color:#3F7CAB;
+	text-decoration:underline;
+	cursor:pointer;
+}
+.bb {
+	color:#3F7CAB;
+	font-weight:bold;
+}
+.style1 {color: #FF0000}
+-->
+</style>
+<link href="/css/H.css" rel="stylesheet" type="text/css" />
+<script src="../js/common.js"></script>
+<script src="../js/city.js"></script>
+<script charset='gb2312' src="../js/p.js"></script>
+<script>
+var proArr = [];
+  function addProduct(i)
+  {
+      //<input type="hidden" name="pro_types"  id="pro_types"/>
+      proArr = getProductList(i);
+	 if(proArr.length>0)
+	 {
+	    var s ="";
+		var n;
+		var s1 ="";
+		for(var i=0;i<proArr.length;i++)
+		{
+		   n=i+1;
+		   s = s+'<input id="pr'+i+'" type="checkbox"  value="'+n+'"/>'+proArr[i]+'&nbsp;&nbsp;';
+		}
+		$("product").innerHTML = s;
+	 }
+  }
+
+function checkAllTextValid(form)    
+{    
+    //记录不含引号的文本框数量    
+ var resultTag = 0;    
+    //记录所有text文本框数量    
+    var flag = 0;    
+ for(var i = 0; i < form.elements.length; i ++)    
+ {    
+  if(form.elements[i].type=="text")    
+  {    
+    flag = flag + 1;    
+   //此处填写所要过滤的特殊符号    
+   //注意：修改####处的字符，其它部分不许修改.    
+   //if(/^[^####]*$/.test(form.elements[i].value))     
+   if(/^[^\|"'<>]*$/.test(form.elements[i].value))   
+                resultTag = resultTag+1;   
+   else   
+    form.elements[i].select();   
+  }   
+ }   
+ if(resultTag == flag)   
+  return true;   
+ else   
+ {   
+     alert("文本框中不能含有\n\n 1 单引号: ' \n 2 双引号: \" \n 3 竖  杠: | \n 4 尖角号: < > \n\n请检查输入！");    
+     return false;    
+ }    
+}    
+
+function checkInfo()
+  {//不准包涵特殊字符
+     //// var b = checkAllTextValid($("regForm"))	 
+	 return true;
+  }
+ 
+ function mailRes(n)
+ {
+    alert(n);
+ } 
+ 
+function checkMail()
+{
+   //alert("checkMail");
+   //alert(document.getElementById("mail").value);
+   document.getElementById("myFrame").src = "checkEmail.php?mail="+document.getElementById("mail").value;
+   return false;
+}
+  
+  
+</script>
+
+</head>
+<body ><button onClick="checkMail()">监测邮箱</button>
+<form id="regForm" action="updataInfo.php" method="post" onSubmit="return checkInfo()" 
+encType=multipart/form-data>
+			<table width="98%" align="center" border="0" cellpadding="0" cellspacing="0" >
+				<tr>
+					<td height="10"></td>
+				</tr>
+			</table>		
+			
+			<table width="92%" border="0" align="center" cellpadding="0" cellspacing="1" class="tb">
+			<tr >
+					<td class="tbhead"></td>
+					<td width="85%" colspan="8" align="left"  class="tbhead">公司信息编辑</td>
+		  </tr>				 
+		  
+          
+          <tr>
+            <td width="15%" align="right"  class="tbbody" >Email地址：&nbsp;</td>
+<td colspan="8"  class="tbbody" style="position:relative">
+            	<input type="text"  name="mail" id="mail" value="45169132@qq.com"><span id="email_notice"></span><span class="red"></span>(<font color="red"></font>)</td>            
+		   </tr>
+          
+          <tr>
+            <td width="15%" align="right"  class="tbbody">公司名称：&nbsp;</td>
+<td colspan="8"  class="tbbody" style="position:relative">
+            	<input name="company_name" type="text" id="company_name" value="" size="40"><span class="red">*(请按营业执照上公司名称填写)</span></td>            
+		   </tr>
+          
+          
+		   <tr>
+            <td width="15%" align="right"  class="tbbody">公司简称：&nbsp;</td>
+            <td colspan="8"  class="tbbody" style="position:relative"><span class="tbbody" style="position:relative">
+              <input type="text" name="sortname" id="sortname" value="">
+              <span class="red">*</span>
+            (如"ablecloud") </td>
+		   </tr>
+		   <tr>
+            <td width="15%" align="right"  class="tbbody">公司网站：&nbsp;</td>
+            <td colspan="8"  class="tbbody" style="position:relative"><input type="text" name="site_url" id="site_url" value="" size="50"><span class="red">*</span><br>
+            <font color="#FF0000"></font></td>            
+		   </tr>
+		   
+		   
+
+           
+           <tr>
+            <td width="15%" align="right"  class="tbbody">公司所在地:&nbsp;</td>
+            <td colspan="8"  class="tbbody" style="position:relative"> 
+            <select name="province" id="provinces" charset=gb2312 onChange="selectedCity();"> 
+                <option value="">请选择</option><option value="1">北京</option><option value="2">上海</option><option value="3">天津</option><option value="4">重庆</option><option value="5">河北</option><option value="6">山西</option><option value="7">内蒙古</option><option value="8">辽宁</option><option value="9">吉林</option><option value="10">黑龙江</option><option value="11">江苏</option><option value="12">浙江</option><option value="13">安徽</option><option value="14">福建</option><option value="15">江西</option><option value="16">山东</option><option value="17">河南</option><option value="18">湖北</option><option value="19">湖南</option><option value="20">广东</option><option value="21">广西</option><option value="22">海南</option><option value="23">四川</option><option value="24">贵州</option><option value="25">云南</option><option value="26">西藏</option><option value="27">陕西</option><option value="28">甘肃</option><option value="29">宁夏</option><option value="30">青海</option><option value="31">新疆</option><option value="32">香港</option><option value="33">澳门</option><option value="34">台湾</option><option value="35">国外</option></select> 
+                <select name="city" id="cities"> 
+                <option value="<?php echo $this->_tpl_vars['arr_conIfo_list'][7]; ?>
+"><?php echo $this->_tpl_vars['arr_conIfo_list'][7]; ?>
+</option></select>
+		<script> 
+		  ProvinceCity('','');
+		  
+        </script>
+                <span class="red">*</span> </td>
+		   </tr>
+           
+         <tr><td width="15%" align="right"  class="tbbody">详细地址：&nbsp;</td>
+            <td colspan="8"  class="tbbody" style="position:relative"><span class="tbbody" style="position:relative">
+              <input name="address" type="text" id="address" value="" maxlength="50" size="50">
+           </span><span class="red">*</span><td></tr>  
+ <!--tr><td width="15%" align="right"  class="tbbody">邮政编码：&nbsp;</td>
+            <td colspan="8"  class="tbbody" style="position:relative"><input type="text" name="zipcode" id="zipcode" value="" size="8">
+              <span>（可选）</span><td></tr-->           
+           
+    <tr><td width="15%" align="right"  class="tbbody">电    话：&nbsp;</td>
+            <td colspan="8"  class="tbbody" style="position:relative"><input type="text" name="telephone" id="telephone" value="" maxlength="25" size="15"><span class="red">*(如:01088008812)</span><td></tr>
+            <tr><td width="15%" align="right"  class="tbbody">联系人：&nbsp;</td>
+            <td colspan="8"  class="tbbody" style="position:relative"><input type="text" name="linkman" id="linkman" value="" maxlength="25" size="15"><span class="red"></span><td></tr>       
+            
+             <!--tr><td width="15%" align="right"  class="tbbody">传    真：&nbsp;</td>
+               <td colspan="8"  class="tbbody" style="position:relative"><input type="text" name="fax" id="fax" value="" size="15" maxlength="25">
+            <span>(可选)</span>
+               <td></tr-->
+            
+             
+            <!--tr><td width="15%" align="right"  class="tbbody">所在区域：&nbsp;</td>
+               <td colspan="8"  class="tbbody" style="position:relative"> <input id="a_1" type="radio" name="business_scope" value="1">
+              华北
+              &nbsp;
+            	<input type="radio" id="a_2" name="business_scope" value="2">
+            	华东
+            	&nbsp;
+                <input type="radio" id="a_3" name="business_scope" value="3">
+                华南
+                &nbsp;
+                <input type="radio" id="a_4" name="business_scope" value="4">
+                华中
+                &nbsp;
+                <input type="radio" id="a_5" name="business_scope" value="5">
+                西南
+                &nbsp;
+                <input type="radio" name="business_scope" id="a_6" value="6">
+                西北
+                &nbsp;
+                <input type="radio" id="a_7" name="business_scope"  value="7">
+                东北
+               <td></tr-->
+           
+            <!--tr><td width="15%" align="right"  class="tbbody">业务类型：&nbsp;</td>
+               <td colspan="8"  class="tbbody" style="position:relative">
+               <input id="s_1" type="radio" name="erp_type" value="1">
+                云服务
+              &nbsp;
+            	<input type="radio" id="s_2" name="erp_type" value="2">
+            	解决方案
+            	&nbsp;
+                <input type="radio" id="s_3" name="erp_type" value="3">
+                大数据
+                &nbsp;
+                <input type="radio" id="s_4" name="erp_type" value="4">
+                其他
+                
+                <span class="red">*</span>
+               <td></tr-->
+               
+             <tr><td width="15%" align="right"  class="tbbody">产品:
+          </td>
+              <td colspan="3" class="tbbody" id="product">
+              <input name="pro_types"  id="pro_types" style="width:800px" value=""/></td>
+              </tr>
+             <!--tr><td width="15%" align="right"  class="tbbody">客服QQ:</td>
+         <td class="tbbody"> <input type="text" name="qq" id="qq" value="" size="30"><span class="red">*</span>(多个请逗号,分开)</td>
+             </tr--> 
+            
+             <tr><td width="15%" align="right"  class="tbbody">公司成立时间:
+          </td>
+              <td colspan="3" class="tbbody" id="product">
+              
+              <select name="establish" id="establish">
+              <option value="">请选择</option>
+              
+              <option value="1992">1992年</option>
+              <option value="1993">1993年</option>
+              <option value="1994">1994年</option>
+              <option value="1995">1995年</option>
+              <option value="1996">1996年</option>
+              <option value="1997">1997年</option>
+              <option value="1998">1998年</option>
+              <option value="1999">1999年</option>
+              <option value="2000">2000年</option>
+              <option value="2001">2001年</option>
+              <option value="2002">2002年</option>
+              <option value="2003">2003年</option>
+              <option value="2004">2004年</option>
+              <option value="2005">2005年</option>
+              <option value="2006">2006年</option>
+              <option value="2007">2007年</option>
+              <option value="2008">2008年</option>
+              <option value="2009">2009年</option>
+              <option value="2010">2010年</option>
+              <option value="2011">2011年</option>
+              <option value="2012">2012年</option>
+              <option value="2013">2013年</option>
+              
+              <option value="2014">2014年</option>
+              <option value="2015">2015年</option>
+              <option value="2016">2016年</option>
+              <option value="2017">2017年</option>
+              <option value="2018">2018年</option>
+              <option value="2019">2019年</option>
+              
+            </select>
+              
+              </td>
+              </tr>
+              
+              
+            <tr><td width="15%" align="right"  class="tbbody">典型客户:
+             <td colspan="3" id="product"  class="tbbody"> <input type="text" name="customer" id="customer" style="width:600px;" value=""  maxlength="80">
+(可选,多个逗号分开 如:华为,中兴)</td></td>
+              </tr>
+            
+           
+            <tr>
+            
+            
+            <tr><td width="15%" align="right"  class="tbbody">简介:
+             <td colspan="3" id="product"  class="tbbody">  <textarea name="summary" id="summary" style=" width:600px; height:200px; margin-bottom:20px"></textarea>   
+(可选,多个逗号分开 如:华为,中兴)</td></td>
+              </tr>
+           
+            <tr>
+            
+            
+            
+            <td width="15%" align="right"  class="tbbody">公司简介：&nbsp;</td>
+      <td colspan="8"  height="800" class="tbbody" style="position:relative">
+      		<textarea name="content" id="content" style="width:800px;height:400px;visibility:hidden; display:none"></textarea>
+            <textarea name="contents" id="contents" style="width:800px;height:400px;visibility;"></textarea>
+      		<!--iframe src="./Edit/editor.htm?id=gently_editor&ReadCookie=0" id="contents" name="contents" frameborder="0" marginheight="0" marginwidth="0" scrolling="No" width="800" height="600"></iframe-->
+           
+		    <script charset="utf-8" src="../editor/kindeditor-min.js"></script>
+		    <script charset="utf-8" src="../editor/lang/zh_CN.js"></script>
+		    <script>
+			var editor;
+			KindEditor.ready(function(K) {
+				editor = K.create('textarea[name="contents"]', {
+					allowFileManager : true
+				});
+				/*K('input[name=getHtml]').click(function(e) {
+					alert(editor.html());
+				});
+				K('input[name=isEmpty]').click(function(e) {
+					alert(editor.isEmpty());
+				});
+				K('input[name=getText]').click(function(e) {
+					alert(editor.text());
+				});
+				K('input[name=selectedHtml]').click(function(e) {
+					alert(editor.selectedHtml());
+				});
+				K('input[name=setHtml]').click(function(e) {
+					editor.html('<h3>Hello KindEditor</h3>');
+				});
+				K('input[name=setText]').click(function(e) {
+					editor.text('<h3>Hello KindEditor</h3>');
+				});
+				K('input[name=insertHtml]').click(function(e) {
+					editor.insertHtml('<strong>插入HTML</strong>');
+				});
+				K('input[name=appendHtml]').click(function(e) {
+					editor.appendHtml('<strong>添加HTML</strong>');
+				});
+				K('input[name=clear]').click(function(e) {
+					editor.html('');
+				});*/
+			});
+		</script>
+                  
+            </td>   
+             
+		   </tr>
+		   </table>
+<br>	
+			
+			<table width="92%" border="0" align="center" cellpadding="3" cellspacing="0" style="font-size:12px;" >
+				 <tr>
+					<td colspan="2" valign="middle" align="center"><p>
+						<input class="btn1"  type="button" onClick="return myfunc();" value="确定">
+						<!--input class="btn1"  type="reset" value="重置"-->
+					</p>
+						<p>&nbsp; </p></td>
+				</tr>
+		  </table>
+
+
+
+</form>
+</body>
+<script language="javascript">
+
+ var isNameExit = false;
+  var content="";
+  var editFrame;//contents
+ 
+ ///var oragainName = <?php echo $this->_tpl_vars['arr_conIfo_list'][0]; ?>
+;
+ function $(s){   
+	     return document.getElementById(s);
+  }
+function trim(str){   //删除左右两端的空格
+   return str.replace(/(^\s*)|(\s*$)/g, "");
+  }
+  
+   
+  
+function myfunc()
+{/////Fcon_name,Fcon_info,Fcon_website,Fmaster_name,Fmaster_tel,Fmaster_mail,Fmaster_qq
+	
+	
+	  if(!checkAllTextValid($("regForm")))
+	  {
+	      return false;
+	  }
+	  var contents;
+	  /*var s = "";
+	 for(var i=0;i<proArr.length;i++)
+	 {
+	    var o = $('pr'+i);
+		if(o.checked==true||o.checked=="true")
+		{
+		   if(s=="")
+		   {
+		     s = o.value;
+		   }else
+		   {
+		     s = s+"{*}"+o.value;
+		   }
+		}
+	 }
+	 $('pro_types').value = s;
+	*/
+	
+	
+	contents = editor.html();
+	
+	$("content").innerText = contents;
+	///return;
+	
+	if(contents.length<50)
+	{
+	   alert("您发的文章字数少于50");
+	   return;
+	}
+	
+	//editFrame = frames["contents"];
+	//content = editFrame.getHTML();//
+	//if(content.length<50)
+	//{
+	 //  alert("简介字数少于50");
+	 //  return;
+	//}
+	///alert(editFrame.getHTML());
+	var s = $("summary").value;
+	if(s.length>300||s.length<20)
+	{
+	 // s = s.slice(0,200);
+	  alert("公司简介不能小于20且不能大于300");
+	  return;
+	}
+	 //$("summary").value = s;
+	/// $("summary").innerText = s;
+	
+	
+	// if($("pro_types").value=="")
+	// {
+	    // alert("请选择产品类型");
+		// return false;
+	// }
+	 
+	 
+     if($("company_name").value==""||$("company_name").value.length<3||$("company_name").value.length>24)
+	 {
+	   /// $("username_msg").className = "red";
+		 alert("公司名长度为3-24位");
+	     return false;
+	 }
+	 
+	  if($("sortname").value==""||$("sortname").value.length<2||$("sortname").value.length>16)
+	 {
+	   /// $("username_msg").className = "red";
+		 alert("简称长度为2-16位");
+	     return false;
+	 }
+	 
+	 
+	 
+	/* if($("intro").value==""||$("intro").value.length<20||$("site_url").value.length>200)
+	 {
+	   /// $("username_msg").className = "red";
+		 alert("简介长度不对");
+	     return false;
+	 }*/
+	 
+	 if($("provinces").value==""||$("cities").value=="")
+	 {
+	    alert("请选择省份和城市");
+		return false;
+	 }
+	 if($("address").value==""||$("address").value.length<8||$("address").value.length>50)
+	 {
+		 alert("地址长度为8-50字");
+	     return false;
+	 }
+	 /*if($("zipcode").value!=""&&$("zipcode").value.length!=6)
+	 {
+		 alert("邮编地址为6位");
+	     return false;
+	 }*/
+	 
+	 if($("telephone").value==""||$("telephone").value.length<10||$("telephone").value.length>38)
+	 {
+	   /// $("username_msg").className = "red";
+		 alert("联系电话长度不对");
+	     return false;
+	 }
+	 
+	
+///if(!$("a_1").checked&&!$("a_2").checked&&!$("a_3").checked&&!$("a_4").checked&&!$("a_5").checked&&!$("a_6").checked&&!$("a_7").checked)
+	// {
+	   /// alert("请选择所在区域");
+		///return false;
+	// }
+	 
+    //if(!$("s_1").checked&&!$("s_2").checked&&!$("s_3").checked&&!$("s_4").checked&&!$("s_5").checked&&!$("s_6").checked&&!$("s_7").checked)
+	// {
+	   /// alert("请选择业务类型");
+		//return false;
+	// }
+	 /*if($("qq").value==""||$("qq").value.length<5)
+	 {
+	   /// $("username_msg").className = "red";
+		 alert("qq为长度为大于5位");
+	     return false;
+	 }*/
+	 
+	 if($("establish").value=="")
+	 {
+	   /// $("username_msg").className = "red";
+		 alert("请选择成立时间");
+	     return false;
+	 }
+	 
+	// if($("guimo").value=="")
+	// {
+	   /// $("username_msg").className = "red";
+		// alert("请选择规模");
+	    // return false;
+	// }
+	
+	regForm.method = "post";
+	regForm.action = "doAddCompany.php?"+"&ct="+new Date();
+    regForm.submit();
+	
+	/*//}
+	*/
+}
+	
+</script>
+<iframe style="width:200px; height:200px;" name="myFrame" id="myFrame">
+</iframe>
+</html>

@@ -1,0 +1,336 @@
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312" />
+<title>无标题文档</title>
+<style type="text/css">
+<!--
+body {
+	margin-left: 0px;
+	margin-top: 5px;
+	margin-right: 0px;
+	margin-bottom: 0px;
+	padding:0px;
+	width:100%;
+}
+.tb{
+	background-color:#B9CDD9;
+}
+.tbhead {
+	height:28px;
+	background-color:#E1EFFD;
+	color:#3F7CAB;
+	font-weight:bold;
+}
+.tbbody {
+	height:28px;
+	background-color:#FFFFFF;
+}
+label {
+	color:#3F7CAB;
+	text-decoration:underline;
+	cursor:pointer;
+}
+.bb {
+	color:#3F7CAB;
+	font-weight:bold;
+}
+.style1 {color: #FF0000}
+-->
+</style>
+<link href="/css/H.css" rel="stylesheet" type="text/css" />
+<script src="/js/common.js"></script>
+</head>
+<body >
+<form id="regForm" action="php/regist.php" method="post" onSubmit="return checkInfo()" 
+encType=multipart/form-data>
+
+<table width="98%" border="0" cellpadding="0" cellspacing="0" class="idcintro" id="userinfo">
+<tbody>
+        	<tr>
+            	<th>Email地址：</th>
+                <td colspan="3"><input type="text" name="mail" id="mail" value=""><span id="email_notice"></span><span class="red">*</span>(必须填写您真实在用Email,<font color="red">同时作为登陆账号</font>)</td>
+            </tr>
+          <tr>
+            <th class="s1">公司名称:</th>
+            <td colspan="3"><input name="company_name" type="text" id="company_name" value="" size="40"><span class="red">*(请按营业执照上公司名称填写)</span></td>
+          </tr>
+	  <tr>
+	    <th class="s1">简称:</th>
+            <td colspan="3"><input type="text" name="sortname" id="sortname" value="">
+              <span class="red">*</span>
+            (如"北京智通")</td>
+          </tr>
+          <tr>
+            <th class="s1">公司网站:</th>
+            <td colspan="3">
+			<input type="text" name="site_url" id="site_url" value="http://" size="50"><span class="red">*</span><br>
+            <font color="#FF0000">必须填写"http://"开头，真实填写否则不会通过审核！</font></td>
+        </tr>
+          <tr>
+            <th class="s1">公司简介:</th>
+            <td colspan="3"><textarea name="intro" cols="50" rows="3" id="intro"></textarea><span class="red">*(20-200字)</span></td>
+          </tr>
+          <tr>
+            <th>公司所在地:</th>
+            <td colspan="3">
+		
+                <select name="province" id="provinces" onchange="selectedCity();"> 
+                <option value="">请选择</option><option value="1">北京</option><option value="2">上海</option><option value="3">天津</option><option value="4">重庆</option><option value="5">河北</option><option value="6">山西</option><option value="7">内蒙古</option><option value="8">辽宁</option><option value="9">吉林</option><option value="10">黑龙江</option><option value="11">江苏</option><option value="12">浙江</option><option value="13">安徽</option><option value="14">福建</option><option value="15">江西</option><option value="16">山东</option><option value="17">河南</option><option value="18">湖北</option><option value="19">湖南</option><option value="20">广东</option><option value="21">广西</option><option value="22">海南</option><option value="23">四川</option><option value="24">贵州</option><option value="25">云南</option><option value="26">西藏</option><option value="27">陕西</option><option value="28">甘肃</option><option value="29">宁夏</option><option value="30">青海</option><option value="31">新疆</option><option value="32">香港</option><option value="33">澳门</option><option value="34">台湾</option><option value="35">国外</option></select> 
+                <select name="city" id="cities"> 
+                <option value="">请选择</option></select>
+		<script> ProvinceCity('','');</script>
+                <span class="red">*</span>            </td>
+          </tr>
+          <tr>
+            <th>详细地址:</th>
+            <td colspan="3"><input name="address" type="text" id="address" value="" maxlength="50" size="50"><span class="red">*</span></td>
+          </tr>
+          <tr>
+            <th>邮政编码:</th>
+            <td width="41%"><input type="text" name="zipcode" id="zipcode" value="" size="8">
+              <span>（可选）</span></td>
+            <th width="17%">联 系 人:</th>
+            <td width="27%"><input type="text" name="contact" id="contact" value="" size="10"><span class="red">*</span></td>
+          </tr>
+          <tr>
+            <th>电    话:</th>
+            <td><input type="text" name="telephone" id="telephone" value="" maxlength="25" size="15"><span class="red">*(如:01088008812)</span></td>
+            <th>传    真:</th>
+            <td><input type="text" name="fax" id="fax" value="" size="15" maxlength="25">
+            <span>(可选)</span></td>
+          </tr>
+          <tr>
+            <th>所在区域:</th>
+            <td colspan="3">
+              <input id="hb" type="radio" name="business_scope" value="1">
+              华北
+              &nbsp;
+            	<input type="radio" id="hd" name="business_scope" value="2">
+            	华东
+            	&nbsp;
+                <input type="radio" id="hn" name="business_scope" value="3">
+                华南
+                &nbsp;
+                <input type="radio" id="hz" name="business_scope" value="4">
+                华中
+                &nbsp;
+                <input type="radio" id="xn" name="business_scope" value="5">
+                西南
+                &nbsp;
+                <input type="radio" name="business_scope" id="xb" value="6">
+                西北
+                &nbsp;
+                <input type="radio" id="db" name="business_scope" value="7">
+                东北
+              </td>
+          </tr>
+          <tr>
+            <th>业务类型:</th>
+            <td colspan="3"><input id="yy" type="radio" name="erp_type" value="1" onclick="addProduct(1)">
+              用友
+              &nbsp;
+            	<input type="radio" id="jd" name="erp_type" value="2" onclick="addProduct(2)">
+            	金蝶
+            	&nbsp;
+                <input type="radio" id="sd" name="erp_type" value="3">
+                速达
+                &nbsp;
+                <input type="radio" id="gjp" name="erp_type" value="4">
+                管家婆
+                &nbsp;
+                <input type="radio" id="lc" name="erp_type" value="5">
+                浪潮
+                &nbsp;
+                <input type="radio" name="erp_type" id="jsp" value="6">
+                金算盘
+                &nbsp;
+                <input type="radio" id="qt" name="erp_type" value="7">
+                其他
+                <span class="red">*</span></td>
+          </tr>
+          <tr  >
+          <th>产品:
+          <input type="hidden" name="pro_types"  id="pro_types"/>
+          </th>
+          <td colspan="3" id="product">
+          </td>
+          </tr>
+          <tr>
+            <th>客服QQ:</th>
+            <td colspan="3"><input type="text" name="qq" id="qq" value="" size="30"><span class="red">*</span>(多个请逗号,分开)</td>
+          </tr>
+          <tr>
+            <th>公司成立时间:</th>
+            <td colspan="3">
+            <select name="establish" id="establish">
+              <option value="">请选择</option>
+              
+              <option value="1992">1992年</option>
+              <option value="1993">1993年</option>
+              <option value="1994">1994年</option>
+              <option value="1995">1995年</option>
+              <option value="1996">1996年</option>
+              <option value="1997">1997年</option>
+              <option value="1998">1998年</option>
+              <option value="1999">1999年</option>
+              <option value="2000">2000年</option>
+              <option value="2001">2001年</option>
+              <option value="2002">2002年</option>
+              <option value="2003">2003年</option>
+              <option value="2004">2004年</option>
+              <option value="2005">2005年</option>
+              <option value="2006">2006年</option>
+              <option value="2007">2007年</option>
+              <option value="2008">2008年</option>
+              <option value="2009">2009年</option>
+              <option value="2010">2010年</option>
+              <option value="2011">2011年</option>
+              <option value="2012">2012年</option>
+              <option value="2013">2013年</option>
+            </select>
+              <span class="red">*</span>(如2010年9月)</td>
+          </tr>
+          <tr>
+            <th>代表客户:</th>
+            <td colspan="3"><input type="text" name="customer" id="customer" value=""  maxlength="30">
+(可选,多个逗号分开 如:华为,中兴)</td>
+          </tr>
+          <tr>
+            <th>公司规模:</th>
+            <td colspan="3"><select name="guimo" id="guimo">
+              <option value="">请选择</option>
+              <option value="1">5人以下</option>
+              <option value="2">5-10人</option>
+              <option value="3">10-20人</option>
+              <option value="4">20-50人</option>
+              <option value="5">50-150人</option>
+              <option value="6">150-500人</option>
+              <option value="7">500人以上</option>
+            </select></td>
+          </tr>
+</tbody></table>
+<table width="98%" border="0" cellpadding="0" cellspacing="0" class="idcintro2" id="idcintro2">
+<tbody><tr>
+<th width="12%"></th>
+<td></td>
+</tr>
+<tr>
+<th></th>
+<td><input type="submit"  name="submit1" value="提交修改"></td>
+</tr>
+</tbody></table>
+</form>
+
+</body>
+<script language="javascript">
+
+ var isNameExit = false;
+ ///var oragainName = {{$arr_conIfo_list[0]}};
+ function $(s){   
+	     return document.getElementById(s);
+  }
+function trim(str){   //删除左右两端的空格
+   return str.replace(/(^\s*)|(\s*$)/g, "");
+  }
+  
+  function chechName(str)
+  {
+     if(trim($("consortiaName").value)==str)
+	 {return;}
+	 
+	 if(trim($("consortiaName").value).length<=0||trim($("consortiaName").value).length>=40)
+	 {
+	     alert("名字不能为空或超过40字符");
+		 return;
+	 }
+　　var xmlhttp_request = "";
+　　try{ 
+　   　if( window.ActiveXObject ){ 
+　          　for( var i = 5; i; i-- ){ 
+　            　try{ 
+　               　if( i == 2 ){ 
+　                    　xmlhttp_request = new ActiveXObject( "Microsoft.XMLHTTP" );
+                    }
+　                  　else{ 
+　                         　xmlhttp_request = new ActiveXObject( "Msxml2.XMLHTTP." + i + ".0" ); 
+　                         　xmlhttp_request.setRequestHeader("Content-Type","text/xml"); 
+　　                         xmlhttp_request.setRequestHeader("Charset","gb2312"); 
+                           }
+　                         　break;
+                         } 
+　                     　catch(e){ 
+　                        　xmlhttp_request = false; 
+                          }
+			 } 
+		 }
+　   else if( window.XMLHttpRequest )
+　  　{ 
+          xmlhttp_request = new XMLHttpRequest(); 
+　　      if (xmlhttp_request.overrideMimeType) 
+　       　{ xmlhttp_request.overrideMimeType('text/xml'); } } }
+　     　catch(e){ xmlhttp_request = false; } 
+　　xmlhttp_request.open('GET', 'check_consortia_name.php?u='+trim($("consortiaName").value)+"&ct="+new Date(), true); 
+　　xmlhttp_request.send(null); 
+　　xmlhttp_request.onreadystatechange = function(){
+　   　if (xmlhttp_request.readyState == 4) {
+　    　// 收到完整的服务器响应 
+          var aa = String(xmlhttp_request.responseText);
+		  if(aa=="1")
+		  {
+		    alert("此名称已经存在，请重新输入");
+		    isNameExit = true;
+		  }else
+		  {
+			 isNameExit = false;
+		  }
+	      
+　      　} else{
+　  
+　　     }
+　　  }
+	 
+	 
+  }
+  
+function myfunc()
+{/////Fcon_name,Fcon_info,Fcon_website,Fmaster_name,Fmaster_tel,Fmaster_mail,Fmaster_qq
+	
+	if(isNameExit)
+	{
+	   alert("公会名称名称已经存在，请重新输入");
+	   return;
+	}
+	
+	if(trim($("masterName").value) =="")
+	{
+	   alert("会长名称不能为空");
+	   return;
+	}
+	if(trim($("consortiaName").value) ==""||trim($("consortiaName").value).length>=40)
+	{
+	   alert("公会名称不能为空或超过40字符");
+	   return;
+	}
+	
+	if(trim($("masterMail").value) ==""&&trim($("masterQQ").value) ==""&&trim($("masterTel").value) =="")
+	{
+	   alert("至少填写一种联系方式");
+	   return;
+	}else
+	{
+	   if(trim($("masterMail").value)!=""&&(trim($("masterMail").value).indexOf("@")<=0))
+	   {
+	     alert("请正确填写联系方式");
+		 return;
+	   }
+	}
+	form1.method = "post";
+	form1.action = "/php/updataInfo.php?"+"&ct="+new Date();
+	
+	
+    form1.submit();
+	//}
+}
+	
+</script>
+</html>

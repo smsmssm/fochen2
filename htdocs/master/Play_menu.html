@@ -1,0 +1,93 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312" />
+<title>无标题文档</title>
+<style type="text/css">
+body {
+    margin-left: 10px;
+    margin-top: 15px;
+    margin-right: 0px;
+    margin-bottom: 0px;
+    background:url(images/z_01.jpg) repeat-y;
+    overflow:hidden;
+}
+</style>
+<link href="css/H.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<script src="/js/common.js"></script>
+<script>
+window.onload=function(){
+    /*var sPageTitle="Play";
+    var sUrl = "http://fx.xunlei.com/cgi-bin/cgi_play_count_stat?CacheTime=1185959644937";
+    sUrl = appendCacheTime(sUrl);
+    showSubIndexPage(sUrl);*/
+}
+</script>
+<div class="menu">
+    <div class="dh01"><a href="javascript:switchMenuStyle('ulSub','oImg')"><img id="oImg" src="images/-.gif" width="11" height="11"  border="0"/></a> <a href="/cgi-bin/cgi_play_count_stat"  onclick='javascript:this.href=appendCacheTime( this.href )' target="frContent">播放统计</a></div>
+    <ul id="ulSub" style="display:block">
+        <li><a href="/cgi-bin/cgi_play_count_stat" onclick='javascript:this.href=appendCacheTime( this.href )' class="a1" target="frContent"  onmouseover="hmover(this)" onmouseout="hmout(this)">播放数统计</a></li>
+        <li><a href="/cgi-bin/cgi_play_tops_stat" onclick='javascript:this.href=appendCacheTime( this.href )' class="a1" target="frContent" onmouseover="hmover(this)" onmouseout="hmout(this)">点播排行统计</a></li>
+        <li><a href="/cgi-bin/cgi_play_file_date_stat" onclick='javascript:this.href=appendCacheTime( this.href )' class="a1" target="frContent" onmouseover="hmover(this)" onmouseout="hmout(this)">点播文件查询</a></li>  
+        <li><a href="/cgi-bin/cgi_play_pgvfile_stat" onclick='javascript:this.href=appendCacheTime( this.href )' class="a1" target="frContent" onmouseover="hmover(this)" onmouseout="hmout(this)">按文件浏览</a></li>
+        <!--li><a href="/cgi-bin/cgi_play_edition_stat" onclick='javascript:this.href=appendCacheTime( this.href )' class="a1" target="frContent" onmouseover="hmover(this)" onmouseout="hmout(this)">点播版本统计</a></li-->
+        <li><a href="/cgi-bin/cgi_version_info_stat" onclick='javascript:this.href=appendCacheTime( this.href )' class="a1" target="frContent" onmouseover="hmover(this)" onmouseout="hmout(this)">播放器统计</a></li>
+        <li><a href="/cgi-bin/cgi_play_back_stat" onclick='javascript:this.href=appendCacheTime( this.href )' class="a1" target="frContent" onmouseover="hmover(this)" onmouseout="hmout(this)">回访率统计</a></li>
+        <li><a href="/cgi-bin/cgi_play_time_stat" onclick='javascript:this.href=appendCacheTime( this.href )' class="a1" target="frContent" onmouseover="hmover(this)" onmouseout="hmout(this)">按时段统计</a></li>
+        <li><a href="/cgi-bin/cgi_play_muti_time_stat" onclick='javascript:this.href=appendCacheTime( this.href )' class="a1" target="frContent" onmouseover="hmover(this)" onmouseout="hmout(this)">时段统计(对比)</a></li>
+        <!--<li><a href="Play_location.html" onclick='javascript:this.href=appendCacheTime( this.href )' class="a1" target="frContent" onmouseover="hmover(this)" onmouseout="hmout(this)">按地理分布统计</a></li>-->
+        <li><a href="/cgi-bin/cgi_play_source" onclick='javascript:this.href=appendCacheTime( this.href )' class="a1" target="frContent" onmouseover="hmover(this)" onmouseout="hmout(this)">按来源分布</a></li>        
+        <li><a href="/cgi-bin/cgi_pv_stat_4.0" onclick='javascript:this.href=appendCacheTime( this.href )' class="a1" target="frContent" onmouseover="hmover(this)" onmouseout="hmout(this)">pv统计</a></li>
+        <li><a href="/cgi-bin/cgi_play_clicksum_stat?type=1" onclick='javascript:this.href=appendCacheTime( this.href )' class="a1" target="frContent" onmouseover="hmover(this)" onmouseout="hmout(this)">看看点击统计</a></li>
+        <li><a href="/cgi-bin/cgi_play_clicksum_stat_4.0?type=0" onclick='javascript:this.href=appendCacheTime( this.href )' class="a1" target="frContent" onmouseover="hmover(this)" onmouseout="hmout(this)">看看4.0点击统计</a></li>
+        <li><a href="/cgi-bin/cgi_play_scrolltext_stat" onclick='javascript:this.href=appendCacheTime( this.href )' class="a1" target="frContent" onmouseover="hmover(this)" onmouseout="hmout(this)">跑马灯统计</a></li>
+        <li><a href="/cgi-bin/cgi_play_bartip_stat" onclick='javascript:this.href=appendCacheTime( this.href )' class="a1" target="frContent" onmouseover="hmover(this)" onmouseout="hmout(this)">吧台统计</a></li>
+        <li><a href="/cgi-bin/cgi_play_buf_stat_total" onclick='javascript:this.href=appendCacheTime( this.href )' class="a1" target="frContent" onmouseover="hmover(this)" onmouseout="hmout(this)">缓冲统计</a></li>
+        <li><a href="/cgi-bin/cgi_prepare_data_stat" onclick='javascript:this.href=appendCacheTime( this.href )' class="a1" target="frContent" onmouseover="hmover(this)" onmouseout="hmout(this)">准备数据时间统计</a></li>
+        <li><a href="/cgi-bin/cgi_play_movietype_stat" onclick='javascript:this.href=appendCacheTime( this.href )' class="a1" target="frContent" onmouseover="hmover(this)" onmouseout="hmout(this)">影视类别统计</a></li>
+        <li><a href="/cgi-bin/cgi_play_search_stat" onclick='javascript:this.href=appendCacheTime( this.href )' class="a1" target="frContent" onmouseover="hmover(this)" onmouseout="hmout(this)">搜索统计</a></li>
+        <li><a href="/cgi-bin/cgi_play_special_stat" onclick='javascript:this.href=appendCacheTime( this.href )' class="a1" target="frContent" onmouseover="hmover(this)" onmouseout="hmout(this)">专题统计</a></li>
+        <li><a href="/cgi-bin/cgi_play_movielen_stat" onclick='javascript:this.href=appendCacheTime( this.href )' class="a1" target="frContent" onmouseover="hmover(this)" onmouseout="hmout(this)">内容建设统计</a></li>
+        <li><a href="/cgi-bin/cgi_play_live_float" onclick='javascript:this.href=appendCacheTime( this.href )' class="a1" target="frContent" onmouseover="hmover(this)" onmouseout="hmout(this)">直播浮层推广</a></li>
+        <li><a href="/cgi-bin/cgi_play_month_stat" onclick='javascript:this.href=appendCacheTime( this.href )' class="a1" target="frContent" onmouseover="hmover(this)" onmouseout="hmout(this)">月份播放统计</a></li>
+        <li><a href="/cgi-bin/cgi_play_score_stat" onclick='javascript:this.href=appendCacheTime( this.href )' class="a1" target="frContent" onmouseover="hmover(this)" onmouseout="hmout(this)">评分统计</a></li>
+        <li><a href="/cgi-bin/cgi_play_count_realtime" onclick='javascript:this.href=appendCacheTime( this.href )' class="a1" target="frContent" onmouseover="hmover(this)" onmouseout="hmout(this)">实时播放数</a></li>
+        <li><a href="/cgi-bin/cgi_play_seo_stat" onclick='javascript:this.href=appendCacheTime( this.href )' class="a1" target="frContent" onmouseover="hmover(this)" onmouseout="hmout(this)">SEO统计</a></li>
+        <li><a href="/cgi-bin/cgi_play_ggvod_stat" onclick='javascript:this.href=appendCacheTime( this.href )' class="a1" target="frContent" onmouseover="hmover(this)" onmouseout="hmout(this)">试看统计</a></li>
+        <li><a href="/cgi-bin/cgi_play_search_vv_stat" onclick='javascript:this.href=appendCacheTime( this.href )' class="a1" target="frContent" onmouseover="hmover(this)" onmouseout="hmout(this)">狗狗搜索排行</a></li>
+    </ul>
+</div>
+<div class="menu">
+    <div class="dh01"><a href="javascript:switchMenuStyle('ulSub1','oImg1')"><img id="oImg1" src="images/-.gif" width="11" height="11"  border="0"/></a> <a href="/cgi-bin/cgi_user_sum_stat" onclick='javascript:this.href=appendCacheTime( this.href )' target="frContent">用户统计</a></div>
+    <ul id="ulSub1" style="display:block">
+        <li><a href="/cgi-bin/cgi_user_sum_stat" onclick='javascript:this.href=appendCacheTime( this.href )' class="a1" target="frContent" onmouseover="hmover(this)" onmouseout="hmout(this)">总用户数统计</a></li>
+        <li><a href="/cgi-bin/cgi_user_stat" onclick='javascript:this.href=appendCacheTime( this.href )' class="a1" target="frContent" onmouseover="hmover(this)" onmouseout="hmout(this)">每日上线用户</a></li>
+        <li><a href="/cgi-bin/cgi_user_new_stat" onclick='javascript:this.href=appendCacheTime( this.href )' class="a1" target="frContent" onmouseover="hmover(this)" onmouseout="hmout(this)">每日新增统计</a></li>
+        <li><a href="/cgi-bin/cgi_user_toponline_stat" onclick='javascript:this.href=appendCacheTime( this.href )' class="a1" target="frContent" onmouseover="hmover(this)" onmouseout="hmout(this)">同时在播</a></li>
+        <li><a href="/cgi-bin/cgi_user_online_realtime" onclick='javascript:this.href=appendCacheTime( this.href )' class="a1" target="frContent" onmouseover="hmover(this)" onmouseout="hmout(this)">实时在播</a></li>
+        <!--<li><a href="/cgi-bin/cgi_user_fee_stat" onclick='javascript:this.href=appendCacheTime( this.href )' class="a1" target="frContent" onmouseover="hmover(this)" onmouseout="hmout(this)">金额统计</a></li>
+        <li><a href="/cgi-bin/cgi_user_err_stat" onclick='javascript:this.href=appendCacheTime( this.href )' class="a1" target="frContent" onmouseover="hmover(this)" onmouseout="hmout(this)">VIP注册失败统计</a></li>-->
+    </ul>
+</div>
+
+<div class="menu">
+    <div class="dh01"><a href="javascript:switchMenuStyle('ulSub2','oImg2')"><img id="oImg2" src="images/-.gif" width="11" height="11"  border="0"/></a> <a href="/cgi-bin/cgi_xmp_play_count_stat" onclick='javascript:this.href=appendCacheTime( this.href )' target="frContent">XMP统计</a></div>
+    <ul id="ulSub2" style="display:block">
+        <li><a href="/cgi-bin/cgi_xmp_play_count_stat" onclick='javascript:this.href=appendCacheTime( this.href )' class="a1" target="frContent" onmouseover="hmover(this)" onmouseout="hmout(this)">XMP播放数统计</a></li>
+        <li><a href="/cgi-bin/cgi_xmp_play_file_stat" onclick='javascript:this.href=appendCacheTime( this.href )' class="a1" target="frContent" onmouseover="hmover(this)" onmouseout="hmout(this)">XMP点播文件统计</a></li>
+        <li><a href="/cgi-bin/cgi_xmp_version_stat" onclick='javascript:this.href=appendCacheTime( this.href )' class="a1" target="frContent" onmouseover="hmover(this)" onmouseout="hmout(this)">XMP每天启动方式</a></li>
+        <li><a href="/cgi-bin/cgi_xmp_error_stat" onclick='javascript:this.href=appendCacheTime( this.href )' class="a1" target="frContent" onmouseover="hmover(this)" onmouseout="hmout(this)">XMP播放失败原因统计</a></li>
+        <li><a href="/cgi-bin/cgi_xmp_search_stat" onclick='javascript:this.href=appendCacheTime( this.href )' class="a1" target="frContent" onmouseover="hmover(this)" onmouseout="hmout(this)">影视音乐搜索统计</a></li>
+        <li><a href="/cgi-bin/cgi_xmp_version_count_stat" onclick='javascript:this.href=appendCacheTime( this.href )' class="a1" target="frContent" onmouseover="hmover(this)" onmouseout="hmout(this)">版本分布统计</a></li>
+        <li><a href="/cgi-bin/cgi_xmp_error_type" onclick='javascript:this.href=appendCacheTime( this.href )' class="a1" target="frContent" onmouseover="hmover(this)" onmouseout="hmout(this)">失败统计</a></li>
+    <li><a href="/cgi-bin/cgi_xmp_install_stat" onclick='javascript:this.href=appendCacheTime( this.href )' class="a1" target="frContent" onmouseover="hmover(this)" onmouseout="hmout(this)">安装卸载统计</a></li>
+    <li><a href="/cgi-bin/cgi_xmp_source_type" onclick='javascript:this.href=appendCacheTime( this.href )' class="a1" target="frContent" onmouseover="hmover(this)" onmouseout="hmout(this)">来源统计</a></li>
+        <!--<li><a href="/cgi-bin/cgi_user_fee_stat" onclick='javascript:this.href=appendCacheTime( this.href )' class="a1" target="frContent" onmouseover="hmover(this)" onmouseout="hmout(this)">金额统计</a></li>
+        <li><a href="/cgi-bin/cgi_user_err_stat" onclick='javascript:this.href=appendCacheTime( this.href )' class="a1" target="frContent" onmouseover="hmover(this)" onmouseout="hmout(this)">VIP注册失败统计</a></li>-->
+    </ul>
+</div>
+
+</body>
+</html>

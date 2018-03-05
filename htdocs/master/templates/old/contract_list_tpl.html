@@ -1,0 +1,209 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312" />
+<title>电影列表</title>
+<style type="text/css">
+body {
+	margin-left: 0px;
+	margin-top: 0px;
+	margin-right: 0px;
+	margin-bottom: 0px;
+}
+label {
+	color:#3F7CAB;
+	text-decoration:underline;
+	cursor:pointer;
+}
+.bb {
+	color:#3F7CAB;
+	font-weight:bold;
+}
+</style>
+<link href="/css/H.css" rel="stylesheet" type="text/css">
+<link href="/css/pager.css" rel="stylesheet" type="text/css">
+<script src="/js/common.js"></script>
+<script src="/js/global.js"></script>
+<script src="/js/ImageClip.js"></script>
+</head>
+
+
+<script language="javascript">
+	
+function myfunc(formTmp,i)
+{
+	var movieid =formTmp.iFmovie_id.value;
+    var MyURL;
+    with (formTmp)
+   { 
+	    if(i==0)
+	    {
+		    if(tag1.value==""){
+			    alert("第一个标签都没有，加一个吧");
+			    tag1.focus();
+			    return false;
+		    }
+		    if (type_of_res.value < 100){
+			    alert("请选择一个二级类别");
+			    type_of_res.focus();
+			    return false;
+		    }
+	        if( ! confirm('确定资源无问题吗?') )
+			    return false;
+	    }else
+	    {
+	        if( ! confirm('确定吗？') )
+			    return false;
+	    }
+	    MyURL=webRoot+"/cgi-bin/cgi_movie_edit?Fid="+movieid+"&opt=del&"+getCacheTime();
+	    //alert(MyURL);
+	}
+	new Ajax.Request(MyURL,
+	{
+	    response: "Text",
+	    onSuccess: function(evt)
+	    {
+	        var result = evt.response;
+	        //alert(result);   
+	        delRow(formTmp,result ); 
+	    },
+	    on500: function(){alert("wrong wrong");},
+	    onException: function(){alert("error!");}
+	});
+}
+
+
+function audit_fail(formTmp)
+{
+	var movieid =formTmp.iFmovie_id.value;
+  location.href="/cgi-bin/cgi_movie_edit?Fid="+movieid+"&opt=audit_fail&"+getCacheTime();
+
+}
+
+function audit_pass(formTmp)
+{
+	var movieid =formTmp.iFmovie_id.value;
+  location.href="/cgi-bin/cgi_movie_edit?Fid="+movieid+"&opt=audit_pass&"+getCacheTime();
+
+}
+
+
+function delRow( formTmp, result )
+{
+		var idx = 0;
+		//alert(result);
+	   if ( ( idx = result.indexOf("msg_alert")) != -1)
+	   {
+	   		alert(result.substring(idx + ("msg_alert").length));
+			return;
+	   }
+	   else if( result != "abcd" ) 
+	   {alert("wrong");
+	        return;
+	   }       
+	   var index;
+	   for( var ele=formTmp.parentElement; ; ele=ele.parentElement)
+       {
+            with(ele){
+            //alert(tagName);
+            if(tagName=="TR")
+	             index = rowIndex;
+	             if(tagName=="TABLE")
+	             {
+	                   deleteRow(index);
+	                   break; 
+	             }
+	        }   
+       }
+}
+
+function getMovie(formTmp)
+{
+	var page = document.sortForm.pages.value;
+	var iFormat = formTmp.Format.value;
+	var movieid = formTmp.iFmovie_id.value;
+	var iFhall_type=formTmp.Fhall_type.value;
+	var iFhall_id=formTmp.Fhall_id.value;
+	var types=formTmp.type.value;
+	var url= "/cgi-bin/cgi_movie_edit?page=" + page +"&type="+types+"&Fid="+movieid+"&Format="+iFormat+"&Fhall_type="+iFhall_type+"&Fhall_id="+iFhall_id+"&"+getCacheTime();
+
+	location.href  = url;
+}
+function viewMovie(formTmp)
+{
+	var movieid = formTmp.iFmovie_id.value;
+	var url= "http://play.kankan.xunlei.com/?hallid="+movieid;
+
+	var oWindow = window.open(url,'fxWindow');
+	oWindow.focus();
+	//window.open(url);
+	//location.href  = url;
+}
+
+function viewPic(formTmp)
+{
+	var movieid = formTmp.iFmovie_id.value;
+	//var page = document.sortForm.page.value;
+	var url= "/cgi-bin/cgi_sub_list?type=1&Fhall_id="+movieid+"&"+getCacheTime();
+
+	var oWindow = window.open(url,'picWindow');
+	oWindow.focus();
+}
+
+function listSub(paras)
+{
+	var page = document.sortForm.page.value;
+	location.href= "/cgi-bin/cgi_sub_list"+paras+"&page="+page+"&"+getCacheTime();
+}
+
+function GoToContent(id){
+	document.location.href="showContent.php?id="+id+"&ct="+new Date();
+}
+</script>
+<body >
+
+<table width="100%" height="400" border="0" cellpadding="0" cellspacing="0" style="margin:0 0 0 0" >
+	<tr>
+		<td valign="top" bgcolor="#FFFFFF">
+			<br><br><br>
+			<table width="100%" height="13" border="0" cellpadding="0" cellspacing="0" style="display:none">
+				<tr>
+					<td width="45%" height="45" align="left" style="font-size:12px; font-weight:bolder; color:#666666;">&nbsp;&nbsp;<span class="bb">总共有3087页,你现在在第1页,总共46293条新资源&nbsp;&nbsp;<a href="/cgi-bin/cgi_movie_list?hallid=&image=&hallname=&halltype=&actor=&director=&yx_id=&other=&status=&hd=&pay=&area=&year=&type=&from=&to=&dapian=&yx_fc=&down=1&1234509355" target="_blank">下载</a></span></td>
+					<td width="55%" align="right" style="font-size:12px; font-weight:bolder; color:#666666;" nowrap=true><form name="goform"><div id="pageLink"><span id="pageLinkOn">1</span><span id="pageNavSpace"></span><a href='/cgi-bin/cgi_movie_list?hallid=&image=&hallname=&halltype=&actor=&director=&yx_id=&other=&status=&hd=&pay=&area=&year=&type=&from=&to=&dapian=&yx_fc=&page=2&order=0&CacheTime=1234509355'>2</a><span id="pageNavSpace"></span><a href='/cgi-bin/cgi_movie_list?hallid=&image=&hallname=&halltype=&actor=&director=&yx_id=&other=&status=&hd=&pay=&area=&year=&type=&from=&to=&dapian=&yx_fc=&page=3&order=0&CacheTime=1234509355'>3</a><span id="pageNavSpace"></span><a href='/cgi-bin/cgi_movie_list?hallid=&image=&hallname=&halltype=&actor=&director=&yx_id=&other=&status=&hd=&pay=&area=&year=&type=&from=&to=&dapian=&yx_fc=&page=4&order=0&CacheTime=1234509355'>4</a><span id="pageNavSpace"></span><a href='/cgi-bin/cgi_movie_list?hallid=&image=&hallname=&halltype=&actor=&director=&yx_id=&other=&status=&hd=&pay=&area=&year=&type=&from=&to=&dapian=&yx_fc=&page=5&order=0&CacheTime=1234509355'>5</a><span id="pageNavSpace"></span><a href='/cgi-bin/cgi_movie_list?hallid=&image=&hallname=&halltype=&actor=&director=&yx_id=&other=&status=&hd=&pay=&area=&year=&type=&from=&to=&dapian=&yx_fc=&page=6&order=0&CacheTime=1234509355'>6</a><span id="pageNavSpace"></span><a href='/cgi-bin/cgi_movie_list?hallid=&image=&hallname=&halltype=&actor=&director=&yx_id=&other=&status=&hd=&pay=&area=&year=&type=&from=&to=&dapian=&yx_fc=&page=7&order=0&CacheTime=1234509355'>7</a><span id="pageNavSpace"></span><a href='/cgi-bin/cgi_movie_list?hallid=&image=&hallname=&halltype=&actor=&director=&yx_id=&other=&status=&hd=&pay=&area=&year=&type=&from=&to=&dapian=&yx_fc=&page=8&order=0&CacheTime=1234509355'>8</a><span id="pageNavSpace"></span><a href='/cgi-bin/cgi_movie_list?hallid=&image=&hallname=&halltype=&actor=&director=&yx_id=&other=&status=&hd=&pay=&area=&year=&type=&from=&to=&dapian=&yx_fc=&page=9&order=0&CacheTime=1234509355'>9</a><a href='/cgi-bin/cgi_movie_list?hallid=&image=&hallname=&halltype=&actor=&director=&yx_id=&other=&status=&hd=&pay=&area=&year=&type=&from=&to=&dapian=&yx_fc=&page=2&order=0&CacheTime=1234509355'>下一页</a><input name="link" type="hidden" value="/cgi-bin/cgi_movie_list?hallid=&image=&hallname=&halltype=&actor=&director=&yx_id=&other=&status=&hd=&pay=&area=&year=&type=&from=&to=&dapian=&yx_fc=&order=0">&nbsp;到<input name="page"  class="smallInput" type="text" value="" size="4" onkeypress="enter()">页<input name="submit" onclick="go(this.form)"  class="btn1" type="button" value="Go"><script>function go(formTmp){var url=formTmp.link.value+"&page="+formTmp.page.value+"&"+getCacheTime();location.href= url;} function enter(){var event = window.event;if(13 == event.keyCode)go(document.forms["goform"])}</script></div></form>&nbsp;&nbsp;</td>
+				</tr>
+			</table>
+<!--start content-->
+<table width="99%" border="0" align="center" cellpadding="0" cellspacing="1" bgcolor="#B9CDD9" class="tb">
+  <form name="sortForm">
+  <input type="hidden" name="page" value="1">
+  <input type="hidden" name="pages" value="page:1|hallid:|hallname:|halltype:|actor:|director:|yx_id:|other:|status:|pay:|area:|year:|type:|order:0|from:|to:|dapian:|yx_fc:">
+  </form>
+  <tr>
+  <td width="6%" align="center" bgcolor="#E1EFFD" class="new12" style="padding:0px;">&nbsp;<span class="bb">项目号</span></td>
+	<td width="18%" align="center" bgcolor="#E1EFFD" class="new12" style="padding:0px;"><span class="bb">合同名称</span></td>
+	<td width="8%" align="center" bgcolor="#E1EFFD" class="new12" style="padding:0px;"><span class="bb">审核状态</span></td>
+	<td width="8%" align="center" bgcolor="#E1EFFD" class="new12" style="padding:0px;">&nbsp;<span class="bb">提交部门</span></td> 
+	<td width="8%" align="center" bgcolor="#E1EFFD" class="new12" style="padding:0px;">&nbsp;<span class="bb">责任人</span></td>
+	<td width="8%" height="28px"  bgcolor="#E1EFFD" class="new12" align="center" style="padding:0px;"><span class="bb">提交日期</span></td>
+	<td width="8%" align="center" bgcolor="#E1EFFD" class="new12" style="padding:0px;"><span class="bb">预计回复日期</span></td>
+	<td width="18%" align="center" bgcolor="#E1EFFD" class="new12" style="padding:0px;">&nbsp;<span class="bb">操作</span></td>
+  </tr>
+  
+  {{section name=i loop=$arr_contract_list}}
+  <tr>
+		<td height="28px" align="center" bgcolor="#FFFFFF" style="padding:0px">{{$arr_contract_list[i][0]}}</td>
+		<td height="28px" bgcolor="#FFFFFF"><label onClick="javascript:GoToContent({{$arr_contract_list[i][0]}})">{{$arr_contract_list[i][1]}}</label></td>
+		<td height="28px" align="center" bgcolor="#FFFFFF" style="padding:0px;">{{$arr_contract_list[i][6]}}</td>
+		<td height="28px" align="center" bgcolor="#FFFFFF">{{$arr_contract_list[i][2]}}</td>
+		<td height="28px" align="center" bgcolor="#FFFFFF">{{$arr_contract_list[i][3]}}</td>
+		<td height="28px" align="center" bgcolor="#FFFFFF">{{$arr_contract_list[i][4]}}</td>
+		<td height="28px" align="center" bgcolor="#FFFFFF">{{$arr_contract_list[i][5]}}</td>
+		<td height="28px" align="center" bgcolor="#FFFFFF" style="padding:0px;"><label onClick="GoToContent({{$arr_contract_list[i][0]}})">查 看</label></td>
+  </tr>
+	{{/section}}
+</table>
+		</td>
+	</tr>
+</table>
+</body>
+</html>

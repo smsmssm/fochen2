@@ -1,0 +1,320 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>无标题文档</title>
+<script language="javascript" src="jquery-1.2.6.min.js">
+</script>
+<script language="javascript">
+var currentBar1 = 1;
+var currentPicText1 = 1;
+var currentBar2 = 1;
+var currentPicText2 = 1;
+
+ function getChild(s)
+ {
+   return document.getElementById(s);
+ }
+ function getChild2(s)
+ {
+   var returns = document.getElementsByName(s);
+    if(returns.length > 0) return returns;
+	returns = new Array();
+    var e = document.getElementsByTagName("div");
+    for(var i = 0; i < e.length; i++){
+	     
+        if(e[i].getAttribute("name") == s){
+             returns[returns.length] = e[i];
+         }
+     }
+    return returns;
+	
+ }
+ 
+ /*var getElementsByName = function(tag, name){
+    var returns = document.getElementsByName(name);
+    if(returns.length > 0) return returns;
+     returns = new Array();
+    var e = document.getElementsByTagName(tag);
+    for(var i = 0; i < e.length; i++){
+        if(e[i].getAttribute("name") == name){
+             returns[returns.length] = e[i];
+         }
+     }
+    return returns;
+}
+ */
+ var currentBannerIndex = 0;
+
+  function addBanner1()
+  {
+     currentBar1++;
+     var s =  getChild("content").innerHTML+'<div id="banner1_'+currentBar1+'" style="float:left; height:30px; width:100%; border:#006633 1px solid;"><div style="float:left; height:30px; width:100%;" name="temp"><input id="bannerPic1_'+currentBar1+'"/><button onclick="addBg('+currentBar1+')"style="width:70px">添加背景图</button><button onclick="hide(this)">删除</button></div></div>';
+     getChild("content").innerHTML = s ;
+  }
+  
+  function addPicText1()
+  {
+    currentPicText1++;
+	var s = getChild("content").innerHTML+'<div style="float:left; height:100px; width:100%; border:#006633 1px solid;">';
+    s = s + '<div id="pic1_'+currentPicText1+'" style="float:left; height:100px; width:400px; border:#006633 1px solid"><div style="float:left; height:60px; width:380px;" name="temp">';
+    s = s + '<input id="picInput1_'+currentPicText1+'" /><button onclick="addPicBg('+currentPicText1+')" style="width:70px">添加背景图</button><button onclick="hide2(this)">删除</button></div></div>';
+    s = s + '<div id="30txet1" style="float:left; height:100px; overflow:hidden; width:300px; border:#006633 1px solid">';
+    s = s + ' <OL class="idxTop" id="ol1_'+currentPicText1+'"></OL> <div style="width:280px; float:left; margin-bottom:0px"  name="temp">';
+    s = s + '<div style="width:280px; float:left; margin-bottom:0px">';
+    s = s + ' <input id="text1_'+currentPicText1+'" style="width:100px" /><button onclick="addLi('+currentPicText1+')" style="width:70px">添加文字</button><button onclick="deleteLi1('+currentPicText1+')" style="width:70px">删除文字</button></div></div></div></div>';
+	getChild("content").innerHTML = s;
+  }
+  function addBanner2()
+  {
+     currentBar2++;
+     var s =  getChild("content").innerHTML+'<div id="banner2_'+currentBar2+'" style="float:left; height:60px; width:100%; border:#006633 1px solid;"><div style="float:left; height:60px; width:100%;" name="temp"><input id="bannerPic2_'+currentBar2+'"/><button onclick="addBg2('+currentBar2+')"style="width:70px">添加背景图</button><button onclick="hide(this)">删除</button></div></div>';
+     getChild("content").innerHTML = s ;
+  }
+  
+  function addPicText2()
+  {
+     currentPicText2++;
+	var s = getChild("content").innerHTML+'<div style="float:left; height:120px; width:100%; border:#006633 1px solid;">';
+    s = s + '<div id="pic2_'+currentPicText2+'" style="float:left; height:120px; width:400px; border:#006633 1px solid"><div style="float:left; height:120px; width:380px;" name="temp">';
+    s = s + '<input id="picInput2_'+currentPicText2+'" /><button onclick="addPicBg2('+currentPicText2+')" style="width:70px">添加背景图</button><button onclick="hide2(this)">删除</button></div></div>';
+    s = s + '<div id="30txet1" style="float:left; height:120px; overflow:hidden; width:300px; border:#006633 1px solid">';
+    s = s + ' <OL class="idxTop" id="ol2_'+currentPicText2+'"></OL> <div style="width:280px; float:left; margin-bottom:0px"  name="temp">';
+    s = s + '<div style="width:280px; float:left; margin-bottom:0px">';
+    s = s + ' <input id="text2_'+currentPicText2+'" style="width:100px" /><button onclick="addLi2('+currentPicText2+')" style="width:70px">添加文字</button><button onclick="deleteLi2('+currentPicText2+')" style="width:70px">删除文字</button></div></div></div></div>';
+	getChild("content").innerHTML = s;
+  }
+  
+  function hide2(o)
+  {
+      if(o.parentNode.parentNode.parentNode!=null)
+	 {
+	    o.parentNode.parentNode.parentNode.style.display = "none";
+		 var op = o.parentNode.parentNode.parentNode.parentNode;
+		//o.parentNode.innerHTML = "";//var aa = o.parentNode.innerHTML;
+		if(op!=null)
+		{
+		   o.parentNode.parentNode.parentNode.innerHTML = "";
+		   //op.removeChild(o.parentNode.parentNode); //删除 
+		}
+	 }
+  }
+  function hide(o)
+  {
+	 if(o.parentNode!=null)
+	 {
+	    o.parentNode.parentNode.style.display = "none";
+		 var op = o.parentNode.parentNode.parentNode;
+		//o.parentNode.innerHTML = "";//var aa = o.parentNode.innerHTML;
+		if(op!=null)
+		{
+		   op.removeChild(o.parentNode.parentNode); //删除 
+		}
+		//alert(aa)
+	 }
+  }
+  
+  function addBg(n)
+  {
+    alert(getChild("bannerPic1_"+n));
+     var url =  getChild("bannerPic1_"+n).value;
+     getChild("banner1_"+n).style.backgroundImage = "url("+url+")";
+     
+	  
+  }
+  function addPicBg(n)
+  {
+     var url =  getChild("picInput1_"+n).value;
+     getChild("pic1_"+n).style.backgroundImage = "url("+url+")";
+  }
+  
+  function add30Text(n)
+  {
+     
+  }
+  
+  function addBg2(n)
+  {
+     alert(getChild("bannerPic2_"+n));
+     var url =  getChild("bannerPic2_"+n).value;
+     getChild("banner2_"+n).style.backgroundImage = "url("+url+")";
+  }
+  
+  function addPicBg2(n)
+  {
+      var url =  getChild("picInput2_"+n).value;
+     getChild("pic2_"+n).style.backgroundImage = "url("+url+")";
+  }
+  
+  function addLi(n){
+  var ol = document.getElementById("ol1_"+n);
+  var myLi = document.createElement("li");
+  myLi.innerHTML= '<B class="top2"><A class="tit" >'+getChild("text1_"+n).value+'</A>';//"66666"
+  ol.appendChild(myLi);
+ }
+function addLi2(n){
+  var ol = document.getElementById("ol2_"+n);
+  var myLi = document.createElement("li");
+  myLi.innerHTML= '<B class="top2"><A class="tit" >'+getChild("text2_"+n).value+'</A>';//"66666"
+  ol.appendChild(myLi);
+ }
+
+function deleteLi1(n)
+ {
+    var ol = document.getElementById("ol1_"+n);
+	var cd = ol.children;
+	var s = "";
+	if(cd !=null&&cd.length>=2)
+	{
+	   for(var i = 0;i<=cd.length-2;i++)
+	   {
+	       s = s +'<li>'+cd[i].innerHTML+'</li>';
+	   }
+	}
+	ol.innerHTML = s;
+	//alert(cd[0].innerHTML);
+	
+ }
+
+ function deleteLi2(n)
+ {
+    var ol = document.getElementById("ol2_"+n);
+	var cd = ol.children;
+	var s = "";
+	if(cd !=null&&cd.length>=2)
+	{
+	   for(var i = 0;i<=cd.length-2;i++)
+	   {
+	       s = s +'<li>'+cd[i].innerHTML+'</li>';
+	   }
+	}
+	ol.innerHTML = s;
+	//alert(cd[0].innerHTML);
+	
+ }
+
+function showEdit()
+{
+   var arr = getChild2("temp");
+   for(var i=0;i<arr.length;i++)
+   {
+      arr[i].style.display = "";
+   }
+}
+
+function preview()
+{
+   //alert();
+   var arr = getChild2("temp");
+   for(var i=0;i<arr.length;i++)
+   {
+      arr[i].style.display = "none";
+   }
+   
+}
+
+function publish()
+{
+   var arr = getChild2("temp");
+   for(var i=0;i<arr.length;i++)
+   {
+      arr[i].style.display = "none";
+   }
+   getChild("addInfo").style.display = "none";
+   var saveData = document.getElementsByTagName("body")[0].innerHTML;
+   
+   var url = 'html.php';
+	   //alert(url);//sucais[n].name +" ** "+usrID+" *** "+sucais[n].id);
+       $.post(url, {data:saveData},function(data){//(url,data,callback,type)
+	     
+		var aa = String(data);
+		
+		   if(aa=="1")
+		   {
+		      alert("删除成功");
+		   }else if(aa=="2")
+		   {
+		      alert("此素材被编辑推荐不能删除，如要删除请联系smsmssm@126.com");
+		   }
+		});
+}
+
+</script>
+</head>
+<style> 
+/* * {margin:0;padding:0;}*/
+/*
+body{
+
+
+}
+.container{
+width:700px; 
+margin:auto 0;
+}
+div{
+
+}
+*/
+.idxTop {	PADDING-RIGHT: 0px;	PADDING-LEFT: 0px;	PADDING-BOTTOM: 5px;	PADDING-TOP: 5px}
+.idxTop LI {	PADDING-RIGHT: 16px;	PADDING-LEFT: 6px;	PADDING-BOTTOM: 0px;	OVERFLOW: hidden;	PADDING-TOP: 0px;	ZOOM: 1} 
+ A {COLOR: #2b93d2;	TEXT-DECORATION: none;	outline: none}
+.idxTop LI .tit {	FLOAT: left;	OVERFLOW: hidden} /* Rule 210 of css/b.css */ 
+/*.idxTop LI B {	DISPLAY: block;	FONT-SIZE: 9px;	FLOAT: left;	MARGIN: 3px 6px 0px 0px;WIDTH: 14px;	COLOR: #ffffff;	LINE-HEIGHT: 11px;	FONT-FAMILY: Verdana, Arial;	HEIGHT: 11px;	TEXT-ALIGN: center}*/
+</style>
+<body style="text-align:center;min-width:800px;color:#FFFFFF;margin:0px;padding:0px; border:#006633 1px solid">
+<div id="allInfo" style="PADDING-BOTTOM: 20px;	MARGIN: 0px auto;PADDING-RIGHT: 0px;	PADDING-LEFT: 0px;	PADDING-BOTTOM: 0px;	MARGIN: 0px;	PADDING-TOP: 0px;	LIST-STYLE-TYPE: none; width:704px">
+<div class="container" id="content"  style="width:704px;  float:left; margin:auto 0;border:#006633 1px solid" >
+<div id="banner1_1" style="float:left; height:30px; width:100%; border:#006633 1px solid;">
+<div style="float:left; height:30px; width:100%;" name="temp">
+<input id="bannerPic1_1" /><button onclick="addBg(1)" style="width:70px">添加背景图</button><button onclick="hide(this)">删除</button>
+</div>
+</div>
+<div style="float:left; height:100px; width:100%; border:#006633 1px solid;">
+   <div id="pic1_1" style="float:left; height:100px; width:400px; border:#006633 1px solid" >
+   <div style="float:left; height:100px; width:100%;"name="temp">
+     <input id="picInput1_1" /><button onclick="addPicBg(1)" style="width:70px">添加背景图</button><button onclick="hide2(this)">删除</button>
+   </div>
+   </div>
+   <div id="30txet1" style="float:left; height:100px; overflow:hidden; width:300px; border:#006633 1px solid">
+     <OL class="idxTop" id="ol1_1">
+     <li>
+        <B class="top2"><A class="tit" >aaaaaaaaaaaaaaaaaaaa</A>     </li>
+     </OL>
+       <div style="width:280px; float:left; margin-bottom:0px" name="temp"><input id="text1_1" style="width:100px" />
+         <button onclick="addLi(1)" style="width:70px">添加文字</button><button onclick="deleteLi1(1)" style="width:70px">删除文字</button>
+     </div>
+   </div>
+</div> 
+<div id="banner2_1" style="float:left; height:60px; width:100%; border:#006633 1px solid;">
+  <div style="float:left; height:60px; width:100%;" name="temp">
+   <input id="bannerPic2_1" /><button onclick="addBg2(1)" style="width:70px">添加背景图</button><button onclick="hide(this)">删除</button>
+   </div>
+</div>
+<div style="float:left; height:120px; width:100%; border:#006633 1px solid;">
+   <div id="pic2_1" style="float:left; height:120px; width:400px; border:#006633 1px solid">
+   <div style="float:left; height:120px; width:100%;"name="temp">
+     <input id="picInput2_1" /><button onclick="addPicBg2(1)" style="width:70px">添加背景图</button>
+     <button onclick="hide2(this)" style="width:70px">删除</button>
+   </div>
+   </div>
+   <div id="txet2_1" style="float:left; height:120px; width:300px; border:#006633 1px solid">
+     <OL class="idxTop" id="ol2_1">
+         <li><B class="top2"><A class="tit" >aaaaaaaaaaaaaaaaaaaa</A></B></li>
+         <li> <B class="top2"><A class="tit" >aaaaaaaaaaaaaaaaaaaa</A></B></li>
+     </OL>
+       <div style="width:280px; float:left; margin-bottom:0px"  name="temp">
+     <input id="text2_1" style="width:100px" /><button onclick="addLi2(1)" style="width:70px">添加文字</button><button onclick="deleteLi2(1)" style="width:70px">删除文字</button>
+     </div>
+   </div>
+  
+</div> 
+
+</div>
+<div id="addInfo" style="float:left; width:700px">
+<button id="btnAddBanner" style="width:100px" onclick="addBanner1()">添加高30通条</button><button onclick="addPicText1()" id="btnAddPicText" style="width:100px">添加高100图文</button><button id="btnAddBanner" style="width:100px" onclick="addBanner2()">添加高60通条</button><button id="btnAddBanner" style="width:100px" onclick="addPicText2()">添加高120图文</button><button id="btnAddBanner" style="width:60px" onclick="preview()">预览</button><button id="btnAddBanner" style="width:100px" onclick="showEdit()">显示编辑按钮</button><button id="btnAddBanner" style="width:100px" onclick="publish()">发布</button>
+</div>
+</div>
+
+</body>
+</html>

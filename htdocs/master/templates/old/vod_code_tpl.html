@@ -1,0 +1,196 @@
+﻿
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>CNTV点播播放器创建代码</title>
+<style>
+textarea { font-size:12px; font-family:Courier; line-height:110%; }
+ul{ list-style-type:none; margin:0px; padding:0px;}
+.chanelUl li{float:left;width:220px;height:25px;}
+</style>
+<script>
+
+var width = 640;
+var height = 480;
+var name = "default";
+var chanel = "";
+var p2pStream = "pa://cctv_p2p_hdcctv1";
+
+function setChanel(opt_value, obj)
+{
+	var _sel = document.getElementsByTagName('select');
+	for(var _i=0; _i<_sel.length; _i++){
+		if(obj != _sel[_i]){
+			_sel[_i].selectedIndex = 0;
+		}
+	}
+
+	if(opt_value=="0"){
+		return false;
+	}
+	chanel = opt_value;
+}
+
+function getCode(n) 
+{
+
+   if(chanel =="")
+   {
+     alert("请选择频道");
+	 return;
+   }
+    var pjs;
+    if(n==2)
+	{
+	  pjs = '<script type="text/javascript" src="http://js.player.cntv.cn/creator/common_standard.js"></' + 'script>\n';
+	}else if(n==1)
+	{
+	  pjs = '<script type="text/javascript" src="http://js.player.cntv.cn/creator/common_bg.js"></' + 'script>\n'; 
+	}
+    var s = '<script type="text/javascript" src="http://js.player.cntv.cn/creator/swfobject.js"></' + 'script>\n' 
+    + pjs
+    + '<div id="myFlash"></' + 'div>\n' 
+    + '<script language="JavaScript">\n' 
+    + '/* 创建播放器，这里只是简单demo，更多参数如广告参数，栏目关键字页面合成时请传入	*/\n' 
+    + 'var fo = createCommonPlayer("vplayer",'+width+','+height+',"'+chanel+'");' 
+	+ 'fo.addVariable("videoId", "20110613105724");/* 视频id 必须传	*/\n'
+    + 'fo.addVariable("videoCenterId","80370973bcd24c558b72fb0c48fe3b45");/* 视频生产中心id 必须传	*/\n'
+	+ 'writePlayer(fo,"myFlash","","");/* 视频生产中心id 必须传	*/\n'
+    + '</' + 'script>\n';
+    document.getElementById("code").innerText = s;
+}
+function onwidthchange()
+{
+   width = document.getElementById("pw").value;
+}
+function onheightchange()
+{
+   height = document.getElementById("ph").value;
+}
+
+</script>
+<style>
+.left_nav { width:230px; height:546px; background-color:#eaeaea; border:1px solid #aaa; float:left; }
+.right_cont { width:750px; height:540px; border:1px dashed #aaa; float:left; margin-left:6px; font-size:12px;font-family: Tahoma; padding:3px; }
+
+.channel_list { font-size:12px; padding:5px; line-height:180%; }
+.channel_list .channel_name { display: block; float: left; width:50px; }
+.channel_list select { width:160px; }
+.typeUl { padding:0; height: 150px;}
+.typeUl li{ float:left; font-size: 14px;font-family: Courier;width: 100px; }
+
+.title_txt { width:100%; padding:5px 0; background-color:#666; color:#eee; font-size:14px; font-weight:bold; text-align:center; }
+
+.txt_desc { color:#ff0000; font-size:14px; float:none; padding:10px; }
+</style>
+</head>
+<body>
+<div style="width:1000px; float:none; margin:0 auto; text-align:center;"><span style="color:#FF0000; font-size:28px">CNTV点播播放器创建代码示例</span> 修订时间：2012年4月28日</div>
+<div style="width:1000px; float:none; margin:0 auto;">
+  <div class="left_nav">
+	<div class="title_txt">请选择频道</div>
+	<div class="channel_list">
+	  <select onChange="setChanel(this[this.selectedIndex].value, this)">
+<option value="0">请选择</option>
+<option value="arabic">阿拉伯语</option>
+<option value="arts">美术</option>
+<option value="auto">汽车</option>
+<option value="baby">爱儿</option>
+<option value="baidu">百度</option>
+<option value="bugu">布谷</option>
+<option value="chuangfu">创富</option>
+<option value="digi">数码</option>
+<option value="jishi">探索</option>
+<option value="jishi">纪实</option>
+<option value="donghua">动画</option>
+<option value="english">英语</option>
+<option value="ent">综艺</option>
+<option value="expo">世博</option>
+<option value="fangtan">访谈</option>
+<option value="film">电影</option>
+<option value="finance">经济</option>
+<option value="games">游戏</option>
+<option value="hsjy">红色家园</option>
+<option value="igongyi">爱公益</option>
+<option value="industry">行业</option>
+<option value="iptv">iptv</option>
+<option value="it">it</option>
+<option value="jiadian">家电</option>
+<option value="jiankang">健康</option>
+<option value="military">军事</option>
+<option value="mindiao">复兴调查</option>
+<option value="museum">复兴展馆</option>
+<option value="news">新闻</option>
+<option value="pinglun">评论</option>
+<option value="sannong">三农</option>
+<option value="russain">俄语</option>
+<option value="shaanxi">陕西</option>
+<option value="shaoer">少儿</option>
+<option value="spanish">西班牙语</option>
+<option value="sport">体育</option>
+<option value="style">时尚</option>
+<option value="taihai">台海</option>
+<option value="teleplay">电视剧</option>
+<option value="tibet">西藏</option>
+<option value="travel">旅游</option>
+<option value="worldcup">世界杯</option>
+<option value="yayun">亚运</option>
+<option value="yinshi">饮食</option>
+<option value="cy">创业</option>
+<option value="book">读书</option>
+<option value="yueyu">粤语</option>
+<option value="xiqu">戏曲</option>
+<option value="music">音乐</option>
+<option value="culture">文化台</option>
+<option value="ipr">成果展</option>
+<option value="kr">韩语</option>
+<option value="menggu">蒙古</option>
+<option value="dajuyuan">大剧院</option>
+<option value="weiyu">维语</option>
+
+<option value="hsly">红色旅游</option>
+<option value="chanjing">产经</option>
+<option value="nongjiale">农家乐</option>
+<option value="chengdu">成都</option>
+<option value="mtv">mtv</option>
+<option value="fucai">福彩</option>
+<option value="mall">商城</option>
+<option value="nongye">农业</option>
+<option value="mini">迷你</option>
+<option value="baobei">宝贝</option>
+<option value="xmtv">厦门TV</option>
+<option value="tv">国家影像馆</option>
+<option value="wangzhan">网络展览馆</option>
+
+</select>
+<br />
+	</div>
+	<div class="title_txt">请输入尺寸</div>
+	<div class="channel_list" style="float:left; height:60px;">
+		<ul class="typeUl" style="height:80px;">
+          <li style="float:left;  margin-left:5px; width:25px;">宽：</li>
+		   <li style="float:left; width:60px;"><input onChange="onwidthchange()" id="pw" value="640" style="width:60px"></li>
+           <li style="float:left; margin-left:5px; width:25px;">高：</li>
+           <li style="float:left; width:60px;"><input om  onChange="onheightchange()" id="ph" value="480" style="width:60px"></li>
+		</ul>
+	</div>
+    <div style="float:left; width:200px; height:30px">
+      <button style="width:150px; height:25px;" onClick="getCode(1)">创建带背景代码</button>
+    </div>
+    <div style="float:left; width:200px; height:30px">
+      <button style="width:150px; height:25px;" onClick="getCode(2)">创建不带背景代码</button>
+    </div>
+    
+	<div class="txt_desc" style=" float:left; width:195px;">
+	  此代码为开发人员页面嵌入代码调试专用
+      新开通频关键字请联系技术中心视频技术部
+      <br>
+      <br>
+	  如有其他问题请联系：<br />技术中心  刘嘉 or 章荣辉 or 视频技术值班工程师 88046624
+	</div>
+  </div>
+  <div name="code" id="code" class="right_cont"></div>
+<br>
+</div>
+</body>
+</html>
