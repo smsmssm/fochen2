@@ -484,7 +484,8 @@
     margin-left: 0;
     padding: 0 8px;
 }
- .c-tab-title a:hover, .c-tab-title .current{
+ .c-tab-title a:hover, .c-tab-title .current1{
+	cursor: pointer;
     color: #004E9C;
     border-color: #004E9C;
 }
