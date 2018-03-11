@@ -1454,7 +1454,9 @@ h6 {
     margin-top: 10px;
 }
 .c-fff {
-    color: #fff;
+	color: #fff;
+	font-size: 12px;
+    margin-top: -10px;
 }
 .pb30 {
     padding-bottom: 30px;
