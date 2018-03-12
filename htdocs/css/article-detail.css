@@ -792,6 +792,19 @@ p.artilabel {
 
 
 
+
+
+
+
+
+
+.mb50 {
+    margin-bottom: 50px;
+}
+.iContainer, .w1000 {
+    margin: 0 auto;
+    width: 1120px;
+}
 .mt20 {
     margin-top: 20px;
 }
@@ -802,218 +815,6 @@ p.artilabel {
     margin: 0 auto;
     width: 310px;
 }
-.fr {
-    float: right;
-    _display: inline;
-}
-aside,section,article{
-    display: block;
-}
-.of {
-    overflow: hidden;
-}
-.c-infor-tabTitle.c-tab-title .more {
-    border: 0;
-    padding: 0;
-    font-size: 12px;
-    color: #999;
-    float: right;
-    line-height: 50px;
-}
-a {
-    text-decoration: none;
-}
-a:-webkit-any-link {
-    color: -webkit-link;
-    cursor: auto;
-    text-decoration: underline;
-}
-ul, ol, li {
-    list-style: none;
-}
-ol {
-    display: block;
-    list-style-type: decimal;
-    -webkit-margin-before: 1em;
-    -webkit-margin-after: 1em;
-    -webkit-margin-start: 0px;
-    -webkit-margin-end: 0px;
-    -webkit-padding-start: 40px;
-}
-.hot-news-list li {
-    margin-top: 20px;
-    overflow: hidden;
-}
-li {
-    display: list-item;
-    text-align: -webkit-match-parent;
-}
-.hot-news-list li img.h-news-list-img {
-    width: 90px;
-    height: 51px;
-}
-.hot-news-list li img, .news-list-box li a img {
-    display: block;
-    width: 120px;
-    height: 72px;
-    float: left;
-    margin-right: 10px;
-}
-.a-l-desc-txt {
-    height: 40px;
-    line-height: 20px;
-    color: #888;
-    overflow: hidden;
-    margin-top: 5px;
-    font-weight: normal;
-}
-h6 {
-    font-size: 12px;
-    line-height: 16px;
-}
-h6 {
-    display: block;
-    font-size: 0.67em;
-    -webkit-margin-before: 2.33em;
-    -webkit-margin-after: 2.33em;
-    -webkit-margin-start: 0px;
-    -webkit-margin-end: 0px;
-    font-weight: bold;
-}
-.fsize16 {
-    font-size: 15px;
-}
-.c-666 {
-    color: #666;
-}
-.w650 {
-    
-    width: 770px;
-}
-.fl {
-    float: left;
-    _display: inline;
-}
-.mb50 {
-    margin-bottom: 50px;
-}
-ul, menu, dir {
-    display: block;
-    list-style-type: disc;
-    -webkit-margin-before: 1em;
-    -webkit-margin-after: 1em;
-    -webkit-margin-start: 0px;
-    -webkit-margin-end: 0px;
-    -webkit-padding-start: 40px;
-}
-.article-list-wrap.article-list-ul li {
-    height: 128px;
-    overflow: hidden;
-    margin-top: 25px;
-}
-.article-list-wrap li {
-    border-bottom: 1px solid #e2e2e2;
-    margin-top: 30px;
-    padding-bottom: 20px;
-    zoom: 1;
-}
-li {
-    display: list-item;
-    text-align: -webkit-match-parent;
-}
-.article-list-ul li .aPlot img {
-    width: 195px;
-    height: 112px;
-}
-.aPlot img {
-    display: block;
-    float: left;
-    overflow: hidden;
-    height: 76px;
-    width: 134px;
-    margin-right: 15px;
-    margin-top: 10px;
-}
-.article-list-ul li h5.hLh30 {
-    margin-top: 10px;
-}
-
-.hLh30 {
-    height: 30px;
-    line-height: 30px;
-}
-.of {
-    overflow: hidden;
-}
-.unFw {
-    font-weight: normal;
-}
-h5 {
-    font-size: 14px;
-    line-height: 18px;
-}
-h5 {
-    display: block;
-    font-size: 0.83em;
-    -webkit-margin-before: 1.67em;
-    -webkit-margin-after: 1.67em;
-    -webkit-margin-start: 0px;
-    -webkit-margin-end: 0px;
-    font-weight: bold;
-}
-.fsize20 {
-    font-size: 20px;
-}
-.vam {
-    vertical-align: middle;
-}
-.c-333 {
-    color: #333;
-}
-.a-l-desc-txt {
-    height: 40px;
-    line-height: 20px;
-    color: #888;
-    overflow: hidden;
-    margin-top: 5px;
-    font-weight: normal;
-}
-.mt10 {
-    margin-top: 10px;
-}
-.vam {
-    vertical-align: middle;
-}
-.disIb {
-    display: inline-block;
-}
-.a-time.icon14 {
-    background-position: -355px -387px;
-    vertical-align: top;
-}
-.icon14, .icon-2-14 {
-    display: inline-block;
-    height: 14px;
-    width: 14px;
-    vertical-align: middle;
-}
-
-em {
-    font-style: italic;
-}
-.ml50 {
-    margin-left: 50px;
-}
-.a-read.icon14 {
-    background-position: -357px -304px;
-    vertical-align: top;
-}
-a{
-	text-decoration:none;
-}
-
-
-
 .c-infor-tabTitle.c-tab-title {
     margin-bottom: 20px;
     text-align: left;
@@ -1029,9 +830,8 @@ a{
     margin-left: 0;
     padding: 0 12px;
 }
-.c-tab-title .current{
+ .c-tab-title a:hover, .c-tab-title .current{
     border-color: #004E9C;
-    color: #004E9C;
 }
 .c-tab-title a:hover, .c-tab-title .current {
     text-decoration: none;
@@ -1049,12 +849,226 @@ a{
     transition: .3s;
     -webkit-transition: .3s;
 }
-.c-infor-tabTitle.c-tab-title .more {
-    border: 0;
-    padding: 0;
-    font-size: 12px;
-    color: #999;
-    float: right;
-    line-height: 50px;
+.hot-news-list li {
+    margin-top: 20px;
+    overflow: hidden;
 }
-
+li {
+    display: list-item;
+    text-align: -webkit-match-parent;
+}
+a {
+    text-decoration: none;
+}
+.hot-news-list li img, .news-list-box li a img {
+    display: block;
+    width: 120px;
+    height: 72px;
+    float: left;
+    margin-right: 10px;
+}
+.txtOf {
+    display: block;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+.hLh30 {
+    height: 30px;
+    line-height: 30px;
+}
+.unFw {
+    font-weight: normal;
+}
+h6 {
+    font-size: 12px;
+    line-height: 16px;
+}
+h6 {
+    display: block;
+    font-size: 0.67em;
+    -webkit-margin-before: 2.33em;
+    -webkit-margin-after: 2.33em;
+    -webkit-margin-start: 0px;
+    -webkit-margin-end: 0px;
+    font-weight: bold;
+}
+.c-master{
+    color: #004E9C;
+}
+.fsize16 {
+    font-size: 14px;
+}
+.h-desc-of {
+    height: 42px;
+    line-height: 180%;
+    overflow: hidden;
+}
+.f-fA {
+    font-family: "SimSun";
+}
+.c-999 {
+    color: #999;
+}
+p {
+    display: block;
+    -webkit-margin-before: 1em;
+    -webkit-margin-after: 1em;
+    -webkit-margin-start: 0px;
+    -webkit-margin-end: 0px;
+}
+.w650 {
+    margin: 0 auto;
+    width: 770px;
+}
+.fl {
+    float: left;
+    _display: inline;
+}
+.pathwray {
+    border-bottom: 1px solid #CCC;
+    height: 50px;
+    line-height: 50px;
+    overflow: hidden;
+}
+.fsize14 {
+    font-size: 14px;
+}
+.f-fM, tt, select, input, samp {
+    font-family: "Hiragino Sans GB","Microsoft YaHei";
+}
+.clearfix {
+    display: block;
+}
+.pathwray li {
+    float: left;
+    margin-right: 5px;
+    color: #666;
+    font-family: 'SimSun';
+}
+.pathwray li a, .pathwray li span {
+    color: #333;
+    font-family: 'Hiragino Sans GB','Microsoft YaHei';
+}
+.pb20 {
+    padding-bottom: 20px;
+}
+.mt30 {
+    margin-top: 30px;
+}
+.tac {
+    text-align: center;
+}
+.unFw {
+    font-weight: normal;
+}
+h2 {
+    font-size: 24px;
+    line-height: 30px;
+}
+h2 {
+    display: block;
+    font-size: 1.5em;
+    -webkit-margin-before: 0.83em;
+    -webkit-margin-after: 0.83em;
+    -webkit-margin-start: 0px;
+    -webkit-margin-end: 0px;
+    font-weight: bold;
+}
+.fsize20 {
+    font-size: 20px;
+}
+.c-4e {
+    color: #4E4E4E;
+}
+.mb5 {
+    margin-bottom: 5px;
+}
+.mt5 {
+    margin-top: 5px;
+}
+.vam {
+    vertical-align: middle;
+}
+.disIb {
+    display: inline-block;
+}
+.c-999 {
+    color: #999;
+}
+.a-time.icon14 {
+    background-position: -355px -387px;
+    vertical-align: top;
+}
+.icon14, .icon-2-14 {
+    display: inline-block;
+    height: 14px;
+    width: 14px;
+    vertical-align: middle;
+}
+.ml20 {
+    margin-left: 20px;
+}
+.a-read.icon14 {
+    background-position: -357px -304px;
+    vertical-align: top;
+}
+.articleText {
+    line-height: 240%;
+    padding: 20px 10px 0;
+    font-size: 14px;
+    text-align: justify;
+}
+.c-666 {
+    color: #666;
+}
+.mt30 {
+    margin-top: 30px;
+}
+.fr {
+    float: right;
+    _display: inline;
+}
+.fl {
+    float: left;
+    _display: inline;
+}
+.c-p-n-txt {
+    background-position: -380px -273px;
+}
+.icon18, .icon-2-18 {
+    display: inline-block;
+    height: 18px;
+    width: 18px;
+    vertical-align: middle;
+}
+.c-fx {
+    background-position: -182px -742px;
+}
+.clear {
+    clear: both;
+    font-size: 0;
+    content: " ";
+    line-height: 1px;
+    height: 1px;
+    _height: 1%;
+    margin-top: -1px;
+}
+.upDownBar {
+    border-top: 1px solid #ddd;
+}
+.pt20 {
+    padding-top: 20px;
+}
+.mt20 {
+    margin-top: 20px;
+}
+.c-666 {
+    color: #666;
+}
+.c-4e {
+    color: #4E4E4E;
+}
+.mt20 {
+    margin-top: 20px;
+}
