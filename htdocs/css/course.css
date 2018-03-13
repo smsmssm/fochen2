@@ -85,17 +85,7 @@ background: url(../images/btn_hover1.png) no-repeat;
 	color: #ce4949
 }
 
-.massage {
-	float: right;
-	font-size: 14px;
-	margin-top:0;
-	width: 450px;
-	position: relative
-}
 
-#headerUsername {
-	width: 80px;
-}
 /***********END登录后头部个人中心弹出框END**********/
 
 
@@ -192,14 +182,12 @@ body {
 }
 
 .head {
-	height: 60px;
-	background: url(../images/bg.png);
-	box-shadow: 0 2px 2px #c5c5c5;
-}
-
-.clearh {
-	clear: both;
-	height: 10px;
+	height: 80px;
+	position: fixed;
+	top: 0;
+	background-color: #f5f5f5;
+	z-index: 1200;
+	width: 100%;
 }
 
 .nav {
@@ -210,7 +198,7 @@ body {
 .navimg {
 	float: left;
 	margin-top: 5px;
-	margin-left: 10px;
+    margin-left: 10px;
 }
 
 .nag {
@@ -220,33 +208,21 @@ body {
 .nag li {
 	float: left;
 	margin-left: 5px;
-	margin-top: 20px;
-	width: 60px;
+	margin-top: 15px;
+	width: 80px;
 	height: 30px;
 	line-height: 30px;
 	text-align: center;
 }
 
-.nag li:hover {
-	border-bottom: 2px solid #fa5c53;
-	}
-
-.link1 {
-	display: block;
-	width: 60px;
-	height: 30px;
-	font-weight: bold;
-	border-radius: 3px
+.nag li a{
+	font-size:18px;
 }
 
-.link1:link,.link1:visited {
-	color: #ec6941;
-	text-decoration: none
+.nag li a:hover{
+	border-bottom:2px solid #fa5c53;
 }
 
-.link1:hover {
-	color: #D11303
-}
 
 .current {
 	border-bottom: 2px solid #fa5c53;
@@ -263,8 +239,35 @@ body {
 .massage {
 	float: right;
 	font-size: 14px;
-	margin-top: 20px;
+	margin-top: -35px;
 	width: 450px;
+	position: relative
+}
+
+#headerUsername {
+	width: 80px;
+}
+
+.clearh {
+	clear: both;
+	height: 10px;
+}
+
+.link1 {
+	display: block;
+	width: 80px;
+	height: 30px;
+	font-weight: bold;
+	border-radius: 3px;	
+}
+
+.link1:link,.link1:visited {
+	color: #FA5C53;
+	text-decoration: none
+}
+
+.link1:hover {
+	color: #FA5C53
 }
 
 .link2 {
@@ -313,7 +316,7 @@ body {
 .coursecont {
 	width: 1100px;
 	margin: 0 auto;
-	margin-top: 20px;
+	margin-top: 100px;
 }
 
 .link2.he {

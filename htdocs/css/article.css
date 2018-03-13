@@ -23,9 +23,70 @@ body {
 }
 
 .head {
-	height: 60px;
-	background: url(../images/bg.png);
-	box-shadow: 0 2px 2px #c5c5c5;
+	height: 80px;
+	position: fixed;
+	top: 0;
+	background-color: #f5f5f5;
+	z-index: 1200;
+	width: 100%;
+}
+
+.nav {
+	width: 1100px;
+	margin: 0 auto
+}
+
+.navimg {
+	float: left;
+	margin-top: 5px;
+    margin-left: 10px;
+}
+
+.nag {
+	margin-left: 120px;
+}
+
+.nag li {
+	float: left;
+	margin-left: 5px;
+	margin-top: 15px;
+	width: 80px;
+	height: 30px;
+	line-height: 30px;
+	text-align: center;
+}
+
+.nag li a{
+	font-size:18px;
+}
+
+.nag li a:hover{
+	border-bottom:2px solid #fa5c53;
+}
+
+
+.current {
+	border-bottom: 2px solid #fa5c53;
+}
+
+.current:link,.current:visited {
+	color: #fa5c53;
+}
+
+.current:hover {
+	color: #FFD2D2
+}
+
+.massage {
+	float: right;
+	font-size: 14px;
+	margin-top: -35px;
+	width: 450px;
+	position: relative
+}
+
+#headerUsername {
+	width: 80px;
 }
 
 .clearh {
@@ -35,19 +96,19 @@ body {
 
 .link1 {
 	display: block;
-	width: 60px;
+	width: 80px;
 	height: 30px;
 	font-weight: bold;
-	border-radius: 3px
+	border-radius: 3px;	
 }
 
 .link1:link,.link1:visited {
-	color: #ec6941;
+	color: #FA5C53;
 	text-decoration: none
 }
 
 .link1:hover {
-	color: #D11303
+	color: #FA5C53
 }
 
 .link2 {
@@ -109,44 +170,7 @@ body {
 /************END公共样式END**************/
 
 /************导航**************/
-.nav {
-	width: 1100px;
-	margin: 0 auto
-}
 
-.navimg {
-	float: left;
-	margin-top: 5px;
-}
-
-.nag {
-	margin-left: 120px;
-}
-
-.nag li {
-	float: left;
-	margin-left: 5px;
-	margin-top: 20px;
-	width: 60px;
-	height: 30px;
-	line-height: 30px;
-	text-align: center;
-}
-
-.nag li:hover {
-	border-bottom: 2px solid #fa5c53;
-	}
-
-.current {
-	border-bottom: 2px solid #fa5c53;
-}
-
-.current:link,.current:visited {
-	color: #fa5c53;
-}
-.current:hover {
-	color: #FFD2D2
-}
 
 /*****************未登录时登录注册按钮******************/
 .tkbtn {
@@ -215,12 +239,7 @@ background: url(../images/btn_hover1.png) no-repeat;
 	color: #ce4949
 }
 
-.massage {
-	float: right;
-	font-size: 14px;
-	margin-top: 20px;
-	width: 121px;
-}
+
 /**************END导航END****************/
 
 
@@ -228,14 +247,10 @@ background: url(../images/btn_hover1.png) no-repeat;
 .coursecont {
 	width: 1100px;
 	margin: 0 auto;
-	margin-top: 20px;
+	margin-top: 100px;
 }
 
-.coursecont {
-	width: 1100px;
-	margin: 0 auto;
-	margin-top: 20px;
-}
+
 
 .courightext h3,.coursetext h3 {
 	font-weight: normal;
