@@ -108,6 +108,7 @@ ul,li {
 }
 
 .pet_content_main {
+    margin-bottom: 30px;  
     max-width: 100%;
     background: #fff;
     padding: 10px 20px;
@@ -250,6 +251,12 @@ ul,li {
 }
 
 .pet_content_main .am-list-item-hd a {
+    color: #222;
+    /* font-weight: bold; */
+    font-size: 12px;
+}
+
+.am-list-item-hd a {
     color: #222;
     /* font-weight: bold; */
     font-size: 12px;
@@ -757,7 +764,7 @@ ul,li {
 
 .ui-footer {
     bottom: 0;
-    height: 56px;
+    height: 46px;
 }
 .ui-footer-btn {
     background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0, #f9f9f9), to(#e0e0e0));
@@ -776,7 +783,7 @@ ul,li {
     height: 100%;
 }
 .ui-tiled {
-    font-size: 16px;
+    font-size: 12px;
 }
 .ui-flex, .ui-tiled {
     display: -webkit-box;
